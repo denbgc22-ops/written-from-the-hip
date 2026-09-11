@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Written From The Hip</title>
+<meta name="description" content="Written From The Hip — a newsletter.">
+<link rel="icon" href="assets/images/moon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="home">
+
+  <main class="sky">
+    <div class="stage-wrap">
+      <div class="stage" id="stage"></div>
+    </div>
+  </main>
+
+  <!-- shown instead of the star field on phones -->
+  <div class="mobile-moon" id="mobile-moon"></div>
+  <nav class="node-list" id="node-list" aria-label="Sections"></nav>
+
+  <footer class="home-footer" id="home-footer"></footer>
+
+<script src="config.js"></script>
+<script src="assets/planets.js"></script>
+<script src="assets/app.js"></script>
+<script>renderHome();</script>
+</body>
+</html>

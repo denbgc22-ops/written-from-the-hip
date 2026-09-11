@@ -1,0 +1,670 @@
+/* Written From The Hip — styles. Colors and text live in config.js;
+   this file is the layout and the 1996 house style. */
+
+:root {
+  --ink: #ff0000;          /* the red body text */
+  --label: #ffcc33;        /* planet name color */
+  --legal: #ffff33;        /* tiny print */
+  --link: #ff4d4d;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+
+  /* THE STARS. Swap the filename for a denser sky:
+       images/stars.png         the default
+       images/stars-dense.png   about twice as many
+       images/stars-denser.png  about three times as many
+     Or shrink the tile to pack the same stars in tighter. Add the line
+     below and lower the number (140px is the tile's real size):
+       background-size: 100px 100px;                                    */
+  background: #000 url("images/stars-denser.png") repeat;
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 19px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--link); }
+a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ---------------------------------------------------------------- home ---- */
+
+.sky { display: flex; justify-content: center; padding: 10px 0 0; }
+.stage-wrap { position: relative; width: 100%; overflow: hidden; }
+
+.stage {
+  position: relative;
+  width: 1000px;
+  height: 700px;
+  margin: 0 auto;
+  transform-origin: top center;
+}
+
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 2px;
+}
+
+.node .label {
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--label);
+  white-space: nowrap;
+  margin-bottom: 3px;
+  text-shadow: 0 0 6px #000, 0 1px 2px #000;
+}
+
+.node .planet-art {
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.18));
+  transition: filter 120ms linear, transform 120ms linear;
+}
+
+.node:hover .planet-art,
+.node:focus-visible .planet-art {
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.75));
+  transform: scale(1.06);
+}
+.node:hover .label,
+.node:focus-visible .label { color: #ffffff; }
+
+/* the moon in the middle */
+.moon {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 34px rgba(200, 210, 255, 0.28));
+}
+.moon img { width: 100%; height: 100%; display: block; }
+
+.moon-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #262626;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  pointer-events: none;
+}
+.moon-title {
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.moon-issue { margin-top: 26px; letter-spacing: 0.12em; }
+
+/* the red links + tiny print under the sky */
+.home-footer { text-align: center; padding: 6px 16px 60px; }
+.home-footer .row a {
+  color: var(--ink);
+  font-size: 17px;
+  margin: 0 14px;
+  text-decoration: underline;
+}
+.legal {
+  color: var(--legal);
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: center;
+  margin-top: 26px;
+}
+.home-footer .legal { color: var(--ink); }
+
+/* the phone version of the sky */
+.mobile-moon { display: none; padding: 26px 0 10px; }
+.mobile-moon .moon { position: static; transform: none; margin: 0 auto; }
+.node-list { display: none; padding: 8px 18px 50px; }
+.node-list a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 4px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.node-list .label {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+/* ------------------------------------------------------------ sub pages --- */
+
+.topbar { display: flex; align-items: stretch; height: 62px; }
+.corner {
+  width: 96px;
+  display: grid;
+  place-items: center;
+  border-right: 2px solid #cfcfcf;
+  flex: none;
+}
+.corner-moon { position: relative; width: 46px; height: 46px; display: block; }
+.corner-moon img { width: 100%; height: 100%; display: block; }
+.corner-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: #262626;
+  pointer-events: none;
+}
+.topbar .rule {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #cfcfcf;
+  overflow: hidden;
+}
+.ribbon-text {
+  padding-left: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--legal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.corner-rule { height: 0; border-bottom: 2px solid #cfcfcf; }
+
+/* the vertical list of every planet, down the left edge of a sub page */
+.planet-nav {
+  position: fixed;
+  top: 76px;
+  left: 10px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  padding: 4px 6px 4px 0;
+}
+.planet-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 2px;
+}
+.planet-nav .planet-art { display: block; flex: none; }
+.planet-nav span {
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label);
+  white-space: nowrap;
+  text-shadow: 0 0 6px #000, 0 1px 2px #000;
+}
+.planet-nav a:hover span,
+.planet-nav a:focus-visible span { color: #ffffff; }
+
+.billboard { width: 430px; max-width: 92vw; margin: 46px auto 0; position: relative; }
+
+.oval {
+  position: relative;
+  z-index: 2;
+  width: 78%;
+  height: 76px;
+  margin: 0 auto -26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  text-align: center;
+  box-shadow: inset 0 -6px 14px rgba(0, 0, 0, 0.35);
+}
+.oval span {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.panel {
+  position: relative;
+  height: 258px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.panel a {
+  position: absolute;
+  z-index: 3;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+  white-space: nowrap;
+}
+.panel a:hover, .panel a:focus-visible { text-decoration: underline; }
+
+/* the two-person roster layout (photo + name, side by side) used on
+   Starting Lineup instead of the usual stacked link list */
+.roster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 3;
+}
+.panel .roster-half {
+  position: static;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+  white-space: normal;
+  text-decoration: none;
+}
+.roster-half:first-child { border-right: 1px solid rgba(255, 255, 255, 0.18); }
+.roster-half:hover, .roster-half:focus-visible { text-decoration: none; }
+
+.roster-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 5px solid #39ff14;
+  object-fit: cover;
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.6);
+  transition: transform 120ms linear, box-shadow 120ms linear;
+}
+
+/* a pointing mascot photo pinned inside a panel, gesturing at a link */
+.panel-pointer {
+  position: absolute;
+  z-index: 3;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #39ff14;
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.65);
+}
+.roster-half:hover .roster-photo,
+.roster-half:focus-visible .roster-photo {
+  transform: scale(1.06);
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.9);
+}
+
+.roster-name {
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffe14d;
+}
+.roster-half:hover .roster-name,
+.roster-half:focus-visible .roster-name { color: #ffffff; }
+
+.roster-meta {
+  margin-top: -8px;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #6ec6ff;
+}
+.roster-half:hover .roster-meta,
+.roster-half:focus-visible .roster-meta { color: #bfe4ff; }
+
+.blurb {
+  margin: 44px 0 0;
+  padding: 0 34px;
+  font-size: 21px;
+}
+.blurb.has-orb { padding-right: 120px; }
+
+.orb {
+  position: fixed;
+  right: 26px;
+  top: 48%;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffe14d;
+  background: radial-gradient(circle at 34% 30%, #6ee36a, #12651a 70%, #06340c);
+  box-shadow: 0 0 16px rgba(120, 255, 140, 0.35);
+  text-align: center;
+  line-height: 1.1;
+  padding: 6px;
+}
+
+.page-legal { margin: 90px auto 60px; }
+
+.script-title {
+  margin: 46px auto 0;
+  padding: 0 24px;
+  max-width: 700px;
+  text-align: center;
+  color: #ffd21f;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 28px;
+}
+
+.script-body {
+  margin: 30px auto 0;
+  padding: 0 34px;
+  max-width: 700px;
+  color: #ffd21f;
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.bio-card {
+  margin: 50px auto 0;
+  padding: 0 34px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.bio-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 6px solid #39ff14;
+  object-fit: cover;
+  box-shadow: 0 0 22px rgba(57, 255, 20, 0.65);
+}
+
+.bio-name {
+  margin: 24px 0 0;
+  color: var(--ink);
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 26px;
+}
+
+.bio-stats {
+  margin: 26px 0 0;
+  padding: 18px 26px;
+  border-top: 1px solid rgba(255, 68, 68, 0.35);
+  border-bottom: 1px solid rgba(255, 68, 68, 0.35);
+  text-align: left;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 7px 0;
+  font-size: 17px;
+}
+.bio-stat + .bio-stat { border-top: 1px solid rgba(255, 68, 68, 0.18); }
+
+.bio-stat-label {
+  color: var(--legal);
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.bio-stat-value {
+  color: var(--ink);
+  font-weight: 700;
+  text-align: right;
+}
+
+.stat-line-wrap {
+  margin: 26px auto 0;
+  max-width: 700px;
+  overflow-x: auto;
+}
+
+.stat-line {
+  border-collapse: collapse;
+  margin: 0 auto;
+  background: #000;
+  border: 2px solid #f0e2a0;
+}
+
+.stat-line th,
+.stat-line td {
+  border: 1px solid #f0e2a0;
+  padding: 8px 14px;
+  color: #f0e2a0;
+  font-size: 15px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.stat-line th {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+}
+
+.backlink {
+  display: block;
+  text-align: center;
+  margin-top: 44px;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+/* the live public Stream Of Consciousness feed (Off The Dome) */
+.stream-feed {
+  margin: 40px auto 0;
+  padding: 0 34px;
+  max-width: 700px;
+  min-height: 120px;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.stream-empty {
+  color: var(--legal);
+  text-align: center;
+  padding: 30px 0;
+  font-size: 15px;
+}
+.stream-entry { padding-bottom: 14px; border-bottom: 1px dashed rgba(255, 68, 68, 0.25); }
+.stream-entry:last-child { border-bottom: none; }
+.stream-entry time {
+  display: block;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--legal);
+  margin-bottom: 4px;
+}
+.stream-entry p {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.stream-composer {
+  max-width: 700px;
+  margin: 26px auto 60px;
+  padding: 0 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.stream-signin-link {
+  font-size: 12px;
+  color: var(--legal);
+  text-decoration: underline;
+  opacity: 0.7;
+}
+.stream-login, .stream-post { display: flex; gap: 8px; width: 100%; flex-wrap: wrap; }
+.stream-login input {
+  flex: 1;
+  min-width: 140px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 51, 0.4);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+.stream-post textarea {
+  flex: 1;
+  min-width: 200px;
+  resize: none;
+  background: #000;
+  border: 1px solid rgba(255, 0, 0, 0.35);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 9px 10px;
+  border-radius: 4px;
+  min-height: 40px;
+  max-height: 140px;
+}
+.stream-login button, .stream-post button {
+  background: var(--legal);
+  color: #1a1400;
+  border: none;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 9px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.stream-status { font-size: 12px; color: var(--legal); min-height: 14px; }
+.stream-status.error { color: var(--ink); }
+.stream-status.ok { color: var(--legal); }
+
+/* -------------------------------------------------------------- sitemap --- */
+
+body.sitemap { background: #000; }
+.sitemap-head { text-align: center; padding: 34px 0 6px; }
+.sitemap-head .mark {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  color: var(--legal);
+}
+.sitemap-head .sub { color: var(--ink); font-size: 17px; margin-top: 6px; }
+
+table.map {
+  width: 92%;
+  max-width: 1500px;
+  margin: 26px auto 70px;
+  border-collapse: collapse;
+  border: 2px solid #b8860b;
+}
+table.map td {
+  border: 1px solid #b8860b;
+  padding: 12px 14px;
+  vertical-align: top;
+  color: #ffffff;
+  font-size: 17px;
+}
+table.map td.icon { width: 120px; text-align: center; }
+table.map td.icon .name {
+  display: block;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin-bottom: 4px;
+}
+table.map td.links { width: 220px; }
+table.map td.links a { color: var(--legal); display: block; padding: 1px 0; }
+table.map strong { color: #ffffff; }
+
+/* ------------------------------------------------------------- narrow ----- */
+
+@media (max-width: 900px) {
+  .planet-nav { display: none; }
+}
+
+@media (max-width: 640px) {
+  .stage-wrap { display: none; }
+  .node-list { display: block; }
+  .mobile-moon { display: block; }
+  .blurb { font-size: 19px; padding: 0 20px; }
+  .billboard { margin-top: 30px; }
+  .panel { height: 220px; }
+  .orb { display: none; }
+  table.map td.icon { width: 74px; }
+  table.map td, table.map td.links { font-size: 15px; }
+  table.map td.links { width: 150px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node .planet-art { transition: none; }
+}
