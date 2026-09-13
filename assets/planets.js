@@ -20,6 +20,7 @@ function planetSVG(art, size) {
     shorts: shorts,
     earth: earth,
     basketball: basketball,
+    photo: photo,
   }[type] || sphere;
 
   return (
@@ -29,7 +30,7 @@ function planetSVG(art, size) {
     size +
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
-    body(id, c, s, l, ring) +
+    body(id, c, s, l, ring, a.photo, a.ring) +
     "</svg>"
   );
 }
@@ -120,6 +121,46 @@ function swirl(id, c, s, l) {
     '<path d="M14,36 q46,14 92,-2" stroke-width="3" opacity="0.5"/>' +
     "</g>";
   return ball(id) + g + gloss;
+}
+
+function photo(id, c, s, l, ring, photoUrl, rawRing) {
+  if (!photoUrl) return sphere(id);
+  const img =
+    '<g clip-path="url(#' +
+    id +
+    'c)"><image href="' +
+    photoUrl +
+    '" x="18" y="18" width="84" height="84" preserveAspectRatio="xMidYMid slice"/></g>';
+  // a moderate radial shade over the photo so it reads as a lit ball, not a
+  // flat cutout — white does nothing under multiply, only the dark side
+  // darkens.
+  const shading =
+    '<circle cx="60" cy="60" r="42" fill="url(#' +
+    id +
+    'g)" opacity="0.45" style="mix-blend-mode:multiply" clip-path="url(#' +
+    id +
+    'c)"/>';
+  // an all-around inner rim, like the limb-darkening at the edge of a ball,
+  // so the silhouette reads as round from every angle, not just one diagonal
+  const vignette =
+    '<circle cx="60" cy="60" r="42" fill="none" stroke="#000000" stroke-width="12" opacity="0.3" clip-path="url(#' +
+    id +
+    'c)"/>';
+  const softGloss =
+    '<ellipse cx="44" cy="40" rx="14" ry="9" fill="#ffffff" opacity="0.16" transform="rotate(-28 44 40)"/>';
+  // a ring is only drawn when this planet's config explicitly sets one
+  if (!rawRing) return img + shading + vignette + softGloss;
+  const ringBack =
+    '<g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
+    rawRing +
+    '" stroke-width="6" opacity="0.95"/></g>';
+  const ringFront =
+    '<g clip-path="url(#' +
+    id +
+    'f)"><g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
+    rawRing +
+    '" stroke-width="6"/></g></g>';
+  return ringBack + img + shading + vignette + softGloss + ringFront;
 }
 
 function shorts(id, c, s, l, ring) {

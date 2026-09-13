@@ -24,6 +24,7 @@ body {
      below and lower the number (140px is the tile's real size):
        background-size: 100px 100px;                                    */
   background: #000 url("images/stars-denser.png") repeat;
+  background-size: 220px 220px;
   color: var(--ink);
   font-family: "Times New Roman", Times, serif;
   font-size: 19px;
@@ -111,6 +112,8 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   line-height: 1.2;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.95), 0 0 16px rgba(255, 255, 255, 0.75), 0 0 28px rgba(255, 255, 255, 0.5);
 }
 .moon-issue { margin-top: 26px; letter-spacing: 0.12em; }
 
