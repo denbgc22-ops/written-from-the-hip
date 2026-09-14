@@ -14,6 +14,12 @@
    ========================================================================== */
 
 const SITE = {
+  /* ---- the pull quote curved across the top of the home page ------------ */
+  pullQuote: {
+    text: "“Stuff that reads like what shooting an unregistered firearm feels like.”",
+    attribution: "—Variety",
+  },
+
   /* ---- the moon in the middle ------------------------------------------- */
   title: "Written From The Hip",
   issue: "I", // the small mark under the title on the moon. "" hides it.
@@ -2278,7 +2284,7 @@ FIN`,
       name: "The Archive",
       orb: { label: "Subscribe", href: "page.html?p=subscribe" },
       x: 50.0,
-      y: 14.1,
+      y: 15.6,
       size: 92,
       art: { type: "photo", photo: "assets/images/earth-photo.png", color: "#1f6fb2", shade: "#08213a", light: "#eaf6ff" },
       page: {
@@ -2298,8 +2304,8 @@ FIN`,
       id: "latest-issue",
       name: "Latest Issue",
       orb: { label: "Subscribe", href: "page.html?p=subscribe" },
-      x: 66.3,
-      y: 23.8,
+      x: 75.5,
+      y: 24.8,
       size: 90,
       art: { type: "photo", photo: "assets/images/basketball-photo.png", color: "#f5871f", shade: "#8a3a00", light: "#ffd28a" },
       page: {
@@ -2317,8 +2323,8 @@ FIN`,
     {
       id: "mailbag",
       name: "The Mailbag",
-      x: 33.7,
-      y: 23.8,
+      x: 24.5,
+      y: 24.8,
       size: 88,
       art: { type: "ringed", color: "#7a2bd0", shade: "#2b0a52", light: "#d9b8ff", ring: "#39ff14" },
       page: {
@@ -2336,7 +2342,7 @@ FIN`,
     {
       id: "subscribe",
       name: "Subscribe",
-      x: 73.0,
+      x: 86.0,
       y: 47.0,
       size: 86,
       art: { type: "sphere", color: "#39d94a", shade: "#0d5c17", light: "#b6ffbc" },
@@ -2355,7 +2361,7 @@ FIN`,
     {
       id: "lineup",
       name: "Starting Lineup",
-      x: 27.0,
+      x: 14.0,
       y: 47.0,
       size: 92,
       art: { type: "ringed", color: "#e8365d", shade: "#5c0c22", light: "#ffb3c4", ring: "#3fe0d0" },
@@ -2384,8 +2390,8 @@ FIN`,
     {
       id: "off-the-dome",
       name: "Off The Dome",
-      x: 66.3,
-      y: 70.2,
+      x: 75.5,
+      y: 69.2,
       size: 94,
       art: { type: "photo", photo: "assets/images/new-headshot.png", color: "#ffffff", shade: "#000000", light: "#ffffff", ring: "#a259ff" },
       page: {
@@ -2406,7 +2412,7 @@ FIN`,
       id: "denbys-shorts",
       name: "Denby's Shorts",
       x: 50.0,
-      y: 79.9,
+      y: 78.4,
       size: 84,
       art: { type: "shorts", color: "#3a7bd5", shade: "#15314f", light: "#cfe8ff", ring: "#ffd21f" },
       page: {
@@ -2429,8 +2435,8 @@ FIN`,
     {
       id: "site-map",
       name: "Site Map",
-      x: 33.7,
-      y: 70.2,
+      x: 24.5,
+      y: 69.2,
       size: 84,
       art: { type: "photo", photo: "assets/images/eyeball-photo.png", color: "#f5871f", shade: "#4a1500", light: "#ffe14d" },
       href: "sitemap.html", // goes to its own page instead of the standard one

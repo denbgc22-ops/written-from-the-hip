@@ -106,7 +106,29 @@ function moonHTML(size) {
 
 /* ------------------------------------------------------------------ home -- */
 
+/* the curved pull-quote banner across the top of the home page, text set
+   along an SVG arc so it follows the same kind of curve the planets ring
+   sits on below it */
+function quoteBannerHTML() {
+  const q = SITE.pullQuote;
+  if (!q || !q.text) return "";
+  return (
+    '<svg class="quote-svg" viewBox="0 0 1000 170" aria-hidden="true" focusable="false">' +
+    "<defs><path id=\"quoteArc\" d=\"M 20 145 A 480 120 0 0 1 980 145\" fill=\"none\"/></defs>" +
+    '<text class="quote-text"><textPath href="#quoteArc" startOffset="50%" text-anchor="middle">' +
+    esc(q.text) +
+    "</textPath></text>" +
+    (q.attribution
+      ? '<text class="quote-attribution" x="500" y="162" text-anchor="middle">' + esc(q.attribution) + "</text>"
+      : "") +
+    "</svg>"
+  );
+}
+
 function renderHome() {
+  const banner = document.getElementById("quote-banner");
+  if (banner) banner.innerHTML = quoteBannerHTML();
+
   const stage = document.getElementById("stage");
   let html = moonHTML(300);
   SITE.planets.forEach(function (p) {

@@ -37,6 +37,32 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 /* ---------------------------------------------------------------- home ---- */
 
+/* the curved pull-quote banner across the top of the home page */
+.quote-banner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 16px 0;
+}
+.quote-svg { display: block; width: 100%; height: auto; }
+.quote-text {
+  font-family: "Arial Black", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  fill: #ffe81f;
+  text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+}
+.quote-attribution {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  fill: #ffe81f;
+  opacity: 0.85;
+}
+
 .sky { display: flex; justify-content: center; padding: 10px 0 0; }
 .stage-wrap { position: relative; width: 100%; overflow: hidden; }
 
