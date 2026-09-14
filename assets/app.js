@@ -228,6 +228,7 @@ function renderPage() {
   const links = pg.links || [];
   const roster = pg.roster || [];
   const columns = pg.columns || [];
+  const familyBox = pg.familyBox || null;
 
   const linksHTML = links
     .map(
@@ -290,21 +291,38 @@ function renderPage() {
     ? '<img class="panel-pointer" src="' + esc(pg.pointer.photo) + '" alt="" style="left:50%;transform:translateX(-50%)">'
     : "";
 
+  // A family-box page (a heading plus a photo, both centered) also replaces
+  // the usual link list — e.g. "Join The WFTH Family!" on Subscribe.
+  const familyBoxHTML = familyBox
+    ? '<div class="panel-family"><div class="panel-family-heading" style="color:' +
+      (panel.link || "#ffe14d") +
+      '">' +
+      esc(familyBox.heading) +
+      "</div>" +
+      (familyBox.photo ? '<img class="panel-family-photo" src="' + esc(familyBox.photo) + '" alt="">' : "") +
+      "</div>"
+    : "";
+
   const panelInnerHTML = roster.length
     ? '<div class="roster">' + rosterHTML + "</div>"
     : columns.length
     ? '<div class="panel-columns">' + columnsHTML + "</div>"
+    : familyBox
+    ? familyBoxHTML
     : linksHTML + pointerHTML;
   const panelH = pg.pointer
     ? 258 // provisional; corrected below once the link's real height is known
     : roster.length || columns.length
     ? 260
+    : familyBox
+    ? 300
     : panel.layout === "diagonal"
     ? 258
     : panelHeight(links.length);
-  // a page with no links, roster, columns or pointer photo has nothing to put
-  // in the panel, so skip the empty box rather than show an unused gradient block
-  const panelIsEmpty = !roster.length && !links.length && !pg.pointer && !columns.length;
+  // a page with no links, roster, columns, family box or pointer photo has
+  // nothing to put in the panel, so skip the empty box rather than show an
+  // unused gradient block
+  const panelIsEmpty = !roster.length && !links.length && !pg.pointer && !columns.length && !familyBox;
 
   // an optional big call-to-action below the blurb: a label plus a photo,
   // the whole thing one click target (e.g. "read this story")
@@ -355,6 +373,13 @@ function renderPage() {
         "</p>"
       : "") +
     storyLinkHTML +
+    (pg.subscribeForm
+      ? '<form class="subscribe-form" id="subscribeForm">' +
+        '<input type="email" id="subscribeEmail" placeholder="you@email.com" required>' +
+        '<button type="submit">Become Family</button>' +
+        "</form>" +
+        '<div class="subscribe-status" id="subscribeStatus"></div>'
+      : "") +
     (p.orb
       ? '<a class="orb" href="' + esc(p.orb.href) + '">' + esc(p.orb.label) + "</a>"
       : "") +
@@ -370,6 +395,55 @@ function renderPage() {
     imgEl.style.top = top + "px";
     panelEl.style.height = top + POINTER_SIZE + 24 + "px";
   }
+
+  if (pg.subscribeForm) wireSubscribeForm();
+}
+
+/* wires the email-capture form on Subscribe to Firebase: every submission
+   is pushed into the "subscribers" list in the same database the Stream Of
+   Consciousness feed uses, so the list can be read (and emailed) from the
+   Firebase console. Writing doesn't require signing in — only reading
+   the list back does, enforced by the database's security rules. */
+function wireSubscribeForm() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyB40pjOpCT6brtZ9-PUuTv7pw3VTPxaHI4",
+    authDomain: "written-from-the-hip.firebaseapp.com",
+    databaseURL: "https://written-from-the-hip-default-rtdb.firebaseio.com",
+    projectId: "written-from-the-hip",
+    storageBucket: "written-from-the-hip.firebasestorage.app",
+    messagingSenderId: "791285249884",
+    appId: "1:791285249884:web:cd7af802e4852e57c5b399",
+  };
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  const formEl = document.getElementById("subscribeForm");
+  const emailEl = document.getElementById("subscribeEmail");
+  const statusEl = document.getElementById("subscribeStatus");
+
+  formEl.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = emailEl.value.trim();
+    if (!email) return;
+    const btn = formEl.querySelector("button");
+    btn.disabled = true;
+    statusEl.textContent = "Joining…";
+    statusEl.className = "subscribe-status";
+    try {
+      await db.ref("subscribers").push({
+        email: email,
+        joinedAt: firebase.database.ServerValue.TIMESTAMP,
+      });
+      emailEl.value = "";
+      statusEl.textContent = "You're in the family. Welcome aboard.";
+      statusEl.className = "subscribe-status ok";
+    } catch (err) {
+      statusEl.textContent = "Couldn't save that — try again.";
+      statusEl.className = "subscribe-status error";
+    } finally {
+      btn.disabled = false;
+    }
+  });
 }
 
 /* lighter version of a hex color, for the oval highlight */

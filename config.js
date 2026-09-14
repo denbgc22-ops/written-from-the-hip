@@ -2390,13 +2390,14 @@ FIN`,
       page: {
         oval: { fill: "#f08a1e", text: "#7a2bd0" },
         panel: { from: "#2f8f4e", to: "#0a2a16", link: "#ffe14d", layout: "right" },
+        familyBox: {
+          heading: "Join The WFTH Family!",
+          // photo: "assets/images/family-thumbs-up.png", -- add this back once a
+          // licensed (non-watermarked) copy of the family photo is in assets/images
+        },
         blurb:
-          "Free, weekly, and roughly the length of a coffee. Put your email in and the next issue arrives on its own. No spam, no upsell, no newsletter about the newsletter.",
-        links: [
-          { label: "Sign Me Up", href: "#" },
-          { label: "What You Get", href: "#" },
-          { label: "Refer A Friend", href: "#" },
-        ],
+          "Enter your address to get notifications for when we post a short script, a stream of consciousness, or the newest volume of Off The Dome.",
+        subscribeForm: true,
       },
     },
     {

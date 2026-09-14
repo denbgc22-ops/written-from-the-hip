@@ -377,6 +377,77 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .panel-column:hover .panel-column-label,
 .panel-column:focus-visible .panel-column-label { color: #ffffff !important; }
 
+/* a heading plus a photo, both centered in the panel (e.g. "Join The WFTH
+   Family!" on Subscribe) */
+.panel-family {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  text-align: center;
+}
+.panel-family-heading {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+.panel-family-photo {
+  max-width: 260px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  border: 4px solid #39ff14;
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.55);
+  object-fit: cover;
+}
+
+/* the email-capture form under the blurb on Subscribe */
+.subscribe-form {
+  margin: 30px auto 0;
+  max-width: 340px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.subscribe-form input[type="email"] {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 2px solid #ffe14d;
+  background: #0c1220;
+  color: #ffffff;
+}
+.subscribe-form button {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #39ff14;
+  color: #08210d;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(57, 255, 20, 0.5);
+}
+.subscribe-form button:hover { background: #5cff3d; }
+.subscribe-form button:disabled { opacity: 0.6; cursor: default; }
+.subscribe-status { margin: 10px auto 0; max-width: 340px; padding: 0 24px; font-size: 14px; text-align: center; }
+.subscribe-status.ok { color: #39ff14; }
+.subscribe-status.error { color: #ff6b6b; }
+
 /* a pointing mascot photo pinned inside a panel, gesturing at a link */
 .panel-pointer {
   position: absolute;
