@@ -466,6 +466,7 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 28px;
+  text-shadow: 0 0 10px rgba(255, 210, 31, 0.85), 0 0 24px rgba(255, 210, 31, 0.55);
 }
 
 .script-body {
@@ -479,6 +480,22 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   line-height: 1.5;
   white-space: pre-wrap;
 }
+
+/* a reflowed article/essay body: normal paragraphs instead of a fixed-width
+   screenplay layout, so lines wrap evenly instead of keeping the source
+   file's hard line breaks */
+.script-body-article {
+  margin: 30px auto 0;
+  padding: 0 34px;
+  max-width: 700px;
+  color: #ffd21f;
+  font-weight: 700;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.script-body-article p { margin: 0 0 22px; }
+.script-body-article p:last-child { margin-bottom: 0; }
 
 .bio-card {
   margin: 50px auto 0;

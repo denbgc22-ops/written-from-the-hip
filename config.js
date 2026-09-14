@@ -94,6 +94,7 @@ const SITE = {
       title: "This is off the dome but, Baseball Should Not Exist: It's Propaganda Infecting This Nation's Youth",
       backHref: "page.html?p=latest-issue",
       backLabel: "Back to Latest Issue",
+      reflow: true,
       body: `I ventured off with my four closest friends to the new gentrified food spot in my
 second-tier city. We got the fourteen-dollar shareable fries with the eight-dollar
 truffle oil and parmesan cheese add-on. Our burgers arrived on individual metal

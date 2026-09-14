@@ -369,6 +369,17 @@ function renderScript() {
     return;
   }
 
+  // an article reflows its hard-wrapped source lines into even paragraphs;
+  // a screenplay (the default) keeps its literal spacing/line breaks
+  const bodyHTML = s.reflow
+    ? '<div class="script-body-article">' +
+      s.body
+        .split(/\n\s*\n/)
+        .map((para) => "<p>" + esc(para.replace(/\s*\n\s*/g, " ").trim()) + "</p>")
+        .join("") +
+      "</div>"
+    : '<pre class="script-body">' + esc(s.body) + "</pre>";
+
   document.title = s.title + " — " + SITE.title;
   document.getElementById("script").innerHTML =
     planetNavHTML() +
@@ -376,9 +387,7 @@ function renderScript() {
     '<h1 class="script-title">' +
     esc(s.title) +
     "</h1>" +
-    '<pre class="script-body">' +
-    esc(s.body) +
-    "</pre>" +
+    bodyHTML +
     '<a class="backlink" href="' +
     esc(s.backHref || "page.html?p=denbys-shorts") +
     '">' +
