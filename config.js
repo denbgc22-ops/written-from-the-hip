@@ -2320,7 +2320,7 @@ FIN`,
       x: 33.7,
       y: 23.8,
       size: 88,
-      art: { type: "ringed", color: "#e03a3a", shade: "#5c0d0d", light: "#ffa3a3", ring: "#ffd21f" },
+      art: { type: "ringed", color: "#7a2bd0", shade: "#2b0a52", light: "#d9b8ff", ring: "#39ff14" },
       page: {
         oval: { fill: "#b5121b", text: "#ffe14d" },
         panel: { from: "#3a5a20", to: "#101c08", link: "#ffe14d", layout: "left" },
