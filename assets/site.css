@@ -391,6 +391,45 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 .blurb.has-orb { padding-right: 120px; }
 
+/* a big call-to-action below the blurb: a label plus a photo, both part of
+   one click target (e.g. "read this story") */
+.story-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 34px auto 0;
+  max-width: 320px;
+  padding: 0 20px;
+  text-decoration: none;
+  text-align: center;
+}
+.story-link-label {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffe14d;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.85), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+.story-link-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #39ff14;
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.65);
+  transition: transform 120ms linear, box-shadow 120ms linear;
+}
+.story-link:hover .story-link-label,
+.story-link:focus-visible .story-link-label { color: #ffffff; }
+.story-link:hover .story-link-photo,
+.story-link:focus-visible .story-link-photo {
+  transform: scale(1.06);
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.9);
+}
+
 .orb {
   position: fixed;
   right: 26px;

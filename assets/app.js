@@ -282,12 +282,29 @@ function renderPage() {
     : panel.layout === "diagonal"
     ? 258
     : panelHeight(links.length);
+  // a page with no links, roster or pointer photo has nothing to put in the
+  // panel, so skip the empty box rather than show an unused gradient block
+  const panelIsEmpty = !roster.length && !links.length && !pg.pointer;
+
+  // an optional big call-to-action below the blurb: a label plus a photo,
+  // the whole thing one click target (e.g. "read this story")
+  const storyLinkHTML = pg.storyLink
+    ? '<a class="story-link" href="' +
+      esc(pg.storyLink.href) +
+      '"><span class="story-link-label">' +
+      esc(pg.storyLink.label) +
+      "</span>" +
+      (pg.storyLink.photo ? '<img class="story-link-photo" src="' + esc(pg.storyLink.photo) + '" alt="">' : "") +
+      "</a>"
+    : "";
 
   document.getElementById("page").innerHTML =
     planetNavHTML() +
     topbarHTML(pg.ribbon) +
     '<div class="billboard">' +
-    '<div class="oval" style="background:radial-gradient(circle at 34% 26%, ' +
+    '<div class="oval" style="' +
+    (panelIsEmpty ? "margin-bottom:250px;" : "") +
+    "background:radial-gradient(circle at 34% 26%, " +
     tint(oval.fill) +
     ", " +
     (oval.fill || "#1f74c4") +
@@ -296,18 +313,22 @@ function renderPage() {
     '">' +
     esc(p.name) +
     "</span></div>" +
-    '<div class="panel" style="height:' +
-    panelH +
-    "px;background:linear-gradient(160deg, " +
-    (panel.from || "#2a6ea8") +
-    ", " +
-    (panel.to || "#0c2438") +
-    ')">' +
-    panelInnerHTML +
-    "</div></div>" +
+    (panelIsEmpty
+      ? ""
+      : '<div class="panel" style="height:' +
+        panelH +
+        "px;background:linear-gradient(160deg, " +
+        (panel.from || "#2a6ea8") +
+        ", " +
+        (panel.to || "#0c2438") +
+        ')">' +
+        panelInnerHTML +
+        "</div>") +
+    "</div>" +
     (pg.blurb
       ? '<p class="blurb' + (p.orb ? " has-orb" : "") + '">' + esc(pg.blurb) + "</p>"
       : "") +
+    storyLinkHTML +
     (p.orb
       ? '<a class="orb" href="' + esc(p.orb.href) + '">' + esc(p.orb.label) + "</a>"
       : "") +
@@ -352,7 +373,11 @@ function renderScript() {
     '<pre class="script-body">' +
     esc(s.body) +
     "</pre>" +
-    '<a class="backlink" href="page.html?p=denbys-shorts">Back to Denby\'s Shorts</a>' +
+    '<a class="backlink" href="' +
+    esc(s.backHref || "page.html?p=denbys-shorts") +
+    '">' +
+    esc(s.backLabel || "Back to Denby's Shorts") +
+    "</a>" +
     legalHTML("page-legal");
 }
 

@@ -85,8 +85,71 @@ const SITE = {
   /* ---- full scripts, opened from a planet's page links -------------------
      "id" is what script.html?s=<id> looks up. "body" is plain text \u2014 line
      breaks are kept as-is, so paste the script in exactly how it should read.
+     backHref/backLabel are optional \u2014 they default to Denby's Shorts, so
+     only set them when a story is linked from somewhere else.
   ------------------------------------------------------------------------ */
   scripts: [
+    {
+      id: "baseball-propaganda",
+      title: "This is off the dome but, Baseball Should Not Exist: It's Propaganda Infecting This Nation's Youth",
+      backHref: "page.html?p=latest-issue",
+      backLabel: "Back to Latest Issue",
+      body: `I ventured off with my four closest friends to the new gentrified food spot in my
+second-tier city. We got the fourteen-dollar shareable fries with the eight-dollar
+truffle oil and parmesan cheese add-on. Our burgers arrived on individual metal
+trays, and we decided to order a transfusion tower that came out to three
+normal-sized transfusions for double the cost. When the waiter came with the
+bill, we all ended up paying $87.34 each before tip.
+
+Walking back to our shipping container apartment, we all realized we had spent
+almost a hundred dollars to be neither full nor drunk, and my friend looked into
+my piercing blue eyes and said, "That's Baseball, Suzyn," a quote from Yankees
+play-by-play legend John Sterling. For 35 years, John would see things like Jose
+Altuve smoking a 105 mph fastball from Aroldis Chapman to send the Astros to the
+World Series, and Sterling would turn to Suzyn Waldman and say the words:
+"That's Baseball."
+
+That is in fact baseball. Akin to "That's life," a quote from someone less
+famous and less New York than Yankees play-by-play man John Sterling, it's
+unexpected. Life, like baseball, is strange in many ways, but taking a step
+back, baseball is far weirder than "life" could ever be.
+
+Try to describe baseball to someone who has never seen the sport. You can't.
+
+There is no time limit, and every baseball "diamond" in the MLB has different
+dimensions and wall heights. They give kids metal bats, but when those kids
+grow up they are forced to use tree trunks to swing at pitches that reach you
+faster than you can blink. The names of the pitches sound like Kama Sutra
+positions. Imagine hearing a coach tell your son that he needs to make contact
+on his slurve ball, and that if he gets a hit and makes it to second base, he'd
+better put on his strap on neon pink sliding mitt so he can make it to third
+base. This parent is also paying three grand for their little tyke to be
+groomed on this travel team. What game are we playing here?
+
+Then, right when you are getting used to this weird, perverted sport, the
+seventh-inning stretch happens, and you are forced to stand up and sing "Take
+Me Out to the Ball Game" like it's some sort of forced baseball propaganda.
+"Buy me some peanuts and Cracker Jack, I don't care if I never get back." Back
+to what? Your life without baseball? What kind of nightmare am I in?
+
+A nightmare that happens 162 times a year. The MLB regular season is 162 games
+long per team. Whereas other normal sports like football play 17, and
+basketball, which is on the higher end, plays 82, baseball nearly doubles it
+for no reason at all.
+
+Baseball is literally called "America's Pastime," so the only other time in
+your life that isn't baseball is your job. Imagine you are Adam Scott, and
+every time you leave your job, your outie is at a baseball game. That is what
+Rob Manfred and Big Baseball wants. Remember that the next time you are
+supporting your second-tier city's Triple-A team that is named after a niche
+regional food.
+
+And the home run from Jose Altuve that I mentioned earlier happened because he
+had a buzzer under his jersey telling him whether the pitch was a four-seamer
+or a sinker from Chapman.
+
+That's baseball.`,
+    },
     {
       id: "real-steele-cuck",
       title: "Real Steele Cuck",
@@ -2311,13 +2374,12 @@ FIN`,
       page: {
         oval: { fill: "#1b7a2f", text: "#ffd21f" },
         panel: { from: "#2a6ea8", to: "#0c2438", link: "#ffe14d", layout: "right" },
-        blurb:
-          "Hot off the press and still smudging. The newest dispatch of Written From The Hip is live \u2014 read it here, or have the next one delivered straight to your inbox before anybody else gets a look at it.",
-        links: [
-          { label: "Read It Now", href: "#" },
-          { label: "Issue Notes", href: "#" },
-          { label: "Send It To A Friend", href: "#" },
-        ],
+        blurb: "WFTH Presents: Off The Dome Vol. 1",
+        storyLink: {
+          label: "Click here to view",
+          href: "script.html?s=baseball-propaganda",
+          photo: "assets/images/pointer-guy.png",
+        },
       },
     },
     {
