@@ -303,7 +303,7 @@ function renderPage() {
     topbarHTML(pg.ribbon) +
     '<div class="billboard">' +
     '<div class="oval" style="' +
-    (panelIsEmpty ? "margin-bottom:250px;" : "") +
+    (panelIsEmpty ? "margin-bottom:40px;" : "") +
     "background:radial-gradient(circle at 34% 26%, " +
     tint(oval.fill) +
     ", " +
@@ -326,7 +326,13 @@ function renderPage() {
         "</div>") +
     "</div>" +
     (pg.blurb
-      ? '<p class="blurb' + (p.orb ? " has-orb" : "") + '">' + esc(pg.blurb) + "</p>"
+      ? '<p class="blurb' +
+        (p.orb ? " has-orb" : "") +
+        '"' +
+        (panelIsEmpty ? ' style="text-align:center;"' : "") +
+        ">" +
+        esc(pg.blurb) +
+        "</p>"
       : "") +
     storyLinkHTML +
     (p.orb
