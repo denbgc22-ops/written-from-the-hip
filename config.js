@@ -2392,8 +2392,7 @@ FIN`,
         panel: { from: "#2f8f4e", to: "#0a2a16", link: "#ffe14d", layout: "right" },
         familyBox: {
           heading: "Join The WFTH Family!",
-          // photo: "assets/images/family-thumbs-up.png", -- add this back once a
-          // licensed (non-watermarked) copy of the family photo is in assets/images
+          photo: "assets/images/family-photo.png",
         },
         blurb:
           "Enter your address to get notifications for when we post a short script, a stream of consciousness, or the newest volume of Off The Dome.",
