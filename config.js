@@ -17,7 +17,7 @@ const SITE = {
   /* ---- the pull quote curved across the top of the home page ------------ */
   pullQuote: {
     text: "“Stuff that reads like what shooting an unregistered firearm feels like.”",
-    attribution: "—Variety",
+    attribution: "—Uncle",
   },
 
   /* ---- the moon in the middle ------------------------------------------- */

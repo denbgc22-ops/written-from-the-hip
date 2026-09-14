@@ -106,22 +106,15 @@ function moonHTML(size) {
 
 /* ------------------------------------------------------------------ home -- */
 
-/* the curved pull-quote banner across the top of the home page, text set
-   along an SVG arc so it follows the same kind of curve the planets ring
-   sits on below it */
+/* the pull-quote banner across the top of the home page */
 function quoteBannerHTML() {
   const q = SITE.pullQuote;
   if (!q || !q.text) return "";
   return (
-    '<svg class="quote-svg" viewBox="0 0 1000 170" aria-hidden="true" focusable="false">' +
-    "<defs><path id=\"quoteArc\" d=\"M 20 145 A 480 120 0 0 1 980 145\" fill=\"none\"/></defs>" +
-    '<text class="quote-text"><textPath href="#quoteArc" startOffset="50%" text-anchor="middle">' +
+    '<div class="quote-text">' +
     esc(q.text) +
-    "</textPath></text>" +
-    (q.attribution
-      ? '<text class="quote-attribution" x="500" y="162" text-anchor="middle">' + esc(q.attribution) + "</text>"
-      : "") +
-    "</svg>"
+    "</div>" +
+    (q.attribution ? '<div class="quote-attribution">' + esc(q.attribution) + "</div>" : "")
   );
 }
 
