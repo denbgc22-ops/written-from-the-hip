@@ -33,12 +33,14 @@ document.getElementById("stream").innerHTML =
   '<textarea id="streamText" placeholder="What art thou is steamith of your consciousness brethren?" rows="1"></textarea>' +
   '<button type="submit">Transmit</button>' +
   "</form>" +
+  '<a href="#" id="streamSignOutLink" class="stream-signin-link" hidden>sign out</a>' +
   '<div class="stream-status" id="streamStatus"></div>' +
   "</div>" +
   legalHTML("page-legal");
 
 const feedEl = document.getElementById("streamFeed");
 const signInLinkEl = document.getElementById("streamSignInLink");
+const signOutLinkEl = document.getElementById("streamSignOutLink");
 const loginFormEl = document.getElementById("streamLoginForm");
 const postFormEl = document.getElementById("streamPostForm");
 const emailEl = document.getElementById("streamEmail");
@@ -101,6 +103,7 @@ streamDb
 streamAuth.onAuthStateChanged((user) => {
   const isOwner = !!user;
   signInLinkEl.hidden = isOwner;
+  signOutLinkEl.hidden = !isOwner;
   loginFormEl.hidden = true;
   postFormEl.hidden = !isOwner;
   if (user) setStatus("Signed in.", "ok");
@@ -110,6 +113,12 @@ signInLinkEl.addEventListener("click", (e) => {
   e.preventDefault();
   signInLinkEl.hidden = true;
   loginFormEl.hidden = false;
+});
+
+signOutLinkEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  streamAuth.signOut();
+  setStatus("Signed out.");
 });
 
 loginFormEl.addEventListener("submit", async (e) => {
