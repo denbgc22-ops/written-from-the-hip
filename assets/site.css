@@ -347,6 +347,36 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   transition: transform 120ms linear, box-shadow 120ms linear;
 }
 
+/* a two-item side-by-side link split inside a panel (e.g. "Short Scripts" /
+   "Off The Domes" on the Archive page) — like .roster but text-only */
+.panel-columns {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 3;
+}
+.panel .panel-column {
+  position: static;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+.panel-column:first-child { border-right: 1px solid rgba(255, 255, 255, 0.18); }
+.panel-column-label {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+.panel-column:hover .panel-column-label,
+.panel-column:focus-visible .panel-column-label { color: #ffffff !important; }
+
 /* a pointing mascot photo pinned inside a panel, gesturing at a link */
 .panel-pointer {
   position: absolute;
@@ -496,6 +526,30 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 .script-body-article p { margin: 0 0 22px; }
 .script-body-article p:last-child { margin-bottom: 0; }
+
+/* a plain vertical list of links, used for the Off The Domes page */
+.list-page {
+  margin: 40px auto 0;
+  max-width: 500px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.list-page a {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  text-align: center;
+  color: #ffe14d;
+  text-decoration: none;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.85), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+.list-page a:hover, .list-page a:focus-visible { color: #ffffff; text-decoration: underline; }
 
 .bio-card {
   margin: 50px auto 0;

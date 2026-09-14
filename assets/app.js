@@ -227,6 +227,7 @@ function renderPage() {
   const oval = pg.oval || {};
   const links = pg.links || [];
   const roster = pg.roster || [];
+  const columns = pg.columns || [];
 
   const linksHTML = links
     .map(
@@ -266,6 +267,21 @@ function renderPage() {
     )
     .join("");
 
+  // A columns page (two side-by-side link labels, e.g. "Short Scripts" /
+  // "Off The Domes") also replaces the usual link list.
+  const columnsHTML = columns
+    .map(
+      (c) =>
+        '<a class="panel-column" href="' +
+        esc(c.href) +
+        '"><span class="panel-column-label" style="color:' +
+        (panel.link || "#ffe14d") +
+        '">' +
+        esc(c.label) +
+        "</span></a>"
+    )
+    .join("");
+
   // An optional pointing photo, e.g. a mascot gesturing at the link above it.
   // Its exact top position is set after render, once we can measure how
   // tall the (possibly wrapped) link text actually came out.
@@ -274,17 +290,21 @@ function renderPage() {
     ? '<img class="panel-pointer" src="' + esc(pg.pointer.photo) + '" alt="" style="left:50%;transform:translateX(-50%)">'
     : "";
 
-  const panelInnerHTML = roster.length ? '<div class="roster">' + rosterHTML + "</div>" : linksHTML + pointerHTML;
+  const panelInnerHTML = roster.length
+    ? '<div class="roster">' + rosterHTML + "</div>"
+    : columns.length
+    ? '<div class="panel-columns">' + columnsHTML + "</div>"
+    : linksHTML + pointerHTML;
   const panelH = pg.pointer
     ? 258 // provisional; corrected below once the link's real height is known
-    : roster.length
+    : roster.length || columns.length
     ? 260
     : panel.layout === "diagonal"
     ? 258
     : panelHeight(links.length);
-  // a page with no links, roster or pointer photo has nothing to put in the
-  // panel, so skip the empty box rather than show an unused gradient block
-  const panelIsEmpty = !roster.length && !links.length && !pg.pointer;
+  // a page with no links, roster, columns or pointer photo has nothing to put
+  // in the panel, so skip the empty box rather than show an unused gradient block
+  const panelIsEmpty = !roster.length && !links.length && !pg.pointer && !columns.length;
 
   // an optional big call-to-action below the blurb: a label plus a photo,
   // the whole thing one click target (e.g. "read this story")
@@ -393,6 +413,26 @@ function renderScript() {
     '">' +
     esc(s.backLabel || "Back to Denby's Shorts") +
     "</a>" +
+    legalHTML("page-legal");
+}
+
+/* -------------------------------------------------------- off the domes -- */
+
+/* lists every script tagged as part of the "off the dome" series, each
+   one linking straight to its script page */
+function renderOffTheDomes() {
+  document.title = "Off The Domes — " + SITE.title;
+  const items = (SITE.scripts || []).filter((s) => s.series === "off-the-dome");
+  document.getElementById("dome-list").innerHTML =
+    planetNavHTML() +
+    topbarHTML() +
+    '<h1 class="script-title">Off The Domes</h1>' +
+    '<div class="list-page">' +
+    (items.length
+      ? items.map((s) => '<a href="script.html?s=' + esc(s.id) + '">' + esc(s.title) + "</a>").join("")
+      : '<p class="blurb" style="text-align:center;">Nothing up here yet.</p>') +
+    "</div>" +
+    '<a class="backlink" href="index.html">Back to the home page</a>' +
     legalHTML("page-legal");
 }
 

@@ -95,6 +95,7 @@ const SITE = {
       backHref: "page.html?p=latest-issue",
       backLabel: "Back to Latest Issue",
       reflow: true,
+      series: "off-the-dome",
       body: `I ventured off with my four closest friends to the new gentrified food spot in my
 second-tier city. We got the fourteen-dollar shareable fries with the eight-dollar
 truffle oil and parmesan cheese add-on. Our burgers arrived on individual metal
@@ -2354,13 +2355,9 @@ FIN`,
       page: {
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
-        blurb:
-          "You've made it: the central depository for everything ever written from the hip. Every issue, every year, every regrettable opinion \u2014 all of it still sitting right where you left it.",
-        links: [
-          { label: "Every Issue", href: "#" },
-          { label: "By Year", href: "#" },
-          { label: "Greatest Hits", href: "#" },
-          { label: "Search The Archive", href: "#" },
+        columns: [
+          { label: "Short Scripts", href: "page.html?p=denbys-shorts" },
+          { label: "Off The Domes", href: "off-the-domes.html" },
         ],
       },
     },
