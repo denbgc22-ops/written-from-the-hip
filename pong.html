@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venus Pong &mdash; Written From The Hip</title>
+<link rel="icon" href="assets/images/moon.png">
+<style>
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px 12px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffe14d;
+    text-shadow: 0 0 12px rgba(255, 225, 79, 0.6);
+  }
+
+  #gameWrap {
+    position: relative;
+    max-width: 100%;
+  }
+
+  canvas {
+    background: #050505;
+    border: 3px solid #333;
+    box-shadow: 0 0 34px rgba(255, 255, 255, 0.08);
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  #overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #overlayTitle {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  #modeRow { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+  .mode-btn, #startBtn {
+    font-family: inherit;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .mode-btn.selected { background: #39ff14; color: #08210d; border-color: #fff; }
+
+  #startBtn {
+    background: #39ff14;
+    color: #08210d;
+    font-size: 17px;
+    padding: 12px 30px;
+    box-shadow: 0 0 16px rgba(57, 255, 20, 0.55);
+  }
+  #startBtn:hover { background: #5cff3d; }
+
+  #controlsHint { font-size: 13px; color: #999; max-width: 480px; line-height: 1.5; }
+
+  canvas { min-width: 300px; }
+
+  /* Pong needs a keyboard, so phones aren't the primary target, but the
+     start overlay should still fit inside the shorter scaled-down canvas
+     instead of spilling past it. */
+  @media (max-width: 480px) {
+    h1 { font-size: 20px; }
+    #overlay { gap: 6px; padding: 8px; }
+    #overlayTitle { font-size: 10px; }
+    .mode-btn, #startBtn { padding: 5px 10px; font-size: 10px; }
+    #startBtn { font-size: 12px; padding: 7px 16px; }
+    #controlsHint { font-size: 9px; line-height: 1.3; }
+  }
+
+  .backlink {
+    color: #ff4d4d;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Venus Pong</h1>
+
+  <div id="gameWrap">
+    <canvas id="pong" width="800" height="500"></canvas>
+    <div id="overlay">
+      <div id="overlayTitle">The 1972 Classic &mdash; Reborn</div>
+      <div id="modeRow">
+        <button class="mode-btn selected" id="modeAI" type="button">1 Player (vs AI)</button>
+        <button class="mode-btn" id="mode2P" type="button">2 Player</button>
+      </div>
+      <button id="startBtn" type="button">Start Game</button>
+      <div id="controlsHint">
+        Player 1 (left, Venus): <strong>W</strong> / <strong>S</strong>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Player 2 (right, Serena): <strong>&uarr;</strong> / <strong>&darr;</strong>
+      </div>
+    </div>
+  </div>
+
+  <a class="backlink" href="page.html?p=venus">Back to Venus</a>
+
+<script>
+(function () {
+  "use strict";
+
+  const canvas = document.getElementById("pong");
+  const ctx = canvas.getContext("2d");
+  const W = canvas.width;
+  const H = canvas.height;
+
+  const PADDLE_SIZE = 64; // square bounding box the circular head sprite fills
+  const PADDLE_MARGIN = 26;
+  const PADDLE_SPEED = 420; // px/sec
+  const BALL_SIZE = 14;
+  const BASE_BALL_SPEED = 320; // px/sec
+  const MAX_BALL_SPEED = 780;
+  const SPEED_UP = 1.06; // multiplier applied on every paddle hit
+
+  let mode = "ai"; // "ai" or "2p"
+  let running = false;
+  let lastTime = 0;
+
+  const state = {
+    leftY: H / 2 - PADDLE_SIZE / 2,
+    rightY: H / 2 - PADDLE_SIZE / 2,
+    ball: { x: W / 2, y: H / 2, vx: 0, vy: 0, speed: BASE_BALL_SPEED },
+    scoreLeft: 0,
+    scoreRight: 0,
+  };
+
+  const keys = {};
+  window.addEventListener("keydown", (e) => {
+    keys[e.key] = true;
+    if (["ArrowUp", "ArrowDown", "w", "s", "W", "S"].includes(e.key)) e.preventDefault();
+  });
+  window.addEventListener("keyup", (e) => { keys[e.key] = false; });
+
+  /* Each paddle tries to load its head photo; until it loads (or if it fails
+     to load at all) we draw a labeled colored circle instead, so the game
+     always renders something recognizable for each player. */
+  function makeSprite(url, label, color) {
+    const sprite = { img: new Image(), ready: false, label, color };
+    sprite.img.onload = () => { sprite.ready = true; };
+    sprite.img.onerror = () => { sprite.ready = false; };
+    sprite.img.src = url;
+    return sprite;
+  }
+  const venusSprite = makeSprite("assets/images/venus-head.png", "VENUS", "#39ff14");
+  const serenaSprite = makeSprite("assets/images/serena-head.png", "SERENA", "#b23bff");
+
+  function drawPaddle(sprite, x, y) {
+    const size = PADDLE_SIZE;
+    const cx = x + size / 2;
+    const cy = y + size / 2;
+    const r = size / 2;
+
+    if (sprite.ready) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(sprite.img, x, y, size, size);
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = sprite.color;
+      ctx.lineWidth = 3;
+      ctx.shadowColor = sprite.color;
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    } else {
+      // still loading, or the image failed to load
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = sprite.color;
+      ctx.shadowColor = sprite.color;
+      ctx.shadowBlur = 14;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = "#000";
+      ctx.font = 'bold 11px "Courier New", monospace';
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(sprite.label, cx, cy);
+    }
+  }
+
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+  function resetBall(direction) {
+    state.ball.x = W / 2;
+    state.ball.y = H / 2;
+    state.ball.speed = BASE_BALL_SPEED;
+    const angle = (Math.random() * 0.5 - 0.25) * Math.PI; // -45deg .. 45deg
+    state.ball.vx = Math.cos(angle) * state.ball.speed * direction;
+    state.ball.vy = Math.sin(angle) * state.ball.speed;
+  }
+
+  function bounceOffPaddle(paddleY, dir) {
+    const b = state.ball;
+    const relative = (b.y - (paddleY + PADDLE_SIZE / 2)) / (PADDLE_SIZE / 2); // -1..1
+    const bounceAngle = relative * (Math.PI / 3); // up to 60 degrees off-axis
+    b.speed = Math.min(b.speed * SPEED_UP, MAX_BALL_SPEED);
+    b.vx = Math.cos(bounceAngle) * b.speed * dir;
+    b.vy = Math.sin(bounceAngle) * b.speed;
+    // nudge the ball clear of the paddle so it can't double-collide next frame
+    b.x = dir === 1
+      ? PADDLE_MARGIN + PADDLE_SIZE + BALL_SIZE / 2 + 1
+      : W - PADDLE_MARGIN - PADDLE_SIZE - BALL_SIZE / 2 - 1;
+  }
+
+  function update(dt) {
+    if (keys.w || keys.W) state.leftY -= PADDLE_SPEED * dt;
+    if (keys.s || keys.S) state.leftY += PADDLE_SPEED * dt;
+    state.leftY = clamp(state.leftY, 0, H - PADDLE_SIZE);
+
+    if (mode === "2p") {
+      if (keys.ArrowUp) state.rightY -= PADDLE_SPEED * dt;
+      if (keys.ArrowDown) state.rightY += PADDLE_SPEED * dt;
+    } else {
+      const targetCenter = state.ball.y;
+      const paddleCenter = state.rightY + PADDLE_SIZE / 2;
+      const aiSpeed = PADDLE_SPEED * 0.72; // intentionally beatable
+      if (Math.abs(targetCenter - paddleCenter) > 6) {
+        state.rightY += Math.sign(targetCenter - paddleCenter) * aiSpeed * dt;
+      }
+    }
+    state.rightY = clamp(state.rightY, 0, H - PADDLE_SIZE);
+
+    const b = state.ball;
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+
+    if (b.y - BALL_SIZE / 2 <= 0) {
+      b.y = BALL_SIZE / 2;
+      b.vy *= -1;
+    }
+    if (b.y + BALL_SIZE / 2 >= H) {
+      b.y = H - BALL_SIZE / 2;
+      b.vy *= -1;
+    }
+
+    if (
+      b.vx < 0 &&
+      b.x - BALL_SIZE / 2 <= PADDLE_MARGIN + PADDLE_SIZE &&
+      b.x - BALL_SIZE / 2 >= PADDLE_MARGIN &&
+      b.y >= state.leftY &&
+      b.y <= state.leftY + PADDLE_SIZE
+    ) {
+      bounceOffPaddle(state.leftY, 1);
+    }
+
+    if (
+      b.vx > 0 &&
+      b.x + BALL_SIZE / 2 >= W - PADDLE_MARGIN - PADDLE_SIZE &&
+      b.x + BALL_SIZE / 2 <= W - PADDLE_MARGIN &&
+      b.y >= state.rightY &&
+      b.y <= state.rightY + PADDLE_SIZE
+    ) {
+      bounceOffPaddle(state.rightY, -1);
+    }
+
+    if (b.x < -BALL_SIZE) {
+      state.scoreRight++;
+      resetBall(1);
+    } else if (b.x > W + BALL_SIZE) {
+      state.scoreLeft++;
+      resetBall(-1);
+    }
+  }
+
+  function drawCourt() {
+    ctx.fillStyle = "#050505";
+    ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = "rgba(255,255,255,0.35)";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([10, 14]);
+    ctx.beginPath();
+    ctx.moveTo(W / 2, 0);
+    ctx.lineTo(W / 2, H);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function drawScore() {
+    ctx.fillStyle = "#ffe14d";
+    ctx.font = 'bold 44px "Courier New", monospace';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.fillText(String(state.scoreLeft), W / 2 - 70, 18);
+    ctx.fillText(String(state.scoreRight), W / 2 + 70, 18);
+  }
+
+  function drawBall() {
+    ctx.fillStyle = "#fff";
+    ctx.shadowColor = "#fff";
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.arc(state.ball.x, state.ball.y, BALL_SIZE / 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+
+  function draw() {
+    drawCourt();
+    drawScore();
+    drawPaddle(venusSprite, PADDLE_MARGIN, state.leftY);
+    drawPaddle(serenaSprite, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
+    drawBall();
+  }
+
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min((t - lastTime) / 1000, 0.033); // clamp so tab-switches don't jump the ball
+    lastTime = t;
+    update(dt);
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  const overlay = document.getElementById("overlay");
+  const startBtn = document.getElementById("startBtn");
+  const modeAI = document.getElementById("modeAI");
+  const mode2P = document.getElementById("mode2P");
+
+  modeAI.addEventListener("click", () => {
+    mode = "ai";
+    modeAI.classList.add("selected");
+    mode2P.classList.remove("selected");
+  });
+  mode2P.addEventListener("click", () => {
+    mode = "2p";
+    mode2P.classList.add("selected");
+    modeAI.classList.remove("selected");
+  });
+
+  startBtn.addEventListener("click", () => {
+    overlay.style.display = "none";
+    state.scoreLeft = 0;
+    state.scoreRight = 0;
+    state.leftY = H / 2 - PADDLE_SIZE / 2;
+    state.rightY = H / 2 - PADDLE_SIZE / 2;
+    resetBall(Math.random() < 0.5 ? 1 : -1);
+    running = true;
+    lastTime = performance.now();
+    requestAnimationFrame(frame);
+  });
+
+  // static first paint so the court isn't blank behind the start overlay
+  draw();
+})();
+</script>
+</body>
+</html>
