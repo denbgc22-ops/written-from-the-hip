@@ -425,7 +425,7 @@ function wireSubscribeForm() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Couldn't save that.");
       emailEl.value = "";
-      statusEl.textContent = "You're in the family. Welcome aboard.";
+      statusEl.textContent = "Check Your Email/Spam For A Surprise";
       statusEl.className = "subscribe-status ok";
     } catch (err) {
       statusEl.textContent = "Couldn't save that — try again.";
