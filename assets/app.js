@@ -399,24 +399,11 @@ function renderPage() {
   if (pg.subscribeForm) wireSubscribeForm();
 }
 
-/* wires the email-capture form on Subscribe to Firebase: every submission
-   is pushed into the "subscribers" list in the same database the Stream Of
-   Consciousness feed uses, so the list can be read (and emailed) from the
-   Firebase console. Writing doesn't require signing in — only reading
-   the list back does, enforced by the database's security rules. */
+/* wires the email-capture form on Subscribe to a Netlify Function
+   (netlify/functions/subscribe.js), which adds the address to a Resend
+   Audience server-side — the Resend API key must never reach the browser,
+   so the actual API call can't happen directly from this client-side code. */
 function wireSubscribeForm() {
-  const firebaseConfig = {
-    apiKey: "AIzaSyB40pjOpCT6brtZ9-PUuTv7pw3VTPxaHI4",
-    authDomain: "written-from-the-hip.firebaseapp.com",
-    databaseURL: "https://written-from-the-hip-default-rtdb.firebaseio.com",
-    projectId: "written-from-the-hip",
-    storageBucket: "written-from-the-hip.firebasestorage.app",
-    messagingSenderId: "791285249884",
-    appId: "1:791285249884:web:cd7af802e4852e57c5b399",
-  };
-  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-
   const formEl = document.getElementById("subscribeForm");
   const emailEl = document.getElementById("subscribeEmail");
   const statusEl = document.getElementById("subscribeStatus");
@@ -430,10 +417,13 @@ function wireSubscribeForm() {
     statusEl.textContent = "Joining…";
     statusEl.className = "subscribe-status";
     try {
-      await db.ref("subscribers").push({
-        email: email,
-        joinedAt: firebase.database.ServerValue.TIMESTAMP,
+      const res = await fetch("/.netlify/functions/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Couldn't save that.");
       emailEl.value = "";
       statusEl.textContent = "You're in the family. Welcome aboard.";
       statusEl.className = "subscribe-status ok";
