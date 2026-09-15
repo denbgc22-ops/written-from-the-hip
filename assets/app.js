@@ -569,7 +569,11 @@ function renderSitemap() {
   const rows = SITE.planets
     .filter((p) => p.page)
     .map(function (p) {
-      const links = (p.page.links || [])
+      // mapBlurb/mapLinks let a row read differently on the site map than
+      // on the planet's actual page, e.g. a short one-liner here instead of
+      // the full storyLink/panel setup. Falls back to the normal page text.
+      const blurb = p.page.mapBlurb || p.page.blurb || "";
+      const links = (p.page.mapLinks || p.page.links || [])
         .map((l) => '<a href="' + esc(l.href) + '">' + esc(l.label) + "</a>")
         .join("");
       return (
@@ -582,7 +586,7 @@ function renderSitemap() {
         planetSVG(p.art, 40) +
         "</a></td>" +
         "<td>" +
-        esc(p.page.blurb) +
+        esc(blurb) +
         "</td>" +
         '<td class="links">' +
         links +
