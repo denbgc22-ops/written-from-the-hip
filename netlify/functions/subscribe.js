@@ -16,7 +16,7 @@
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WELCOME_FROM = "Denby and Bolt <hello@writtenfromthehip.com>";
-const WELCOME_SUBJECT = "We Are Now On Ur Dome 4Life";
+const WELCOME_SUBJECT = "We're Now On Ur Dome 4Life";
 const WELCOME_BODY = `yo.
 
 You are officially an "off the domer."
