@@ -1,2 +1,8 @@
 [functions]
   directory = "netlify/functions"
+
+[build.environment]
+  # assets/stream.js contains Firebase's public web API key, which is safe to
+  # expose (access is controlled by Firebase security rules, not by hiding
+  # this value) -- Netlify's secret scanner still flags it, so tell it not to.
+  SECRETS_SCAN_OMIT_PATHS = "assets/stream.js"
