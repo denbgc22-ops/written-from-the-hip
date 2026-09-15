@@ -16,11 +16,17 @@
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WELCOME_FROM = "Denby and Bolt <hello@writtenfromthehip.com>";
-const WELCOME_SUBJECT = "Welcome";
-const WELCOME_BODY =
-  "You are officially an \"off the domer\", grats. We will now send you our " +
-  "unsolicited, unforgivable, terrible, no-good writing and ideas to this " +
-  "very email, From Denby and Bolt";
+const WELCOME_SUBJECT = "We Are Now On Ur Dome 4Life";
+const WELCOME_BODY = `yo.
+
+You are officially an "off the domer."
+
+grats.
+
+We will now send you our unsolicited, unforgivable, terrible, no-good writing and ideas to this very email.
+
+Love,
+Denby and Bolt`;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
