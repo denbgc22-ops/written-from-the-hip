@@ -2355,9 +2355,12 @@ FIN`,
       page: {
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
-        columns: [
-          { label: "Short Scripts", href: "page.html?p=denbys-shorts" },
-          { label: "Off The Domes", href: "off-the-domes.html" },
+        links: [
+          { label: "This is off the dome but,", href: "off-the-domes.html" },
+          { label: "Denby's Shorts", href: "page.html?p=denbys-shorts" },
+          { label: "Venus Updates", href: "page.html?p=venus" },
+          { label: "Derps", href: "page.html?p=derp" },
+          { label: "Book Covers", href: "page.html?p=library" },
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
