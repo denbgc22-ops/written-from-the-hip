@@ -2449,7 +2449,7 @@ FIN`,
       x: 84.2,
       y: 56.7,
       size: 94,
-      art: { type: "photo", photo: "assets/images/new-headshot.png", color: "#ffffff", shade: "#000000", light: "#ffffff", ring: "#a259ff" },
+      art: { type: "photo", photo: "assets/images/new-headshot.png", color: "#ffffff", shade: "#000000", light: "#ffffff", ring: "#a259ff", vignette: false },
       page: {
         oval: { fill: "#7a2bd0", text: "#ffb02e" },
         panel: { from: "#7a5a1a", to: "#241905", link: "#ffe14d", layout: "left" },
@@ -2496,7 +2496,7 @@ FIN`,
       x: 28.8,
       y: 72.4,
       size: 84,
-      art: { type: "photo", photo: "assets/images/eyeball-photo.png", color: "#f5871f", shade: "#4a1500", light: "#ffe14d" },
+      art: { type: "photo", photo: "assets/images/eyeball-photo.png", color: "#f5871f", shade: "#4a1500", light: "#ffe14d", vignette: false },
       href: "sitemap.html", // goes to its own page instead of the standard one
     },
     {

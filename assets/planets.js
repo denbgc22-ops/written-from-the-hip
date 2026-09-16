@@ -30,7 +30,7 @@ function planetSVG(art, size) {
     size +
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
-    body(id, c, s, l, ring, a.photo, a.ring) +
+    body(id, c, s, l, ring, a.photo, a.ring, a.vignette) +
     "</svg>"
   );
 }
@@ -123,7 +123,7 @@ function swirl(id, c, s, l) {
   return ball(id) + g + gloss;
 }
 
-function photo(id, c, s, l, ring, photoUrl, rawRing) {
+function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
   if (!photoUrl) return sphere(id);
   const img =
     '<g clip-path="url(#' +
@@ -141,11 +141,14 @@ function photo(id, c, s, l, ring, photoUrl, rawRing) {
     id +
     'c)"/>';
   // an all-around inner rim, like the limb-darkening at the edge of a ball,
-  // so the silhouette reads as round from every angle, not just one diagonal
+  // so the silhouette reads as round from every angle, not just one diagonal —
+  // skipped when a planet's config explicitly turns it off (art.vignette:false)
   const vignette =
-    '<circle cx="60" cy="60" r="42" fill="none" stroke="#000000" stroke-width="12" opacity="0.3" clip-path="url(#' +
-    id +
-    'c)"/>';
+    showVignette === false
+      ? ""
+      : '<circle cx="60" cy="60" r="42" fill="none" stroke="#000000" stroke-width="12" opacity="0.3" clip-path="url(#' +
+        id +
+        'c)"/>';
   const softGloss =
     '<ellipse cx="44" cy="40" rx="14" ry="9" fill="#ffffff" opacity="0.16" transform="rotate(-28 44 40)"/>';
   // a ring is only drawn when this planet's config explicitly sets one
