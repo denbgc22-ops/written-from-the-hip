@@ -167,20 +167,33 @@
     scoreRight: 0,
   };
 
-  // a taunt bubble pops up over Serena's paddle for 5 seconds whenever she
-  // scores a point, picking a random line each time
+  // a taunt bubble pops up over whichever paddle just scored, for 5 seconds,
+  // picking a random line from that player's list each time
   const SERENA_TAUNTS = [
     "Fuck you Venus",
     "I'm the more popular sister",
     "you're terrible at life",
     "Venus is a planet not a tennis player",
   ];
+  const VENUS_TAUNTS = [
+    "at least i'm not on GLP-1's",
+    "Beat That Serena!",
+    "Venus is a cool name",
+    "Booyah",
+    "Everyone likes Venus!",
+  ];
   const TAUNT_DURATION_MS = 5000;
-  const taunt = { text: null, until: 0 };
+  const serenaTaunt = { text: null, until: 0 };
+  const venusTaunt = { text: null, until: 0 };
 
   function triggerSerenaTaunt() {
-    taunt.text = SERENA_TAUNTS[Math.floor(Math.random() * SERENA_TAUNTS.length)];
-    taunt.until = performance.now() + TAUNT_DURATION_MS;
+    serenaTaunt.text = SERENA_TAUNTS[Math.floor(Math.random() * SERENA_TAUNTS.length)];
+    serenaTaunt.until = performance.now() + TAUNT_DURATION_MS;
+  }
+
+  function triggerVenusTaunt() {
+    venusTaunt.text = VENUS_TAUNTS[Math.floor(Math.random() * VENUS_TAUNTS.length)];
+    venusTaunt.until = performance.now() + TAUNT_DURATION_MS;
   }
 
   const keys = {};
@@ -325,6 +338,7 @@
       resetBall(1);
     } else if (b.x > W + BALL_SIZE) {
       state.scoreLeft++;
+      triggerVenusTaunt();
       resetBall(-1);
     }
   }
@@ -414,8 +428,12 @@
     drawPaddle(venusSprite, PADDLE_MARGIN, state.leftY);
     drawPaddle(serenaSprite, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
     drawBall();
-    if (taunt.text && performance.now() < taunt.until) {
-      drawTaunt(taunt.text, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
+    const now = performance.now();
+    if (venusTaunt.text && now < venusTaunt.until) {
+      drawTaunt(venusTaunt.text, PADDLE_MARGIN, state.leftY);
+    }
+    if (serenaTaunt.text && now < serenaTaunt.until) {
+      drawTaunt(serenaTaunt.text, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
     }
   }
 
