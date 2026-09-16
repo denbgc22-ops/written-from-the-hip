@@ -24,7 +24,7 @@ function planetSVG(art, size) {
   }[type] || sphere;
 
   // an optional word curved along the top of the sphere's own circle, like
-  // a badge/seal (e.g. "DERP" on the Derp planet)
+  // a badge/seal (this feature is currently unused by any planet)
   const curvedLabelSVG = a.curvedLabel
     ? '<path id="' +
       id +
