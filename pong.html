@@ -174,6 +174,7 @@
     "I'm the more popular sister",
     "you're terrible at life",
     "Venus is a planet not a tennis player",
+    "Dad never loved you",
   ];
   const VENUS_TAUNTS = [
     "at least i'm not on GLP-1's",
@@ -185,14 +186,24 @@
   const TAUNT_DURATION_MS = 5000;
   const serenaTaunt = { text: null, until: 0 };
   const venusTaunt = { text: null, until: 0 };
+  // "Dad never loved you" always gets answered with "Dad does love me!" the
+  // very next time Venus scores, instead of a random line
+  let venusComeback = false;
 
   function triggerSerenaTaunt() {
-    serenaTaunt.text = SERENA_TAUNTS[Math.floor(Math.random() * SERENA_TAUNTS.length)];
+    const text = SERENA_TAUNTS[Math.floor(Math.random() * SERENA_TAUNTS.length)];
+    serenaTaunt.text = text;
     serenaTaunt.until = performance.now() + TAUNT_DURATION_MS;
+    if (text === "Dad never loved you") venusComeback = true;
   }
 
   function triggerVenusTaunt() {
-    venusTaunt.text = VENUS_TAUNTS[Math.floor(Math.random() * VENUS_TAUNTS.length)];
+    if (venusComeback) {
+      venusTaunt.text = "Dad does love me!";
+      venusComeback = false;
+    } else {
+      venusTaunt.text = VENUS_TAUNTS[Math.floor(Math.random() * VENUS_TAUNTS.length)];
+    }
     venusTaunt.until = performance.now() + TAUNT_DURATION_MS;
   }
 
