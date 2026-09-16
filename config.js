@@ -2459,7 +2459,7 @@ FIN`,
       page: {
         oval: { fill: "#7a2bd0", text: "#ffb02e" },
         panel: { from: "#7a5a1a", to: "#241905", link: "#ffe14d", layout: "left" },
-        ribbon: "On Planet Off The Dome, this is our stream of consciousness that we add to daily every day daily.",
+        ribbon: "This is our stream of consciousness that we add to daily every day daily.",
         links: [
           {
             label: "Click here to view\nour current stream\nof consciousness",
@@ -2482,6 +2482,7 @@ FIN`,
         oval: { fill: "#0f9e8f", text: "#ffe14d" },
         panel: { from: "#3a6ea8", to: "#0c2438", link: "#ffe14d", layout: "left" },
         ribbon: "Denby's Short Scripts, enter to learn, go fourth to serve.",
+        panelPhoto: { photo: "assets/images/denbys-shorts-photo.png", glow: "#ffe14d" },
         links: [
           { label: "Real Steele Cuck", href: "script.html?s=real-steele-cuck" },
           { label: "Tush Push", href: "script.html?s=tush-push" },

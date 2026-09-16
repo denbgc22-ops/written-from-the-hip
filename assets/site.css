@@ -495,6 +495,21 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   border: 5px solid #39ff14;
   box-shadow: 0 0 18px rgba(57, 255, 20, 0.65);
 }
+
+/* a decorative photo pinned to the side of a links panel, its glow color
+   set inline per-page (e.g. the shorts photo on Denby's Shorts) */
+.panel-side-photo {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #39ff14;
+}
 .roster-half:hover .roster-photo,
 .roster-half:focus-visible .roster-photo {
   transform: scale(1.06);

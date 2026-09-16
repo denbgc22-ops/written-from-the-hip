@@ -328,13 +328,25 @@ function renderPage() {
       "</div>"
     : "";
 
+  // an optional decorative photo pinned to the side of a links panel, with
+  // its own glow color (e.g. the shorts photo on Denby's Shorts)
+  const panelPhotoHTML = pg.panelPhoto
+    ? '<img class="panel-side-photo" style="border-color:' +
+      (pg.panelPhoto.glow || "#39ff14") +
+      ";box-shadow:0 0 18px " +
+      (pg.panelPhoto.glow || "#39ff14") +
+      'aa" src="' +
+      esc(pg.panelPhoto.photo) +
+      '" alt="">'
+    : "";
+
   const panelInnerHTML = roster.length
     ? '<div class="roster">' + rosterHTML + "</div>"
     : columns.length
     ? '<div class="panel-columns">' + columnsHTML + "</div>"
     : familyBox
     ? familyBoxHTML
-    : linksHTML + pointerHTML;
+    : linksHTML + pointerHTML + panelPhotoHTML;
   const panelH = pg.pointer
     ? 258 // provisional; corrected below once the link's real height is known
     : roster.length || columns.length
