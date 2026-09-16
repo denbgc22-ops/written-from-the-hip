@@ -88,9 +88,9 @@ function moonHTML(size) {
     '<div class="moon-text">' +
     '<div class="moon-title" style="font-size:' +
     fs.toFixed(1) +
-    'px">' +
+    'px"><a href="page.html?p=subscribe">' +
     esc(SITE.title) +
-    "</div>" +
+    "</a></div>" +
     (SITE.issue
       ? '<div class="moon-issue" style="font-size:' +
         (fs * 0.8).toFixed(1) +
