@@ -543,6 +543,54 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 .blurb.has-orb { padding-right: 120px; }
 
+/* wraps the blurb in a gradient rectangle (e.g. Venus's bio paragraph) */
+.blurb-box {
+  width: 430px;
+  max-width: 92vw;
+  margin: 44px auto 0;
+  padding: 20px 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+}
+.blurb-box .blurb { margin: 0; padding: 0; }
+
+/* a glowing banner across the very top of a planet page, above the oval */
+.page-top-banner {
+  max-width: 700px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+  text-align: center;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffe81f;
+  text-shadow: 0 0 10px rgba(255, 232, 31, 0.9), 0 0 24px rgba(255, 232, 31, 0.6);
+}
+
+/* two photos flanking the oval, e.g. the two Venus photos */
+.side-photos-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.side-photo {
+  max-width: 150px;
+  max-height: 260px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.6));
+}
+/* .billboard's own auto side-margins (for centering it alone) fight with
+   this row's flex centering when it's placed as a flex item -- neutralize
+   them here so the row's justify-content:center can do the job instead */
+.side-photos-row .billboard { margin-left: 0; margin-right: 0; }
+
 /* a big call-to-action below the blurb: a label plus a photo, both part of
    one click target (e.g. "read this story") */
 .story-link {

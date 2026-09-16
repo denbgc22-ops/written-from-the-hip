@@ -391,9 +391,21 @@ function renderPage() {
   const ovalFontSize = ovalLabel.length <= 16 ? 21 : Math.max(11, 21 * (16 / ovalLabel.length));
   const ovalTextColor = oval.text || "#ffe14d";
 
+  // an optional glowing banner across the very top of the page, above the oval
+  const topBannerHTML = pg.topBanner
+    ? '<div class="page-top-banner">' + esc(pg.topBanner) + "</div>"
+    : "";
+
+  // optional photos flanking the oval on either side (e.g. two Venus photos
+  // around the Venus oval)
+  const sidePhotos = pg.sidePhotos || null;
+  const sidePhotoHTML = (src) => (src ? '<img class="side-photo" src="' + esc(src) + '" alt="">' : "");
+
   document.getElementById("page").innerHTML =
     planetNavHTML() +
     topbarHTML(pg.ribbon) +
+    topBannerHTML +
+    (sidePhotos ? '<div class="side-photos-row">' + sidePhotoHTML(sidePhotos.left) : "") +
     '<div class="billboard">' +
     '<div class="oval" style="' +
     (panelIsEmpty ? "margin-bottom:40px;" : "") +
@@ -428,18 +440,31 @@ function renderPage() {
         panelInnerHTML +
         "</div>") +
     "</div>" +
+    (sidePhotos ? sidePhotoHTML(sidePhotos.right) + "</div>" : "") +
     (pg.blurb
-      ? '<p class="blurb' +
+      ? (pg.blurbBox
+          ? '<div class="blurb-box" style="background:linear-gradient(160deg, ' +
+            (pg.blurbBox.from || "#f08a1e") +
+            ", " +
+            (pg.blurbBox.to || "#8a3a00") +
+            ')">'
+          : "") +
+        '<p class="blurb' +
         (p.orb ? " has-orb" : "") +
+        (pg.blurbBox ? " blurb-boxed" : "") +
         '" style="' +
         (panelIsEmpty || pg.blurbCenter ? "text-align:center;" : "") +
         (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
         (pg.blurbGlow && pg.blurbColor
           ? "text-shadow:0 0 10px " + pg.blurbColor + "cc,0 0 22px " + pg.blurbColor + "99;"
           : "") +
+        (pg.blurbFont === "oval"
+          ? "font-family:Verdana,Geneva,sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;line-height:1.4;"
+          : "") +
         '">' +
         esc(pg.blurb) +
-        "</p>"
+        "</p>" +
+        (pg.blurbBox ? "</div>" : "")
       : "") +
     bookshelfHTML +
     storyLinkHTML +

@@ -2514,9 +2514,17 @@ FIN`,
       size: 88,
       art: { type: "photo", photo: "assets/images/venus-head.png", color: "#7a2bd0", shade: "#22083f", light: "#e9d1ff", ring: "#39ff14" },
       page: {
+        topBanner: "We Love and Support Venus Williams Here At WFTH",
         oval: { fill: "#7a2bd0", text: "#39ff14", label: "Venus Williams" },
+        sidePhotos: {
+          left: "assets/images/venus-tennis.png",
+          right: "assets/images/venus-wimbledon.png",
+        },
         blurb:
           "You have entered to all things Venus Williams, weekly updates on what she is doing, this day in Venus Williams history, and so much more. Here at WFTH we believe that Venus (five time Wimbledon champion, and two time US Open champion) does not get the full credit that she deserves. Serena has stolen her spotlight, but it is time that Venus Ebony Starr Williams gets her flowers.",
+        blurbBox: { from: "#f08a1e", to: "#8a3a00" },
+        blurbColor: "#123fd6",
+        blurbFont: "oval",
         storyLink: {
           label: "Click to play game",
           href: "pong.html",
