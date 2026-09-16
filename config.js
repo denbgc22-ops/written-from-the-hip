@@ -2542,7 +2542,7 @@ FIN`,
       size: 88,
       art: { type: "sphere", color: "#f5c542", shade: "#5c3d0a", light: "#fff3c4", ring: "#ff3b3b" },
       page: {
-        topBanner: { text: "DON'T BE A DERP", color: "#ff3b3b" },
+        ribbon: "DON'T BE A DERP",
         oval: { fill: "#3a3a3a", text: "#ffe14d", label: "Derp Of The Week", glow: true },
         blurb: "Weekly submission of someone who effed up this week",
       },
@@ -2555,7 +2555,7 @@ FIN`,
       size: 88,
       art: { type: "ringed", color: "#8a5a30", shade: "#2b1a0d", light: "#d9b98a", ring: "#ffd700" },
       page: {
-        topBanner: { text: "we judge a book only by how cool the cover is", color: "#f5871f" },
+        ribbon: "we judge a book only by how cool the cover is",
         oval: { fill: "#1f5c3a", text: "#ffd700", label: "Weekly Book Cover Recommendations" },
         blurb:
           "Feel free to buy these books and put them on your nightstand, so people can think you know how to read.",
