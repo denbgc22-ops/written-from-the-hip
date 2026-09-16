@@ -167,6 +167,22 @@
     scoreRight: 0,
   };
 
+  // a taunt bubble pops up over Serena's paddle for 5 seconds whenever she
+  // scores a point, picking a random line each time
+  const SERENA_TAUNTS = [
+    "Fuck you Venus",
+    "I'm the more popular sister",
+    "you're terrible at life",
+    "Venus is a planet not a tennis player",
+  ];
+  const TAUNT_DURATION_MS = 5000;
+  const taunt = { text: null, until: 0 };
+
+  function triggerSerenaTaunt() {
+    taunt.text = SERENA_TAUNTS[Math.floor(Math.random() * SERENA_TAUNTS.length)];
+    taunt.until = performance.now() + TAUNT_DURATION_MS;
+  }
+
   const keys = {};
   window.addEventListener("keydown", (e) => {
     keys[e.key] = true;
@@ -305,6 +321,7 @@
 
     if (b.x < -BALL_SIZE) {
       state.scoreRight++;
+      triggerSerenaTaunt();
       resetBall(1);
     } else if (b.x > W + BALL_SIZE) {
       state.scoreLeft++;
@@ -344,12 +361,62 @@
     ctx.shadowBlur = 0;
   }
 
+  function roundedRectPath(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawTaunt(text, paddleX, paddleY) {
+    const cx = paddleX + PADDLE_SIZE / 2;
+    ctx.font = 'bold 13px "Courier New", monospace';
+    const padX = 10;
+    const padY = 8;
+    const bubbleW = ctx.measureText(text).width + padX * 2;
+    const bubbleH = 22 + padY;
+    const bubbleBottom = paddleY - 12;
+    let bubbleY = bubbleBottom - bubbleH;
+    bubbleY = Math.max(6, bubbleY);
+    let bubbleX = cx - bubbleW / 2;
+    bubbleX = Math.max(6, Math.min(bubbleX, W - bubbleW - 6));
+    const tailX = Math.max(bubbleX + 14, Math.min(cx, bubbleX + bubbleW - 14));
+
+    roundedRectPath(bubbleX, bubbleY, bubbleW, bubbleH, 8);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#b23bff";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(tailX - 8, bubbleY + bubbleH - 1);
+    ctx.lineTo(tailX + 8, bubbleY + bubbleH - 1);
+    ctx.lineTo(tailX, bubbleY + bubbleH + 10);
+    ctx.closePath();
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#b23bff";
+    ctx.stroke();
+
+    ctx.fillStyle = "#1a1a1a";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, bubbleX + bubbleW / 2, bubbleY + bubbleH / 2);
+  }
+
   function draw() {
     drawCourt();
     drawScore();
     drawPaddle(venusSprite, PADDLE_MARGIN, state.leftY);
     drawPaddle(serenaSprite, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
     drawBall();
+    if (taunt.text && performance.now() < taunt.until) {
+      drawTaunt(taunt.text, W - PADDLE_MARGIN - PADDLE_SIZE, state.rightY);
+    }
   }
 
   function frame(t) {
