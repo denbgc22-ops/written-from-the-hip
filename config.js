@@ -2373,7 +2373,7 @@ FIN`,
       x: 71.2,
       y: 21.6,
       size: 90,
-      art: { type: "photo", photo: "assets/images/basketball-photo.png", color: "#f5871f", shade: "#8a3a00", light: "#ffd28a" },
+      art: { type: "photo", photo: "assets/images/8ball.png", color: "#141414", shade: "#000000", light: "#f5f0e0" },
       page: {
         oval: { fill: "#1b7a2f", text: "#ffd21f" },
         panel: { from: "#2a6ea8", to: "#0c2438", link: "#ffe14d", layout: "right" },
