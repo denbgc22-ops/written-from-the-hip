@@ -2389,8 +2389,8 @@ FIN`,
     {
       id: "subscribe",
       name: "Subscribe",
-      x: 28.8,
-      y: 72.4,
+      x: 50.0,
+      y: 78.4,
       size: 86,
       art: { type: "sphere", color: "#39d94a", shade: "#0d5c17", light: "#b6ffbc" },
       page: {
@@ -2490,8 +2490,8 @@ FIN`,
     {
       id: "site-map",
       name: "Site Map",
-      x: 24.5,
-      y: 69.2,
+      x: 28.8,
+      y: 72.4,
       size: 84,
       art: { type: "photo", photo: "assets/images/eyeball-photo.png", color: "#f5871f", shade: "#4a1500", light: "#ffe14d" },
       href: "sitemap.html", // goes to its own page instead of the standard one
