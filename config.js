@@ -2389,8 +2389,8 @@ FIN`,
     {
       id: "subscribe",
       name: "Subscribe",
-      x: 84.2,
-      y: 37.3,
+      x: 28.8,
+      y: 72.4,
       size: 86,
       art: { type: "sphere", color: "#39d94a", shade: "#0d5c17", light: "#b6ffbc" },
       page: {
@@ -2409,8 +2409,8 @@ FIN`,
     {
       id: "lineup",
       name: "Starting Lineup",
-      x: 28.8,
-      y: 72.4,
+      x: 84.2,
+      y: 37.3,
       size: 92,
       art: { type: "ringed", color: "#e8365d", shade: "#5c0c22", light: "#ffb3c4", ring: "#3fe0d0" },
       page: {
