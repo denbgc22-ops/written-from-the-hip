@@ -213,6 +213,22 @@ function panelHeight(total) {
   return Math.max(258, LINK_TOP_PAD + total * LINK_ROW_HEIGHT + LINK_BOTTOM_PAD);
 }
 
+/* splits a link list into side-by-side columns (filling the first column
+   before the next) instead of one long vertical list, e.g. panel.columns:2 */
+function linkGridStyle(i, perCol, cols) {
+  const col = Math.floor(i / perCol);
+  const row = i % perCol;
+  const colWidth = 100 / cols;
+  const xPct = colWidth * col + colWidth / 2;
+  return (
+    "left:" +
+    xPct.toFixed(1) +
+    "%;top:" +
+    (LINK_TOP_PAD + row * LINK_ROW_HEIGHT) +
+    "px;transform:translateX(-50%);text-align:center;white-space:nowrap"
+  );
+}
+
 function renderPage() {
   const id = new URLSearchParams(location.search).get("p");
   const p = findPlanet(id);
@@ -230,13 +246,17 @@ function renderPage() {
   const columns = pg.columns || [];
   const familyBox = pg.familyBox || null;
 
+  // panel.linkCols splits the link list into side-by-side columns (filling
+  // the first column before the next) instead of one long vertical list.
+  const linkCols = panel.linkCols || 1;
+  const linkPerCol = Math.ceil(links.length / linkCols);
   const linksHTML = links
     .map(
       (l, i) =>
         '<a href="' +
         esc(l.href) +
         '" style="' +
-        linkStyle(panel.layout, i, links.length) +
+        (linkCols > 1 ? linkGridStyle(i, linkPerCol, linkCols) : linkStyle(panel.layout, i, links.length)) +
         ";color:" +
         (panel.link || "#ffe14d") +
         (l.wrap
@@ -292,9 +312,14 @@ function renderPage() {
     : "";
 
   // A family-box page (a heading plus a photo, both centered) also replaces
-  // the usual link list — e.g. "Join The WFTH Family!" on Subscribe.
+  // the usual link list — e.g. "Join The WFTH Family!" on Subscribe. An
+  // optional banner line renders above the heading, glowing yellow.
   const familyBoxHTML = familyBox
-    ? '<div class="panel-family"><div class="panel-family-heading" style="color:' +
+    ? '<div class="panel-family">' +
+      (familyBox.banner
+        ? '<div class="panel-family-banner">' + esc(familyBox.banner) + "</div>"
+        : "") +
+      '<div class="panel-family-heading" style="color:' +
       (panel.link || "#ffe14d") +
       '">' +
       esc(familyBox.heading) +
@@ -315,10 +340,12 @@ function renderPage() {
     : roster.length || columns.length
     ? 260
     : familyBox
-    ? 300
+    ? familyBox.banner
+      ? 340
+      : 300
     : panel.layout === "diagonal"
     ? 258
-    : panelHeight(links.length);
+    : panelHeight(linkCols > 1 ? linkPerCol : links.length);
   // a page with no links, roster, columns, family box or pointer photo has
   // nothing to put in the panel, so skip the empty box rather than show an
   // unused gradient block
@@ -393,8 +420,11 @@ function renderPage() {
       ? '<p class="blurb' +
         (p.orb ? " has-orb" : "") +
         '" style="' +
-        (panelIsEmpty ? "text-align:center;" : "") +
+        (panelIsEmpty || pg.blurbCenter ? "text-align:center;" : "") +
         (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
+        (pg.blurbGlow && pg.blurbColor
+          ? "text-shadow:0 0 10px " + pg.blurbColor + "cc,0 0 22px " + pg.blurbColor + "99;"
+          : "") +
         '">' +
         esc(pg.blurb) +
         "</p>"

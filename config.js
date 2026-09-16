@@ -46,11 +46,12 @@ const SITE = {
       photo: "assets/images/george-denby.png",
       stats: [
         { label: "Team", value: "Shanghai Sharks" },
-        { label: "Position", value: "Shooting Guard" },
+        { label: "Position", value: "Three n' D Shooting Guard" },
         { label: "Height", value: "6' 1\"" },
         { label: "Weight", value: "180 lbs." },
         { label: "Born", value: "10/30/03, Atlanta, Georgia" },
         { label: "College", value: "Wake Forest" },
+        { label: "Favorite Word", value: "Hate" },
       ],
       statLine: {
         columns: ["Season", "G", "Min", "Lasagna", "FG", "3pt", "FT", "Reb", "Ast", "Stl", "Blk", "Tot", "PG"],
@@ -66,11 +67,12 @@ const SITE = {
       photo: "assets/images/thomas-bolt.png",
       stats: [
         { label: "Team", value: "Guangdong Southern Tigers" },
-        { label: "Position", value: "Power Forward" },
+        { label: "Position", value: "Stretch Four Power Forward" },
         { label: "Height", value: "6' 4\"" },
         { label: "Weight", value: "200+" },
         { label: "Born", value: "2/17/63, Brooklyn, New York" },
         { label: "College", value: "Wake Forest" },
+        { label: "Favorite Word", value: "onomatopoeia" },
       ],
       statLine: {
         columns: ["Season", "G", "Min", "Lasagna", "FG", "3pt", "FT", "Reb", "Ast", "Stl", "Blk", "Tot", "PG"],
@@ -2354,7 +2356,7 @@ FIN`,
       art: { type: "photo", photo: "assets/images/earth-photo.png", color: "#1f6fb2", shade: "#08213a", light: "#eaf6ff" },
       page: {
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
-        panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
+        panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right", linkCols: 2 },
         links: [
           { label: "This is off the dome but,", href: "off-the-domes.html" },
           { label: "Denby's Shorts", href: "page.html?p=denbys-shorts" },
@@ -2400,11 +2402,15 @@ FIN`,
         oval: { fill: "#f08a1e", text: "#7a2bd0" },
         panel: { from: "#2f8f4e", to: "#0a2a16", link: "#ffe14d", layout: "right" },
         familyBox: {
+          banner: "Subscribe To Be A Founding Member",
           heading: "Join The WFTH Family!",
           photo: "assets/images/family-photo.png",
         },
         blurb:
           "Enter your address to get notifications for when we post a short script, a stream of consciousness, or the newest volume of Off The Dome.",
+        blurbColor: "#4db8ff",
+        blurbGlow: true,
+        blurbCenter: true,
         subscribeForm: true,
         mapLinks: [{ label: "Join The Family", href: "page.html?p=subscribe" }],
       },

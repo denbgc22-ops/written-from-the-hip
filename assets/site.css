@@ -404,6 +404,15 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   text-transform: uppercase;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
+.panel-family-banner {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffe81f;
+  text-shadow: 0 0 8px rgba(255, 232, 31, 0.9), 0 0 18px rgba(255, 232, 31, 0.6);
+}
 .panel-family-photo {
   max-width: 260px;
   max-height: 150px;
