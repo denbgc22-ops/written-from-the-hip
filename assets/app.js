@@ -331,11 +331,11 @@ function renderPage() {
   // an optional decorative photo pinned to the side of a links panel, with
   // its own glow color (e.g. the shorts photo on Denby's Shorts)
   const panelPhotoHTML = pg.panelPhoto
-    ? '<img class="panel-side-photo" style="border-color:' +
+    ? '<img class="panel-side-photo" style="filter:drop-shadow(0 0 6px ' +
       (pg.panelPhoto.glow || "#39ff14") +
-      ";box-shadow:0 0 18px " +
+      ") drop-shadow(0 0 14px " +
       (pg.panelPhoto.glow || "#39ff14") +
-      'aa" src="' +
+      ')" src="' +
       esc(pg.panelPhoto.photo) +
       '" alt="">'
     : "";
@@ -391,9 +391,20 @@ function renderPage() {
   const ovalFontSize = ovalLabel.length <= 16 ? 21 : Math.max(11, 21 * (16 / ovalLabel.length));
   const ovalTextColor = oval.text || "#ffe14d";
 
-  // an optional glowing banner across the very top of the page, above the oval
-  const topBannerHTML = pg.topBanner
-    ? '<div class="page-top-banner">' + esc(pg.topBanner) + "</div>"
+  // an optional glowing banner across the very top of the page, above the
+  // oval. Either a plain string (glows yellow) or { text, color }.
+  const topBannerText = typeof pg.topBanner === "string" ? pg.topBanner : pg.topBanner && pg.topBanner.text;
+  const topBannerColor = (pg.topBanner && pg.topBanner.color) || "#ffe81f";
+  const topBannerHTML = topBannerText
+    ? '<div class="page-top-banner" style="color:' +
+      topBannerColor +
+      ";text-shadow:0 0 10px " +
+      topBannerColor +
+      "cc,0 0 24px " +
+      topBannerColor +
+      '99">' +
+      esc(topBannerText) +
+      "</div>"
     : "";
 
   // optional photos flanking the oval on either side (e.g. two Venus photos
