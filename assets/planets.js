@@ -23,6 +23,24 @@ function planetSVG(art, size) {
     photo: photo,
   }[type] || sphere;
 
+  // an optional word curved along the top of the sphere's own circle, like
+  // a badge/seal (e.g. "DERP" on the Derp planet)
+  const curvedLabelSVG = a.curvedLabel
+    ? '<path id="' +
+      id +
+      'arc" d="M 26,60 A 34,34 0 1,1 94,60" fill="none"/>' +
+      '<text font-family="Verdana, Geneva, sans-serif" font-weight="700" font-size="17" letter-spacing="1.5" fill="' +
+      (a.curvedLabelColor || "#ffffff") +
+      '" stroke="' +
+      (a.curvedLabelOutline || "#000000") +
+      '" stroke-width="2" paint-order="stroke">' +
+      '<textPath href="#' +
+      id +
+      'arc" startOffset="50%" text-anchor="middle">' +
+      esc(a.curvedLabel) +
+      "</textPath></text>"
+    : "";
+
   return (
     '<svg class="planet-art" width="' +
     size +
@@ -31,6 +49,7 @@ function planetSVG(art, size) {
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
     body(id, c, s, l, ring, a.photo, a.ring, a.vignette) +
+    curvedLabelSVG +
     "</svg>"
   );
 }
