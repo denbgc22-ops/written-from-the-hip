@@ -454,7 +454,9 @@ function renderPage() {
     (sidePhotos ? sidePhotoHTML(sidePhotos.right) + "</div>" : "") +
     (pg.blurb
       ? (pg.blurbBox
-          ? '<div class="blurb-box" style="background:linear-gradient(160deg, ' +
+          ? '<div class="blurb-box" style="' +
+            (pg.blurbBox.width ? "width:" + pg.blurbBox.width + "px;" : "") +
+            "background:linear-gradient(160deg, " +
             (pg.blurbBox.from || "#f08a1e") +
             ", " +
             (pg.blurbBox.to || "#8a3a00") +

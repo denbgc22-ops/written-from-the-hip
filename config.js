@@ -2518,11 +2518,11 @@ FIN`,
         oval: { fill: "#7a2bd0", text: "#39ff14", label: "Venus Williams" },
         sidePhotos: {
           left: "assets/images/venus-tennis.png",
-          right: "assets/images/venus-wimbledon.png",
+          right: "assets/images/venus-tennis-flipped.png",
         },
         blurb:
           "You have entered all things Venus Williams. Here at WFTH we believe that Venus (five time Wimbledon champion, and two time US Open champion) does not get the full credit that she deserves. We're here to change that.",
-        blurbBox: { from: "#f08a1e", to: "#8a3a00" },
+        blurbBox: { from: "#f08a1e", to: "#8a3a00", width: 762 },
         blurbColor: "#1e90ff",
         blurbGlow: true,
         blurbFont: "oval",
