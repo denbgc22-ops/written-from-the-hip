@@ -336,6 +336,22 @@ function renderPage() {
       "</a>"
     : "";
 
+  // an empty bookshelf: a gradient box with a few shelf lines, standing in
+  // for a case of book covers to be added later
+  const bookshelfHTML = pg.bookshelf
+    ? '<div class="bookshelf">' +
+      [1, 2, 3].map((i) => '<div class="bookshelf-line" style="top:' + ((i * 100) / 4).toFixed(1) + '%"></div>').join("") +
+      "</div>"
+    : "";
+
+  // the oval normally just shows the planet's name; oval.label lets a page
+  // show something longer/different instead, auto-shrinking the font so it
+  // still fits the fixed-height oval. oval.glow adds a bright glow (instead
+  // of the usual flat drop-shadow) for extra emphasis.
+  const ovalLabel = oval.label || p.name;
+  const ovalFontSize = ovalLabel.length <= 16 ? 21 : Math.max(11, 21 * (16 / ovalLabel.length));
+  const ovalTextColor = oval.text || "#ffe14d";
+
   document.getElementById("page").innerHTML =
     planetNavHTML() +
     topbarHTML(pg.ribbon) +
@@ -347,9 +363,19 @@ function renderPage() {
     ", " +
     (oval.fill || "#1f74c4") +
     ')"><span style="color:' +
-    (oval.text || "#ffe14d") +
+    ovalTextColor +
+    ";font-size:" +
+    ovalFontSize.toFixed(1) +
+    "px" +
+    (oval.glow
+      ? ";text-shadow:0 0 10px " +
+        ovalTextColor +
+        "cc,0 0 24px " +
+        ovalTextColor +
+        "99"
+      : "") +
     '">' +
-    esc(p.name) +
+    esc(ovalLabel) +
     "</span></div>" +
     (panelIsEmpty
       ? ""
@@ -366,12 +392,14 @@ function renderPage() {
     (pg.blurb
       ? '<p class="blurb' +
         (p.orb ? " has-orb" : "") +
-        '"' +
-        (panelIsEmpty ? ' style="text-align:center;"' : "") +
-        ">" +
+        '" style="' +
+        (panelIsEmpty ? "text-align:center;" : "") +
+        (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
+        '">' +
         esc(pg.blurb) +
         "</p>"
       : "") +
+    bookshelfHTML +
     storyLinkHTML +
     (pg.subscribeForm
       ? '<form class="subscribe-form" id="subscribeForm">' +

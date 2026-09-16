@@ -453,6 +453,28 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .subscribe-status.ok { color: #39ff14; }
 .subscribe-status.error { color: #ff6b6b; }
 
+/* an empty bookshelf case, standing in for book covers to be added later */
+.bookshelf {
+  position: relative;
+  width: 430px;
+  max-width: 92vw;
+  height: 320px;
+  margin: 40px auto 0;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(160deg, #8a5a30, #2b1a0d);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.3);
+}
+.bookshelf-line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.45), 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
 /* a pointing mascot photo pinned inside a panel, gesturing at a link */
 .panel-pointer {
   position: absolute;
