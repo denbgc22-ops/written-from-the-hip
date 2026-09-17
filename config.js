@@ -2356,13 +2356,9 @@ FIN`,
       art: { type: "photo", photo: "assets/images/earth-photo.png", color: "#1f6fb2", shade: "#08213a", light: "#eaf6ff" },
       page: {
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
-        panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right", linkCols: 2 },
+        panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
         links: [
-          { label: "This is off the dome but,", href: "off-the-domes.html" },
-          { label: "Denby's Shorts", href: "page.html?p=denbys-shorts" },
-          { label: "Venus Updates", href: "page.html?p=venus" },
-          { label: "Farks", href: "page.html?p=fark" },
-          { label: "Book Covers", href: "page.html?p=library" },
+          { label: "Written From The Hip - Issue #1 09/17/26", href: "newsletter.html" },
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
@@ -2382,13 +2378,13 @@ FIN`,
       page: {
         oval: { fill: "#1b7a2f", text: "#ffd21f" },
         panel: { from: "#2a6ea8", to: "#0c2438", link: "#ffe14d", layout: "right" },
-        blurb: "WFTH Presents: Off The Dome Vol. 1",
+        blurb: "Written From The Hip - Issue #1",
         storyLink: {
           label: "Click here to view",
-          href: "script.html?s=baseball-propaganda",
+          href: "newsletter.html",
           photo: "assets/images/pointer-guy.png",
         },
-        mapLinks: [{ label: "WFTH Volume One", href: "script.html?s=baseball-propaganda" }],
+        mapLinks: [{ label: "Written From The Hip - Issue #1", href: "newsletter.html" }],
       },
     },
     {
