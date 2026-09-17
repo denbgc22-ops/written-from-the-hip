@@ -23,6 +23,15 @@
   .glow-gold    { color:#ffd700; text-shadow: 0 0 6px rgba(255,215,0,0.85), 0 0 14px rgba(255,215,0,0.55); }
   .glow-red     { color:#ff3b3b; text-shadow: 0 0 6px rgba(255,59,59,0.85), 0 0 14px rgba(255,59,59,0.55); }
   .section-box  { border-radius:10px; }
+  .glow-border-yellow { box-shadow: 0 0 16px rgba(255,232,31,0.55); }
+  .glow-border-purple { box-shadow: 0 0 16px rgba(122,43,208,0.65); }
+  .glow-border-blue   { box-shadow: 0 0 16px rgba(0,198,255,0.55); }
+  /* EDIT: hover glow to match the website's planet-hover effect -- only
+     works in webmail clients that keep <style> blocks and support :hover
+     (Apple Mail, most desktop clients, some webkit-based webmail); it's a
+     progressive enhancement, not required for the email to look right. */
+  .wfth-planet { transition: filter 120ms linear; }
+  .wfth-planet:hover, .wfth-planet:focus { filter: drop-shadow(0 0 18px rgba(255,255,255,0.85)) !important; }
   @media (max-width: 620px) {
     .wfth-wrap { width:100% !important; }
     .wfth-pad { padding-left:16px !important; padding-right:16px !important; }
@@ -65,8 +74,11 @@
         <tr>
           <td align="center" style="padding:8px 24px 28px;">
             <!-- EDIT: the moon links to the homepage -->
-            <a href="https://writtenfromthehip.com" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/moon.png" width="130" height="130" alt="Written From The Hip" style="display:block; border-radius:50%;">
+            <a href="https://writtenfromthehip.com" target="_blank" style="text-decoration:none;">
+              <img src="https://writtenfromthehip.com/assets/images/moon.png" width="130" height="130" alt="Written From The Hip" class="wfth-planet" style="display:block; border-radius:50%; margin:0 auto; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+              <div class="glow-yellow" style="font-family:Arial Black, Arial, sans-serif; font-weight:900; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; margin-top:12px;">
+                Written From The Hip
+              </div>
             </a>
           </td>
         </tr>
@@ -81,16 +93,17 @@
 
                     <p style="margin:0 0 16px;">Yo,</p>
 
-                    <p style="margin:0 0 16px;">Welcome to the first edition of Written From The Hip. This is a weekly issue that comes out every Tuesday at 10am EST. Inside these walls hold stories, recommendations, and up2date news from the week before. Here is the outline:</p>
+                    <p style="margin:0 0 16px;">Welcome to the first edition of Written From The Hip. This is a weekly issue that comes out every Wednesday at 10am EST. Inside these walls hold stories, recommendations, and up2date news from the week before. Here is the outline:</p>
 
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px;">
-                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">1. Weekly Book Cover Rec. We judge a book only by how cool the cover is.</td></tr>
-                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">2. This is Off The Dome But, A short essay straight from thought to keyboard.</td></tr>
-                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">3. Fark Of The Week. Someone who effed up last week.</td></tr>
-                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">4. All Things Venus Williams. A fun fact, a weekly update, and her next doubles match.</td></tr>
+                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">1. Fantasy Football Waiver Pickups. NFL analysis.</td></tr>
+                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">2. Weekly Book Cover Rec. We judge a book only by how cool the cover is.</td></tr>
+                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">3. This is Off The Dome But, A short essay straight from thought to keyboard.</td></tr>
+                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">4. Fark Of The Week. Someone who effed up last week.</td></tr>
+                      <tr><td style="padding:4px 0; font-family:Verdana, Geneva, sans-serif; font-size:17px;" class="glow-yellow">5. All Things Venus Williams. A fun fact, a weekly update, and her next doubles match.</td></tr>
                     </table>
 
-                    <p style="margin:0 0 16px;">People ask. Why? It&rsquo;s because we can. And you, yes you, reading this right now. Deserves a little five minute break from his stupid job to read some shit his boys wrote.</p>
+                    <p style="margin:0 0 16px;">People ask. Why? It&rsquo;s because we can. And you, yes you, reading this right now, deserve a little five minute break from your stupid job to read some shit your boy wrote.</p>
 
                     <p style="margin:0;">Domo Arigato,</p>
                     <p style="margin:4px 0 0;">&ndash; <a href="https://writtenfromthehip.com/page.html?p=lineup" target="_blank" class="glow-yellow" style="color:#ffe81f; text-decoration:underline;">Denby n&rsquo; Bolt</a></p>
@@ -102,38 +115,85 @@
           </td>
         </tr>
 
-        <!-- ================= DIVIDER: LIBRARY ================= -->
-        <tr>
-          <td align="center" style="padding:26px 0;">
-            <a href="https://writtenfromthehip.com/page.html?p=library" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/email-planet-library.png" width="90" height="90" alt="Library" style="display:block;">
-            </a>
-          </td>
-        </tr>
-
-        <!-- ================= SECTION 2: BOOK COVER ================= -->
+        <!-- ================= SECTION 2: FANTASY FOOTBALL WAIVER PICKUPS ================= -->
         <tr>
           <td class="wfth-pad" style="padding:0 20px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box" style="border:3px solid #39ff14; border-radius:10px; background-color:#050505;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box glow-border-blue" style="border:3px solid #00c6ff; border-radius:10px; background-color:#050505;">
               <tr>
-                <td style="padding:24px;">
+                <td align="center" style="padding:20px 26px 4px;">
+                  <img src="https://writtenfromthehip.com/assets/images/email-planet-nfl.png" width="56" height="56" alt="NFL" style="display:block;">
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:14px 26px 24px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <!-- EDIT: replace this placeholder cell's contents with an <img> of the book cover -->
-                      <td class="wfth-stack" width="180" valign="top" style="width:180px;">
-                        <table role="presentation" width="160" height="220" cellpadding="0" cellspacing="0" border="0" style="border:2px dashed #39ff14; border-radius:6px;">
+                      <!-- EDIT: replace this placeholder cell's contents with an <img> of the waiver pickup player -->
+                      <td class="wfth-stack" width="150" valign="top" style="width:150px;">
+                        <table role="presentation" width="150" height="180" cellpadding="0" cellspacing="0" border="0" style="border:2px dashed #00c6ff; border-radius:6px;">
                           <tr>
-                            <td align="center" valign="middle" class="glow-green" style="font-family:Verdana, Geneva, sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.05em;">
-                              [ Book Cover Here ]
+                            <td align="center" valign="middle" class="glow-blue" style="font-family:Verdana, Geneva, sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.05em;">
+                              [ Player Photo Here ]
                             </td>
                           </tr>
                         </table>
                       </td>
                       <td class="wfth-stack" width="16" style="width:16px; line-height:1px; font-size:1px;">&nbsp;</td>
                       <td class="wfth-stack" valign="top">
-                        <div class="glow-blue" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:12px;">
-                          Weekly Book Cover Recommendation
+                        <div class="glow-red" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:12px;">
+                          Fantasy Football Waiver Pickup
                         </div>
+                        <div style="font-family:Verdana, Geneva, sans-serif; font-size:15px; line-height:1.6; color:#ffffff;">
+                          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ================= DIVIDER: LIBRARY ================= -->
+        <tr>
+          <td align="center" style="padding:26px 0;">
+            <a href="https://writtenfromthehip.com/page.html?p=library" target="_blank">
+              <img src="https://writtenfromthehip.com/assets/images/email-planet-library.png" width="90" height="90" alt="Library" class="wfth-planet" style="display:block; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+            </a>
+          </td>
+        </tr>
+
+        <!-- ================= SECTION 3: BOOK COVER ================= -->
+        <tr>
+          <td class="wfth-pad" style="padding:0 20px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box glow-border-yellow" style="border:3px solid #ffe81f; border-radius:10px; background-color:#050505;">
+              <tr>
+                <td style="padding:24px;">
+                  <div class="glow-blue" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:0.03em; text-align:center; margin-bottom:16px;">
+                    Weekly Book Cover Recommendation
+                  </div>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <!-- EDIT: replace the "[ Book Cover Here ]" cell with an <img> of the book cover, and fill
+                           in the title/author/year row below it -->
+                      <td class="wfth-stack" width="180" valign="top" style="width:180px;">
+                        <table role="presentation" width="160" height="260" cellpadding="0" cellspacing="0" border="0" style="border:2px dashed #ffe81f; border-radius:6px;">
+                          <tr><td height="50" style="line-height:1px; font-size:1px;">&nbsp;</td></tr>
+                          <tr>
+                            <td align="center" valign="middle" class="glow-yellow" style="font-family:Verdana, Geneva, sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.05em;">
+                              [ Book Cover Here ]
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="center" valign="bottom" style="padding:14px 10px; font-family:Verdana, Geneva, sans-serif; font-size:12px; line-height:1.5; color:#ffffff;">
+                              [ Book Title ]<br>by [ Author ]<br>[ Year Published ]
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td class="wfth-stack" width="16" style="width:16px; line-height:1px; font-size:1px;">&nbsp;</td>
+                      <td class="wfth-stack" valign="top">
                         <div style="font-family:Verdana, Geneva, sans-serif; font-size:15px; line-height:1.6; color:#cfcfcf;">
                           Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
                         </div>
@@ -150,19 +210,19 @@
         <tr>
           <td align="center" style="padding:26px 0;">
             <a href="https://writtenfromthehip.com/page.html?p=off-the-dome" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/email-planet-offthedome.png" width="90" height="90" alt="Off The Dome" style="display:block;">
+              <img src="https://writtenfromthehip.com/assets/images/email-planet-offthedome.png" width="90" height="90" alt="Off The Dome" class="wfth-planet" style="display:block; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
             </a>
           </td>
         </tr>
 
-        <!-- ================= SECTION 3: OFF THE DOME ESSAY ================= -->
+        <!-- ================= SECTION 4: OFF THE DOME ESSAY ================= -->
         <tr>
           <td class="wfth-pad" style="padding:0 20px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box" style="border:3px solid #39ff14; border-radius:10px; background-color:#050505;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box glow-border-purple" style="border:3px solid #7a2bd0; border-radius:10px; background-color:#050505;">
               <tr>
                 <td style="padding:28px 26px;">
                   <!-- EDIT: append this week's essay title after the comma -->
-                  <div class="glow-gold" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:16px;">
+                  <div class="glow-gold" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:0.03em; text-align:center; margin-bottom:16px;">
                     This Is Off The Dome But,
                   </div>
                   <div class="glow-blue" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:15px; line-height:1.7;">
@@ -178,12 +238,12 @@
         <tr>
           <td align="center" style="padding:26px 0;">
             <a href="https://writtenfromthehip.com/page.html?p=fark" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/email-planet-fark.png" width="90" height="90" alt="Fark" style="display:block;">
+              <img src="https://writtenfromthehip.com/assets/images/email-planet-fark.png" width="90" height="90" alt="Fark" class="wfth-planet" style="display:block; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
             </a>
           </td>
         </tr>
 
-        <!-- ================= SECTION 4: FARK OF THE WEEK ================= -->
+        <!-- ================= SECTION 5: FARK OF THE WEEK ================= -->
         <tr>
           <td class="wfth-pad" style="padding:0 20px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box" style="border:3px solid #ff3b3b; border-radius:10px; background-color:#050505;">
@@ -198,7 +258,7 @@
                     </tr>
                   </table>
                   <!-- EDIT: replace [Blank] with the name -->
-                  <div class="glow-red" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:16px;">
+                  <div class="glow-red" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:0.03em; text-align:center; margin-bottom:16px;">
                     [Blank] Is This Week&rsquo;s Fark
                   </div>
                   <div class="glow-gold" style="font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:15px; line-height:1.7;">
@@ -214,12 +274,12 @@
         <tr>
           <td align="center" style="padding:26px 0;">
             <a href="https://writtenfromthehip.com/page.html?p=venus" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/email-planet-venus.png" width="90" height="90" alt="Venus" style="display:block;">
+              <img src="https://writtenfromthehip.com/assets/images/email-planet-venus.png" width="90" height="90" alt="Venus" class="wfth-planet" style="display:block; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
             </a>
           </td>
         </tr>
 
-        <!-- ================= SECTION 5: VENUS ================= -->
+        <!-- ================= SECTION 6: VENUS ================= -->
         <tr>
           <td class="wfth-pad" style="padding:0 20px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box" style="border:3px solid #7a2bd0; border-radius:10px; background-color:#050505;">
@@ -284,13 +344,16 @@
         <!-- ================= DIVIDER: WFTH MOON ================= -->
         <tr>
           <td align="center" style="padding:26px 0;">
-            <a href="https://writtenfromthehip.com" target="_blank">
-              <img src="https://writtenfromthehip.com/assets/images/moon.png" width="90" height="90" alt="Written From The Hip" style="display:block; border-radius:50%;">
+            <a href="https://writtenfromthehip.com" target="_blank" style="text-decoration:none;">
+              <img src="https://writtenfromthehip.com/assets/images/moon.png" width="90" height="90" alt="Written From The Hip" class="wfth-planet" style="display:block; border-radius:50%; margin:0 auto; filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+              <div class="glow-yellow" style="font-family:Arial Black, Arial, sans-serif; font-weight:900; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin-top:10px;">
+                Written From The Hip
+              </div>
             </a>
           </td>
         </tr>
 
-        <!-- ================= SECTION 6: SIGN OFF ================= -->
+        <!-- ================= SECTION 7: SIGN OFF ================= -->
         <tr>
           <td class="wfth-pad" style="padding:0 20px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="section-box" style="border:3px solid #6ec6ff; border-radius:10px; background-color:#050505;">
