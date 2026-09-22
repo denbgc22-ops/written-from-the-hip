@@ -48,7 +48,7 @@ function planetSVG(art, size) {
     size +
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
-    body(id, c, s, l, ring, a.photo, a.ring, a.vignette) +
+    body(id, c, s, l, ring, a.photo, a.ring, a.vignette, a.border) +
     curvedLabelSVG +
     "</svg>"
   );
@@ -142,7 +142,7 @@ function swirl(id, c, s, l) {
   return ball(id) + g + gloss;
 }
 
-function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
+function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette, border) {
   if (!photoUrl) return sphere(id);
   const img =
     '<g clip-path="url(#' +
@@ -150,6 +150,16 @@ function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
     'c)"><image href="' +
     photoUrl +
     '" x="18" y="18" width="84" height="84" preserveAspectRatio="xMidYMid slice"/></g>';
+  // an explicit medallion edge (white ring, then a shaded ring outside it)
+  // for photos whose own background doesn't naturally read as one, like
+  // Fark's does -- opt in per-planet with art.border:true
+  const borderRings = border
+    ? '<circle cx="60" cy="60" r="44" fill="none" stroke="' +
+      l +
+      '" stroke-width="4"/><circle cx="60" cy="60" r="48" fill="none" stroke="' +
+      s +
+      '" stroke-width="4"/>'
+    : "";
   // a moderate radial shade over the photo so it reads as a lit ball, not a
   // flat cutout — white does nothing under multiply, only the dark side
   // darkens.
@@ -171,7 +181,7 @@ function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
   const softGloss =
     '<ellipse cx="44" cy="40" rx="14" ry="9" fill="#ffffff" opacity="0.16" transform="rotate(-28 44 40)"/>';
   // a ring is only drawn when this planet's config explicitly sets one
-  if (!rawRing) return img + shading + vignette + softGloss;
+  if (!rawRing) return img + shading + borderRings + vignette + softGloss;
   const ringBack =
     '<g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
     rawRing +
@@ -182,7 +192,7 @@ function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
     'f)"><g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
     rawRing +
     '" stroke-width="6"/></g></g>';
-  return ringBack + img + shading + vignette + softGloss + ringFront;
+  return ringBack + img + shading + borderRings + vignette + softGloss + ringFront;
 }
 
 function shorts(id, c, s, l, ring) {

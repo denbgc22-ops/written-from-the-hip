@@ -2573,7 +2573,7 @@ FIN`,
       x: 28.8,
       y: 21.6,
       size: 88,
-      art: { type: "photo", photo: "assets/images/book-coverz.png", color: "#ffffff", shade: "#333333", light: "#ffffff", ring: "#ffd700", vignette: false },
+      art: { type: "photo", photo: "assets/images/book-coverz.png", color: "#ffffff", shade: "#333333", light: "#ffffff", ring: "#00c6ff", border: true },
       page: {
         ribbon: "we judge a book only by how cool the cover is",
         oval: { fill: "#1f5c3a", text: "#ffd700", label: "Weekly Book Cover Recommendations" },
