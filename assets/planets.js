@@ -152,14 +152,17 @@ function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette, border) {
     '" x="18" y="18" width="84" height="84" preserveAspectRatio="xMidYMid slice"/></g>';
   // an explicit medallion edge (white ring, then a shaded ring outside it)
   // for photos whose own background doesn't naturally read as one, like
-  // Fark's does -- opt in per-planet with art.border:true
-  const borderRings = border
-    ? '<circle cx="60" cy="60" r="44" fill="none" stroke="' +
-      l +
-      '" stroke-width="4"/><circle cx="60" cy="60" r="48" fill="none" stroke="' +
-      s +
-      '" stroke-width="4"/>'
-    : "";
+  // Fark's does -- opt in per-planet with art.border: true (both rings),
+  // "shade" (just the outer ring) or "white" (just the inner ring)
+  const whiteRing =
+    border === true || border === "white"
+      ? '<circle cx="60" cy="60" r="44" fill="none" stroke="' + l + '" stroke-width="4"/>'
+      : "";
+  const shadeRing =
+    border === true || border === "shade"
+      ? '<circle cx="60" cy="60" r="48" fill="none" stroke="' + s + '" stroke-width="4"/>'
+      : "";
+  const borderRings = whiteRing + shadeRing;
   // a moderate radial shade over the photo so it reads as a lit ball, not a
   // flat cutout — white does nothing under multiply, only the dark side
   // darkens.
