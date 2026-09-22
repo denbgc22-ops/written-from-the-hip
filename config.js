@@ -2530,9 +2530,9 @@ FIN`,
           right: "assets/images/venus-tennis-flipped.png",
         },
         blurb:
-          "You have entered all things Venus Williams. Here at WFTH we believe that Venus (five time Wimbledon champion, and two time US Open champion) does not get the full credit that she deserves. We're here to change that.",
-        blurbBox: { from: "#f08a1e", to: "#8a3a00", width: 762 },
-        blurbColor: "#1e90ff",
+          "You have entered all things Venus Williams. Here at WFTH we believe that Venus does not get the full credit/support that she deserves.",
+        blurbBox: { from: "#2f9e44", to: "#0d4d1f", width: 762 },
+        blurbColor: "#a259ff",
         blurbGlow: true,
         blurbFont: "oval",
         storyLink: {
