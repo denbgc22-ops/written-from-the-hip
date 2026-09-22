@@ -2573,7 +2573,7 @@ FIN`,
       x: 28.8,
       y: 21.6,
       size: 88,
-      art: { type: "ringed", color: "#8a5a30", shade: "#2b1a0d", light: "#d9b98a", ring: "#ffd700" },
+      art: { type: "book", photo: "assets/images/library-book-planet.png", ring: "#ffd700" },
       page: {
         ribbon: "we judge a book only by how cool the cover is",
         oval: { fill: "#1f5c3a", text: "#ffd700", label: "Weekly Book Cover Recommendations" },

@@ -21,6 +21,7 @@ function planetSVG(art, size) {
     earth: earth,
     basketball: basketball,
     photo: photo,
+    book: book,
   }[type] || sphere;
 
   // an optional word curved along the top of the sphere's own circle, like
@@ -183,6 +184,57 @@ function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette) {
     rawRing +
     '" stroke-width="6"/></g></g>';
   return ringBack + img + shading + vignette + softGloss + ringFront;
+}
+
+// a flat rectangular book cover instead of a sphere, with a gold ring
+// (like Saturn's) drawn behind it -- used for the Library planet so its
+// icon reads as an actual book, not a ball
+function book(id, c, s, l, ring, photoUrl, rawRing) {
+  if (!photoUrl) return sphere(id);
+  const ringColor = rawRing || ring;
+  const ringEl =
+    '<g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
+    ringColor +
+    '" stroke-width="6" opacity="0.95"/></g>';
+  const bw = 55,
+    bh = 84,
+    bx = 60 - bw / 2,
+    by = 60 - bh / 2;
+  const cover =
+    '<clipPath id="' +
+    id +
+    'book"><rect x="' +
+    bx +
+    '" y="' +
+    by +
+    '" width="' +
+    bw +
+    '" height="' +
+    bh +
+    '" rx="3"/></clipPath>' +
+    '<g clip-path="url(#' +
+    id +
+    'book)"><image href="' +
+    photoUrl +
+    '" x="' +
+    bx +
+    '" y="' +
+    by +
+    '" width="' +
+    bw +
+    '" height="' +
+    bh +
+    '" preserveAspectRatio="xMidYMid slice"/></g>' +
+    '<rect x="' +
+    bx +
+    '" y="' +
+    by +
+    '" width="' +
+    bw +
+    '" height="' +
+    bh +
+    '" rx="3" fill="none" stroke="rgba(0,0,0,0.45)" stroke-width="1.5"/>';
+  return ringEl + cover;
 }
 
 function shorts(id, c, s, l, ring) {
