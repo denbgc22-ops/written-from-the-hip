@@ -47,15 +47,15 @@ const SITE = {
   ------------------------------------------------------------------------ */
   bios: [
     {
-      id: "george-denby",
-      name: "George Denby",
-      photo: "assets/images/george-denby.png",
+      id: "teorge",
+      name: "Teorge",
+      photo: "assets/images/teorge.png",
       stats: [
         { label: "Team", value: "Shanghai Sharks" },
         { label: "Position", value: "Three n' D Shooting Guard" },
         { label: "Height", value: "6' 1\"" },
         { label: "Weight", value: "180 lbs." },
-        { label: "Born", value: "10/30/03, Atlanta, Georgia" },
+        { label: "Born", value: "10/30/54, West Memphis, Arkansas" },
         { label: "College", value: "Wake Forest" },
         { label: "Favorite Word", value: "Hate" },
       ],
@@ -68,16 +68,16 @@ const SITE = {
       },
     },
     {
-      id: "thomas-bolt",
-      name: "Thomas Bolt",
-      photo: "assets/images/thomas-bolt.png",
+      id: "gomas",
+      name: "Gomas",
+      photo: "assets/images/gomas.png",
       stats: [
         { label: "Team", value: "Guangdong Southern Tigers" },
         { label: "Position", value: "Stretch Four Power Forward" },
         { label: "Height", value: "6' 4\"" },
         { label: "Weight", value: "200+" },
         { label: "Born", value: "2/17/63, Brooklyn, New York" },
-        { label: "College", value: "Wake Forest" },
+        { label: "College", value: "Forsyth Tech Community College" },
         { label: "Favorite Word", value: "onomatopoeia" },
       ],
       statLine: {
@@ -93,7 +93,7 @@ const SITE = {
   /* ---- full scripts, opened from a planet's page links -------------------
      "id" is what script.html?s=<id> looks up. "body" is plain text \u2014 line
      breaks are kept as-is, so paste the script in exactly how it should read.
-     backHref/backLabel are optional \u2014 they default to Denby's Shorts, so
+     backHref/backLabel are optional \u2014 they default to Teorge's Shorts, so
      only set them when a story is linked from somewhere else.
   ------------------------------------------------------------------------ */
   scripts: [
@@ -2369,7 +2369,7 @@ FIN`,
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
-          { label: "Short Scripts", href: "page.html?p=denbys-shorts" },
+          { label: "Short Scripts", href: "page.html?p=teorges-shorts" },
           { label: "Off The Domes", href: "off-the-domes.html" },
         ],
       },
@@ -2437,24 +2437,24 @@ FIN`,
         ribbon: "Welcome To The Writer's Room",
         roster: [
           {
-            name: "George Denby",
+            name: "Teorge",
             height: "6' 1\"",
             weight: "180 lbs.",
-            photo: "assets/images/george-denby.png",
-            href: "bio.html?b=george-denby",
+            photo: "assets/images/teorge.png",
+            href: "bio.html?b=teorge",
           },
           {
-            name: "Thomas Bolt",
+            name: "Gomas",
             height: "6' 4\"",
             weight: "200+",
-            photo: "assets/images/thomas-bolt.png",
-            href: "bio.html?b=thomas-bolt",
+            photo: "assets/images/gomas.png",
+            href: "bio.html?b=gomas",
           },
         ],
-        mapBlurb: "This answers any questions you may have about Denby and Bolt.",
+        mapBlurb: "This answers any questions you may have about Teorge and Gomas.",
         mapLinks: [
-          { label: "George Denby", href: "bio.html?b=george-denby" },
-          { label: "Thomas Bolt", href: "bio.html?b=thomas-bolt" },
+          { label: "Teorge", href: "bio.html?b=teorge" },
+          { label: "Gomas", href: "bio.html?b=gomas" },
         ],
       },
     },
@@ -2481,8 +2481,8 @@ FIN`,
       },
     },
     {
-      id: "denbys-shorts",
-      name: "Denby's Shorts",
+      id: "teorges-shorts",
+      name: "Teorge's Shorts",
       x: 71.2,
       y: 72.4,
       size: 84,
@@ -2490,7 +2490,7 @@ FIN`,
       page: {
         oval: { fill: "#0f9e8f", text: "#ffe14d" },
         panel: { from: "#3a6ea8", to: "#0c2438", link: "#ffe14d", layout: "left" },
-        ribbon: "Denby's Short Scripts, enter to learn, go fourth to serve.",
+        ribbon: "Teorge's Short Scripts, enter to learn, go fourth to serve.",
         panelPhoto: { photo: "assets/images/denbys-shorts-photo.png", glow: "#ffe14d" },
         links: [
           { label: "Real Steele Cuck", href: "script.html?s=real-steele-cuck" },
@@ -2503,7 +2503,7 @@ FIN`,
           { label: "Just Cracked My Boy", href: "script.html?s=just-cracked-my-boy" },
           { label: "Grills", href: "script.html?s=grills" },
         ],
-        mapBlurb: "Denby's Short Scripts, enter to learn, go fourth to serve.",
+        mapBlurb: "Teorge's Short Scripts, enter to learn, go fourth to serve.",
       },
     },
     {

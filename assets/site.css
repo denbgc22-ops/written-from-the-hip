@@ -512,7 +512,7 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 
 /* a decorative photo pinned to the side of a links panel, its glow color
-   set inline per-page (e.g. the shorts photo on Denby's Shorts) */
+   set inline per-page (e.g. the shorts photo on Teorge's Shorts) */
 /* an un-cropped cutout photo (transparent background) pinned to the side of
    a links panel; its glow follows the photo's own silhouette via
    drop-shadow rather than a circular border, set inline per-page */

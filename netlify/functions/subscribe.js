@@ -15,7 +15,7 @@
 */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const WELCOME_FROM = "Denby and Bolt <hello@writtenfromthehip.com>";
+const WELCOME_FROM = "Teorge and Gomas <hello@writtenfromthehip.com>";
 const WELCOME_SUBJECT = "We're Now On Ur Dome 4Life";
 const WELCOME_BODY = `yo.
 
@@ -26,7 +26,7 @@ grats.
 We will now send you our unsolicited, unforgivable, terrible, no-good writing and ideas to this very email.
 
 Love,
-Denby and Bolt`;
+Teorge and Gomas`;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {

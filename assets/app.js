@@ -347,7 +347,7 @@ function renderPage() {
     : "";
 
   // an optional decorative photo pinned to the side of a links panel, with
-  // its own glow color (e.g. the shorts photo on Denby's Shorts)
+  // its own glow color (e.g. the shorts photo on Teorge's Shorts)
   const panelPhotoHTML = pg.panelPhoto
     ? '<img class="panel-side-photo" style="filter:drop-shadow(0 0 6px ' +
       (pg.panelPhoto.glow || "#39ff14") +
@@ -611,9 +611,9 @@ function renderScript() {
     "</h1>" +
     bodyHTML +
     '<a class="backlink" href="' +
-    esc(s.backHref || "page.html?p=denbys-shorts") +
+    esc(s.backHref || "page.html?p=teorges-shorts") +
     '">' +
-    esc(s.backLabel || "Back to Denby's Shorts") +
+    esc(s.backLabel || "Back to Teorge's Shorts") +
     "</a>" +
     legalHTML("page-legal");
 }
