@@ -394,10 +394,39 @@ function renderPage() {
     : "";
 
   // an empty bookshelf: a gradient box with a few shelf lines, standing in
-  // for a case of book covers to be added later
+  // for a case of book covers to be added later. pg.books places actual
+  // cover photos in it -- each sits in a numbered compartment (0 = top),
+  // stacked left-to-right in the order given within that same compartment.
+  const SHELF_H = 80; // .bookshelf is 320px tall / 4 even rows
+  const BOOK_W = 54;
+  const BOOK_H = 72;
+  const shelfCounts = {};
+  const bookHTML = (b) => {
+    const shelf = b.shelf || 0;
+    const slot = shelfCounts[shelf] || 0;
+    shelfCounts[shelf] = slot + 1;
+    const top = (shelf + 1) * SHELF_H - BOOK_H - 2;
+    const left = "calc(4% + " + slot * (BOOK_W + 10) + "px)";
+    return (
+      '<a class="bookshelf-book" href="' +
+      esc(b.href) +
+      '" style="top:' +
+      top +
+      "px;left:" +
+      left +
+      ";width:" +
+      BOOK_W +
+      "px;height:" +
+      BOOK_H +
+      'px;" target="_blank"><img src="' +
+      esc(b.photo) +
+      '" alt=""></a>'
+    );
+  };
   const bookshelfHTML = pg.bookshelf
     ? '<div class="bookshelf">' +
       [1, 2, 3].map((i) => '<div class="bookshelf-line" style="top:' + ((i * 100) / 4).toFixed(1) + '%"></div>').join("") +
+      (pg.books || []).map(bookHTML).join("") +
       "</div>"
     : "";
 
