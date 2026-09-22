@@ -481,7 +481,10 @@ function renderPage() {
             ')">'
           : "") +
         '<p class="blurb' +
-        (p.orb ? " has-orb" : "") +
+        // the has-orb right-padding keeps left-aligned text clear of the
+        // floating corner orb; a centered blurb should ignore it, or the
+        // padding drags the visual center off from the oval above it
+        (p.orb && !pg.blurbCenter ? " has-orb" : "") +
         (pg.blurbBox ? " blurb-boxed" : "") +
         '" style="white-space:pre-line;' +
         (panelIsEmpty || pg.blurbCenter ? "text-align:center;" : "") +
