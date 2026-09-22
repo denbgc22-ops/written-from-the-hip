@@ -393,6 +393,29 @@ function renderPage() {
       "</a>"
     : "";
 
+  // a second, differently-colored line below the main blurb (e.g. calling
+  // out this week's specific Fark by name in its own glow color)
+  const subBlurbHTML = pg.subBlurb
+    ? '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;color:' +
+      (pg.subBlurb.color || "#ff3b3b") +
+      ";text-shadow:0 0 10px " +
+      (pg.subBlurb.color || "#ff3b3b") +
+      "cc,0 0 22px " +
+      (pg.subBlurb.color || "#ff3b3b") +
+      '99;">' +
+      escBold(pg.subBlurb.text) +
+      "</p>"
+    : "";
+
+  // a standalone centered photo below the blurb(s), with its own glow color
+  const centerPhotoHTML = pg.centerPhoto
+    ? '<img class="center-photo" src="' +
+      esc(pg.centerPhoto.photo) +
+      '" alt="" style="filter:drop-shadow(0 0 18px ' +
+      (pg.centerPhoto.glow || "#ff3b3b") +
+      ');">'
+    : "";
+
   // an empty bookshelf: a gradient box with a few shelf lines, standing in
   // for a case of book covers to be added later. pg.books places actual
   // cover photos in it -- each sits in a numbered compartment (0 = top),
@@ -538,6 +561,8 @@ function renderPage() {
         "</p>" +
         (pg.blurbBox ? "</div>" : "")
       : "") +
+    subBlurbHTML +
+    centerPhotoHTML +
     bookshelfHTML +
     storyLinkHTML +
     (pg.subscribeForm
