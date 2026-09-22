@@ -479,14 +479,23 @@ function renderPage() {
         '<p class="blurb' +
         (p.orb ? " has-orb" : "") +
         (pg.blurbBox ? " blurb-boxed" : "") +
-        '" style="' +
+        '" style="white-space:pre-line;' +
         (panelIsEmpty || pg.blurbCenter ? "text-align:center;" : "") +
         (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
-        (pg.blurbGlow && pg.blurbColor
-          ? "text-shadow:0 0 10px " + pg.blurbColor + "cc,0 0 22px " + pg.blurbColor + "99;"
+        (pg.blurbBold ? "font-weight:700;" : "") +
+        // blurbGlow: true reuses blurbColor for the glow (the original
+        // behavior); a color string glows a different color than the fill
+        (pg.blurbGlow && (typeof pg.blurbGlow === "string" || pg.blurbColor)
+          ? "text-shadow:0 0 10px " +
+            (typeof pg.blurbGlow === "string" ? pg.blurbGlow : pg.blurbColor) +
+            "cc,0 0 22px " +
+            (typeof pg.blurbGlow === "string" ? pg.blurbGlow : pg.blurbColor) +
+            "99;"
           : "") +
         (pg.blurbFont === "oval"
           ? "font-family:Verdana,Geneva,sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;line-height:1.4;"
+          : pg.blurbFont === "sans"
+          ? "font-family:Verdana,Geneva,sans-serif;"
           : "") +
         '">' +
         esc(pg.blurb) +
