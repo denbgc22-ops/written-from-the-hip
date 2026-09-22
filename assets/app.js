@@ -6,6 +6,10 @@ const esc = (s) =>
     (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m])
   );
 
+// escapes text, then turns **word** into <strong>word</strong> -- lets a
+// config string bold just a phrase without allowing arbitrary HTML
+const escBold = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
 const planetHref = (p) => p.href || "page.html?p=" + encodeURIComponent(p.id);
 const findPlanet = (id) => SITE.planets.filter((p) => p.id === id)[0];
 const findScript = (id) => (SITE.scripts || []).filter((s) => s.id === id)[0];
@@ -498,7 +502,7 @@ function renderPage() {
           ? "font-family:Verdana,Geneva,sans-serif;"
           : "") +
         '">' +
-        esc(pg.blurb) +
+        escBold(pg.blurb) +
         "</p>" +
         (pg.blurbBox ? "</div>" : "")
       : "") +
