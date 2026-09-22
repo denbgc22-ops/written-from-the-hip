@@ -31,6 +31,12 @@ const SITE = {
     { label: "Contact", href: "mailto:hello@writtenfromthehip.com" },
   ],
 
+  /* ---- the Instagram/X icons above the footer links on the home page ---- */
+  socialLinks: [
+    { label: "Instagram", href: "https://www.instagram.com/writtenfromthehip/?hl=en", icon: "assets/images/icon-instagram.png" },
+    { label: "X", href: "https://x.com/WrittenFromHip", icon: "assets/images/icon-twitter.png" },
+  ],
+
   /* ---- the tiny print at the bottom of every page ----------------------- */
   legal:
     "WRITTEN FROM THE HIP, characters, names, and all related indicia are trademarks of the author. \u00A9 2026",

@@ -163,6 +163,20 @@ function renderHome() {
   const foot = document.getElementById("home-footer");
   if (foot) {
     foot.innerHTML =
+      '<div class="social-row">' +
+      (SITE.socialLinks || [])
+        .map(
+          (l) =>
+            '<a href="' +
+            esc(l.href) +
+            '" target="_blank" class="social-icon"><img src="' +
+            esc(l.icon) +
+            '" alt="' +
+            esc(l.label) +
+            '"></a>'
+        )
+        .join("") +
+      "</div>" +
       '<div class="row">' +
       SITE.footerLinks
         .map((l) => '<a href="' + esc(l.href) + '">' + esc(l.label) + "</a>")
