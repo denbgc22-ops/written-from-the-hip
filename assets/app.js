@@ -430,6 +430,20 @@ function renderPage() {
     shelfCounts[shelf] = slot + 1;
     const top = (shelf + 1) * SHELF_H - BOOK_H - 2;
     const left = "calc(4% + " + slot * (BOOK_W + 10) + "px)";
+    // caption sits under the book at all times; hint shows the same text
+    // above the book, only on hover, right at the top of its golden glow
+    const caption = b.caption
+      ? '<div class="bookshelf-book-caption" style="top:' +
+        (top + BOOK_H + 4) +
+        "px;left:" +
+        left +
+        ";width:" +
+        BOOK_W +
+        'px;">' +
+        esc(b.caption) +
+        "</div>"
+      : "";
+    const hint = b.caption ? '<span class="bookshelf-book-hint">' + esc(b.caption) + "</span>" : "";
     return (
       '<a class="bookshelf-book" href="' +
       esc(b.href) +
@@ -443,7 +457,10 @@ function renderPage() {
       BOOK_H +
       'px;" target="_blank"><img src="' +
       esc(b.photo) +
-      '" alt=""></a>'
+      '" alt="">' +
+      hint +
+      "</a>" +
+      caption
     );
   };
   const bookshelfHTML = pg.bookshelf
