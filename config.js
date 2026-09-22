@@ -2559,7 +2559,7 @@ FIN`,
       },
       page: {
         ribbon: "DON'T BE A FARK",
-        oval: { fill: "#3a3a3a", text: "#ffe14d", label: "Fark Of The Week", glow: true },
+        oval: { fill: "#3a3a3a", text: "#ff3b3b", label: "House of Fark", glow: true },
         blurb: "Weekly submission of someone who effed up this week",
         blurbColor: "#ffe14d",
         blurbBold: true,
