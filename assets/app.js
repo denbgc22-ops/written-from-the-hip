@@ -551,6 +551,7 @@ function renderPage() {
         (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
         (pg.blurbBold ? "font-weight:700;" : "") +
         (pg.blurbSmall ? "font-size:14px;" : "") +
+        (pg.blurbMarginTop ? "margin-top:" + pg.blurbMarginTop + "px;" : "") +
         // blurbGlow: true reuses blurbColor for the glow (the original
         // behavior); a color string glows a different color than the fill
         (pg.blurbGlow && (typeof pg.blurbGlow === "string" || pg.blurbColor)
