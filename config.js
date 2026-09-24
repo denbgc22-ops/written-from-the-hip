@@ -2362,8 +2362,14 @@ FIN`,
       art: { type: "photo", photo: "assets/images/public-domeain.png", cutout: true },
       page: {
         ribbon: "Email any ideas to publicdomeain@writtenfromthehip.com",
+        topBanner: { text: "Welcome To The People's Dome", color: "#ffe14d", glow: "#00c6ff" },
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
+        blurb:
+          "Here you will find a curated list of Off The Domes, Book Cover Recs, Venus Tidbits, or any other ideas/suggestions that we seem fit. All straight from the public, shown to the public.",
+        blurbColor: "#6ec6ff",
+        blurbGlow: "#ffe14d",
+        blurbSmall: true,
         links: [
           { label: "Written From The Hip - Issue #1 09/17/26", href: "newsletter.html" },
         ],

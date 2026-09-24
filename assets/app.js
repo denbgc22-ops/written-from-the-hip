@@ -467,16 +467,19 @@ function renderPage() {
   const ovalTextColor = oval.text || "#ffe14d";
 
   // an optional glowing banner across the very top of the page, above the
-  // oval. Either a plain string (glows yellow) or { text, color }.
+  // oval. Either a plain string (yellow text, yellow glow) or
+  // { text, color, glow } -- glow defaults to color when not set, so a
+  // banner can still glow a different color than its own text fill.
   const topBannerText = typeof pg.topBanner === "string" ? pg.topBanner : pg.topBanner && pg.topBanner.text;
   const topBannerColor = (pg.topBanner && pg.topBanner.color) || "#ffe81f";
+  const topBannerGlow = (pg.topBanner && pg.topBanner.glow) || topBannerColor;
   const topBannerHTML = topBannerText
     ? '<div class="page-top-banner" style="color:' +
       topBannerColor +
       ";text-shadow:0 0 10px " +
-      topBannerColor +
+      topBannerGlow +
       "cc,0 0 24px " +
-      topBannerColor +
+      topBannerGlow +
       '99">' +
       esc(topBannerText) +
       "</div>"
@@ -547,6 +550,7 @@ function renderPage() {
         (panelIsEmpty || pg.blurbCenter ? "text-align:center;" : "") +
         (pg.blurbColor ? "color:" + pg.blurbColor + ";" : "") +
         (pg.blurbBold ? "font-weight:700;" : "") +
+        (pg.blurbSmall ? "font-size:14px;" : "") +
         // blurbGlow: true reuses blurbColor for the glow (the original
         // behavior); a color string glows a different color than the fill
         (pg.blurbGlow && (typeof pg.blurbGlow === "string" || pg.blurbColor)
