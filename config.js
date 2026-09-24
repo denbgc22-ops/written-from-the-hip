@@ -27,7 +27,7 @@ const SITE = {
   /* ---- the small red links under the star field on the home page -------- */
   footerLinks: [
     { label: "Subscribe", href: "page.html?p=subscribe" },
-    { label: "Archive", href: "page.html?p=archive" },
+    { label: "Public Domeain", href: "page.html?p=public-domeain" },
     { label: "Contact", href: "mailto:hello@writtenfromthehip.com" },
   ],
 
@@ -2353,13 +2353,13 @@ FIN`,
   ------------------------------------------------------------------------ */
   planets: [
     {
-      id: "archive",
-      name: "The Archive",
+      id: "public-domeain",
+      name: "Public Domeain",
       orb: { label: "Subscribe", href: "page.html?p=subscribe" },
       x: 50.0,
       y: 15.6,
-      size: 92,
-      art: { type: "photo", photo: "assets/images/earth-photo.png", color: "#1f6fb2", shade: "#08213a", light: "#eaf6ff" },
+      size: 110,
+      art: { type: "photo", photo: "assets/images/public-domeain.png", cutout: true },
       page: {
         ribbon: "Find Every Written From The Hip Issue Here",
         oval: { fill: "#6a2fa8", text: "#ffb02e" },

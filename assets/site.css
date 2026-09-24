@@ -368,7 +368,7 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 
 /* a two-item side-by-side link split inside a panel (e.g. "Short Scripts" /
-   "Off The Domes" on the Archive page) — like .roster but text-only */
+   "Off The Domes" on the Public Domeain page) — like .roster but text-only */
 .panel-columns {
   position: absolute;
   inset: 0;

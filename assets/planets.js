@@ -48,7 +48,7 @@ function planetSVG(art, size) {
     size +
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
-    body(id, c, s, l, ring, a.photo, a.ring, a.vignette, a.border) +
+    (type === "photo" && a.cutout && a.photo ? cutout(a.photo) : body(id, c, s, l, ring, a.photo, a.ring, a.vignette, a.border)) +
     curvedLabelSVG +
     "</svg>"
   );
@@ -140,6 +140,13 @@ function swirl(id, c, s, l) {
     '<path d="M14,36 q46,14 92,-2" stroke-width="3" opacity="0.5"/>' +
     "</g>";
   return ball(id) + g + gloss;
+}
+
+// a see-through PNG drawn whole, with no circle crop or shading, so things
+// drawn around the planet (like the figures on Public Domeain) stay visible —
+// opt in per-planet with art.cutout: true
+function cutout(photoUrl) {
+  return '<image href="' + photoUrl + '" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>';
 }
 
 function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette, border) {
