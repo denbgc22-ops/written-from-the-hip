@@ -2370,9 +2370,6 @@ FIN`,
         blurbColor: "#6ec6ff",
         blurbGlow: "#ffe14d",
         blurbCenter: true,
-        links: [
-          { label: "Written From The Hip - Issue #1 09/17/26", href: "newsletter.html" },
-        ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
           { label: "Short Scripts", href: "page.html?p=teorges-shorts" },
