@@ -2366,10 +2366,10 @@ FIN`,
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
         blurb:
-          "Here you will find a curated list of Off The Domes, Book Cover Recs, Venus Tidbits, or any other ideas/suggestions that we seem fit. All straight from the public, shown to the public.",
+          "Here you will find a curated list of Off The Domes, Book Cover Recs, Venus Tidbits,\nor any other ideas/suggestions that we seem fit.\nAll straight from the public, shown to the public.",
         blurbColor: "#6ec6ff",
         blurbGlow: "#ffe14d",
-        blurbSmall: true,
+        blurbCenter: true,
         links: [
           { label: "Written From The Hip - Issue #1 09/17/26", href: "newsletter.html" },
         ],
