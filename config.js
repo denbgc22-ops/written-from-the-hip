@@ -2370,6 +2370,7 @@ FIN`,
         blurbColor: "#6ec6ff",
         blurbGlow: "#ffe14d",
         blurbCenter: true,
+        blurbFont: "sans",
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
           { label: "Short Scripts", href: "page.html?p=teorges-shorts" },
