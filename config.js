@@ -2361,7 +2361,7 @@ FIN`,
       size: 110,
       art: { type: "photo", photo: "assets/images/public-domeain.png", cutout: true },
       page: {
-        ribbon: "Find Every Written From The Hip Issue Here",
+        ribbon: "Email any ideas to publicdomeain@writtenfromthehip.com",
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
         links: [
