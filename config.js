@@ -27,7 +27,7 @@ const SITE = {
   /* ---- the small red links under the star field on the home page -------- */
   footerLinks: [
     { label: "Subscribe", href: "page.html?p=subscribe" },
-    { label: "Public Domeain", href: "page.html?p=public-domeain" },
+    { label: "Public Dome-ain", href: "page.html?p=public-domeain" },
     { label: "Contact", href: "mailto:hello@writtenfromthehip.com" },
   ],
 
@@ -2354,7 +2354,7 @@ FIN`,
   planets: [
     {
       id: "public-domeain",
-      name: "Public Domeain",
+      name: "Public Dome-ain",
       orb: { label: "Subscribe", href: "page.html?p=subscribe" },
       x: 50.0,
       y: 15.6,

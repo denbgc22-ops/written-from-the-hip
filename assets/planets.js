@@ -143,7 +143,7 @@ function swirl(id, c, s, l) {
 }
 
 // a see-through PNG drawn whole, with no circle crop or shading, so things
-// drawn around the planet (like the figures on Public Domeain) stay visible —
+// drawn around the planet (like the figures on Public Dome-ain) stay visible —
 // opt in per-planet with art.cutout: true
 function cutout(photoUrl) {
   return '<image href="' + photoUrl + '" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>';
