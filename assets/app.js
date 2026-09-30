@@ -519,18 +519,31 @@ function renderPage() {
   // golden hover glow and a "hint" label that appears above it on hover
   // (e.g. the "Click Me" email icons on Public Dome-ain).
   const sidePhotos = pg.sidePhotos || null;
-  const sidePhotoHTML = (side) => {
+  // sidePhotosOverlap pulls each photo toward the oval by this many px,
+  // beyond whatever the row's flex gap already leaves (negative margin on
+  // the side facing the billboard, since the billboard's own internal
+  // padding around the oval is what actually keeps them apart).
+  const sidePhotoPullStyle = (dir) =>
+    pg.sidePhotosOverlap ? "margin-" + dir + ":-" + pg.sidePhotosOverlap + "px;" : "";
+  const sidePhotoGlowStyle = (glow) =>
+    glow ? "filter:drop-shadow(0 0 14px rgba(0,0,0,0.6)) drop-shadow(0 0 16px " + glow + ");" : "";
+  const sidePhotoHTML = (side, dir) => {
     if (!side) return "";
     const src = typeof side === "string" ? side : side.photo;
+    const glow = typeof side === "object" && side.glow;
+    const style = sidePhotoGlowStyle(glow) + sidePhotoPullStyle(dir);
+    const styleAttr = style ? ' style="' + style + '"' : "";
     if (typeof side === "string" || !side.href) {
-      return '<img class="side-photo" src="' + esc(src) + '" alt="">';
+      return '<img class="side-photo" src="' + esc(src) + '" alt=""' + styleAttr + ">";
     }
     return (
       '<a class="side-photo-icon" href="' +
       esc(side.href) +
       '"><img class="side-photo" src="' +
       esc(src) +
-      '" alt="">' +
+      '" alt=""' +
+      styleAttr +
+      ">" +
       (side.hoverLabel ? '<span class="side-photo-icon-hint">' + esc(side.hoverLabel) + "</span>" : "") +
       "</a>"
     );
@@ -540,7 +553,12 @@ function renderPage() {
     planetNavHTML() +
     topbarHTML(pg.ribbon) +
     topBannerHTML +
-    (sidePhotos ? '<div class="side-photos-row">' + sidePhotoHTML(sidePhotos.left) : "") +
+    (sidePhotos
+      ? '<div class="side-photos-row"' +
+        (pg.sidePhotosGap != null ? ' style="gap:' + pg.sidePhotosGap + 'px;"' : "") +
+        ">" +
+        sidePhotoHTML(sidePhotos.left, "right")
+      : "") +
     '<div class="billboard">' +
     '<div class="oval" style="' +
     (panelIsEmpty ? "margin-bottom:40px;" : "") +
@@ -575,7 +593,7 @@ function renderPage() {
         panelInnerHTML +
         "</div>") +
     "</div>" +
-    (sidePhotos ? sidePhotoHTML(sidePhotos.right) + "</div>" : "") +
+    (sidePhotos ? sidePhotoHTML(sidePhotos.right, "left") + "</div>" : "") +
     (pg.blurb
       ? (pg.blurbBox
           ? '<div class="blurb-box" style="' +
