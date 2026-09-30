@@ -567,7 +567,9 @@ function renderPage() {
           ? "font-family:Verdana,Geneva,sans-serif;"
           : "") +
         '">' +
-        escBold(pg.blurb) +
+        (pg.blurbHref
+          ? '<a href="' + esc(pg.blurbHref) + '" style="color:inherit; text-decoration:none;">' + escBold(pg.blurb) + "</a>"
+          : escBold(pg.blurb)) +
         "</p>" +
         (pg.blurbBox ? "</div>" : "")
       : "") +
