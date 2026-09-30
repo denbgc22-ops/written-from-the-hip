@@ -420,6 +420,22 @@ function renderPage() {
       ');">'
     : "";
 
+  // a single static "stream entry"-styled post embedded on a page (e.g. a
+  // reader-submitted quote on Public Dome-ain), reusing the exact look of
+  // the live Stream Of Consciousness feed (Off The Dome) so it reads as
+  // part of the same running commentary.
+  const streamPostHTML = pg.streamPost
+    ? '<div class="stream-feed" style="overflow:visible;max-height:none;">' +
+      '<div class="stream-entry"><time>' +
+      esc(pg.streamPost.name) +
+      " on " +
+      esc(pg.streamPost.time) +
+      "</time><p>" +
+      esc(pg.streamPost.text) +
+      "</p></div>" +
+      "</div>"
+    : "";
+
   // an empty bookshelf: a gradient box with a few shelf lines, standing in
   // for a case of book covers to be added later. pg.books places actual
   // cover photos in it -- each sits in a numbered compartment (0 = top),
@@ -578,6 +594,7 @@ function renderPage() {
         (pg.blurbBox ? "</div>" : "")
       : "") +
     subBlurbHTML +
+    streamPostHTML +
     centerPhotoHTML +
     bookshelfHTML +
     storyLinkHTML +

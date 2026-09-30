@@ -2362,7 +2362,6 @@ FIN`,
       art: { type: "photo", photo: "assets/images/public-domeain.png", cutout: true },
       page: {
         ribbon: "Email any ideas to publicdomeain@writtenfromthehip.com",
-        topBanner: { text: "Welcome To The People's Dome", color: "#ffe14d", glow: "#00c6ff" },
         oval: { fill: "#6a2fa8", text: "#ffb02e" },
         panel: { from: "#1d6b7a", to: "#08252b", link: "#ffe14d", layout: "right" },
         blurb:
@@ -2373,6 +2372,11 @@ FIN`,
         blurbFont: "sans",
         blurbBold: true,
         blurbMarginTop: 70,
+        streamPost: {
+          name: "Matt From Dallas",
+          time: "Sep 30, 10:05 AM",
+          text: "“This is off the dome but a few chuckles and a cup of Joe is the best laxative.”",
+        },
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
           { label: "Short Scripts", href: "page.html?p=teorges-shorts" },
