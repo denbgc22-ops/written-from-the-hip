@@ -2445,7 +2445,7 @@ FIN`,
           photo: "assets/images/new-family.png",
         },
         blurb:
-          "Enter your email address to get the WFTH Newsletter!\nCheck your spam **Every Wednesday at 10 am EST.**\n\n**Make sure to check spam!**\nStupid email softwares think we are scamming you.\nThis is totally not the case.",
+          "Enter your email address to get the WFTH Newsletter!\nCheck your spam **Every Wednesday at 10 am EST.**",
         blurbColor: "#4db8ff",
         blurbGlow: "#ffe81f",
         blurbFont: "sans",
