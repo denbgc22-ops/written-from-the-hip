@@ -420,19 +420,26 @@ function renderPage() {
       ');">'
     : "";
 
-  // a single static "stream entry"-styled post embedded on a page (e.g. a
-  // reader-submitted quote on Public Dome-ain), reusing the exact look of
-  // the live Stream Of Consciousness feed (Off The Dome) so it reads as
-  // part of the same running commentary.
-  const streamPostHTML = pg.streamPost
+  // one or more static "stream entry"-styled posts embedded on a page (e.g.
+  // reader-submitted quotes on Public Dome-ain), reusing the exact look of
+  // the live Stream Of Consciousness feed (Off The Dome) so they read as
+  // part of the same running commentary. pg.streamPost can be a single
+  // {name, time, text} object or an array of them.
+  const streamPosts = pg.streamPost ? (Array.isArray(pg.streamPost) ? pg.streamPost : [pg.streamPost]) : [];
+  const streamPostHTML = streamPosts.length
     ? '<div class="stream-feed" style="overflow:visible;max-height:none;">' +
-      '<div class="stream-entry"><time>' +
-      esc(pg.streamPost.name) +
-      " on " +
-      esc(pg.streamPost.time) +
-      "</time><p>" +
-      esc(pg.streamPost.text) +
-      "</p></div>" +
+      streamPosts
+        .map(
+          (post) =>
+            '<div class="stream-entry"><time>' +
+            esc(post.name) +
+            " on " +
+            esc(post.time) +
+            "</time><p>" +
+            esc(post.text) +
+            "</p></div>"
+        )
+        .join("") +
       "</div>"
     : "";
 

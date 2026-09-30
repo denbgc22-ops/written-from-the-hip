@@ -2377,11 +2377,23 @@ FIN`,
           left: { photo: "assets/images/email-button.png", href: "mailto:publicdomeain@writtenfromthehip.com", hoverLabel: "Click Me" },
           right: { photo: "assets/images/email-button.png", href: "mailto:publicdomeain@writtenfromthehip.com", hoverLabel: "Click Me" },
         },
-        streamPost: {
-          name: "Matt From Dallas",
-          time: "Sep 30, 10:05 AM",
-          text: "“This is off the dome but a few chuckles and a cup of Joe is the best laxative.”",
-        },
+        streamPost: [
+          {
+            name: "Matt From Dallas",
+            time: "Sep 30, 10:05 AM",
+            text: "“This is off the dome but a few chuckles and a cup of Joe is the best laxative.”",
+          },
+          {
+            name: "Dave From Charlotte",
+            time: "Sep 30, 11:34 AM",
+            text: "“This is off the dome but a finger is the best utensil when eating yogurt”",
+          },
+          {
+            name: "Anne From Shreveport",
+            time: "Sep 30, 12:11 PM",
+            text: "“This is off the dome but you can do ANYTHING and brush it off by saying ‘it’s not like i’m gonna run for president’”",
+          },
+        ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
           { label: "Short Scripts", href: "page.html?p=teorges-shorts" },
