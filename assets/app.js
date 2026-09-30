@@ -606,7 +606,13 @@ function renderPage() {
         '<div class="subscribe-status" id="subscribeStatus"></div>'
       : "") +
     (p.orb
-      ? '<a class="orb" href="' + esc(p.orb.href) + '">' + esc(p.orb.label) + "</a>"
+      ? '<a class="orb' +
+        (p.orb.icon ? " orb-icon" : "") +
+        '" href="' +
+        esc(p.orb.href) +
+        '">' +
+        (p.orb.icon ? '<img src="' + esc(p.orb.icon) + '" alt="' + esc(p.orb.label || "Email") + '">' : esc(p.orb.label)) +
+        "</a>"
       : "") +
     '<a class="backlink" href="index.html">Back to the home page</a>' +
     legalHTML("page-legal");

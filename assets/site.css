@@ -719,6 +719,17 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   padding: 6px;
 }
 
+.orb-icon {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+.orb-icon img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.55));
+}
+
 .page-legal { margin: 90px auto 60px; }
 
 .script-title {
