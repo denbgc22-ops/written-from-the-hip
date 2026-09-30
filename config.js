@@ -2497,17 +2497,19 @@ FIN`,
       art: { type: "photo", photo: "assets/images/new-headshot.png", color: "#ffffff", shade: "#000000", light: "#ffffff", ring: "#a259ff", vignette: false },
       page: {
         oval: { fill: "#7a2bd0", text: "#ffb02e" },
-        panel: { from: "#7a5a1a", to: "#241905", link: "#ffe14d", layout: "left" },
         ribbon: "This is our stream of consciousness that we add to daily every day daily.",
-        links: [
-          {
-            label: "Click here to view\nour current stream\nof consciousness",
-            href: "stream.html",
-            wrap: true,
-          },
-        ],
-        pointer: { photo: "assets/images/click-here-photo.png", gap: 24 },
+        sidePhotos: {
+          left: "assets/images/off-the-dome-photo.png",
+          right: "assets/images/off-the-dome-photo-flipped.png",
+        },
+        blurb: "Click here to view\nour current stream\nof consciousness",
+        blurbHref: "stream.html",
+        blurbCenter: true,
+        blurbColor: "#ffe14d",
+        blurbGlow: true,
+        blurbBold: true,
         mapBlurb: "Where we write what we are currently thinking currently right now.",
+        mapLinks: [{ label: "Stream Of Consciousness", href: "stream.html" }],
       },
     },
     {
