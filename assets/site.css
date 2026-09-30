@@ -606,6 +606,10 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 }
 .blurb.has-orb { padding-right: 120px; }
 
+/* a blurb that links out (via pg.blurbHref) -- plain until hovered */
+.blurb-link { text-decoration: none; }
+.blurb-link:hover, .blurb-link:focus-visible { text-decoration: underline; }
+
 /* wraps the blurb in a gradient rectangle (e.g. Venus's bio paragraph) */
 .blurb-box {
   width: 430px;

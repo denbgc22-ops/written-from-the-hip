@@ -568,7 +568,7 @@ function renderPage() {
           : "") +
         '">' +
         (pg.blurbHref
-          ? '<a href="' + esc(pg.blurbHref) + '" style="color:inherit; text-decoration:none;">' + escBold(pg.blurb) + "</a>"
+          ? '<a class="blurb-link" href="' + esc(pg.blurbHref) + '" style="color:inherit;">' + escBold(pg.blurb) + "</a>"
           : escBold(pg.blurb)) +
         "</p>" +
         (pg.blurbBox ? "</div>" : "")
