@@ -2398,7 +2398,11 @@ FIN`,
         blurbGlow: "#ffe81f",
         blurbCenter: true,
         blurbHref: "newsletter.html",
-        mapLinks: [{ label: "$1 Street Head Massage - Issue #1", href: "newsletter.html" }],
+        subBlurb: { text: "Mosquitoes Are Vampires - Issue #2", color: "#6ec6ff", href: "newsletter-2.html" },
+        mapLinks: [
+          { label: "$1 Street Head Massage - Issue #1", href: "newsletter.html" },
+          { label: "Mosquitoes Are Vampires - Issue #2", href: "newsletter-2.html" },
+        ],
       },
     },
     {

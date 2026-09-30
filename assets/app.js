@@ -394,7 +394,9 @@ function renderPage() {
     : "";
 
   // a second, differently-colored line below the main blurb (e.g. calling
-  // out this week's specific Fark by name in its own glow color)
+  // out this week's specific Fark by name in its own glow color, or a
+  // second issue link stacked under the Latest Issue blurb). Optional href
+  // makes it clickable, underlining only on hover like the main blurb link.
   const subBlurbHTML = pg.subBlurb
     ? '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;color:' +
       (pg.subBlurb.color || "#ff3b3b") +
@@ -403,7 +405,9 @@ function renderPage() {
       "cc,0 0 22px " +
       (pg.subBlurb.color || "#ff3b3b") +
       '99;">' +
-      escBold(pg.subBlurb.text) +
+      (pg.subBlurb.href
+        ? '<a class="blurb-link" href="' + esc(pg.subBlurb.href) + '" style="color:inherit;">' + escBold(pg.subBlurb.text) + "</a>"
+        : escBold(pg.subBlurb.text)) +
       "</p>"
     : "";
 
