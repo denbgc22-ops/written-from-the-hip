@@ -372,8 +372,8 @@ function renderPage() {
     ? 260
     : familyBox
     ? familyBox.banner
-      ? 340
-      : 300
+      ? 420
+      : 380
     : panel.layout === "diagonal"
     ? 258
     : panelHeight(linkCols > 1 ? linkPerCol : links.length);
