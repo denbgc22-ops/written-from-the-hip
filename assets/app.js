@@ -167,6 +167,7 @@ function renderHome() {
   const foot = document.getElementById("home-footer");
   if (foot) {
     foot.innerHTML =
+      (SITE.homeSubscribeLine ? '<div class="home-subscribe-line">' + esc(SITE.homeSubscribeLine) + "</div>" : "") +
       '<div class="social-row">' +
       (SITE.socialLinks || [])
         .map(

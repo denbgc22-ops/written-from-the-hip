@@ -31,6 +31,9 @@ const SITE = {
     { label: "Contact", href: "mailto:hello@writtenfromthehip.com" },
   ],
 
+  /* ---- shown between the star field and the Instagram/X icons ----------- */
+  homeSubscribeLine: "Subscribe to join our growing family of 0,000,000,387",
+
   /* ---- the Instagram/X icons above the footer links on the home page ---- */
   socialLinks: [
     { label: "Instagram", href: "https://www.instagram.com/writtenfromthehip/?hl=en", icon: "assets/images/icon-instagram.png" },
