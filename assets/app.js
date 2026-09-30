@@ -506,9 +506,27 @@ function renderPage() {
     : "";
 
   // optional photos flanking the oval on either side (e.g. two Venus photos
-  // around the Venus oval)
+  // around the Venus oval). A plain string keeps the old inert-photo
+  // behavior; an object with an href makes it a clickable icon with a
+  // golden hover glow and a "hint" label that appears above it on hover
+  // (e.g. the "Click Me" email icons on Public Dome-ain).
   const sidePhotos = pg.sidePhotos || null;
-  const sidePhotoHTML = (src) => (src ? '<img class="side-photo" src="' + esc(src) + '" alt="">' : "");
+  const sidePhotoHTML = (side) => {
+    if (!side) return "";
+    const src = typeof side === "string" ? side : side.photo;
+    if (typeof side === "string" || !side.href) {
+      return '<img class="side-photo" src="' + esc(src) + '" alt="">';
+    }
+    return (
+      '<a class="side-photo-icon" href="' +
+      esc(side.href) +
+      '"><img class="side-photo" src="' +
+      esc(src) +
+      '" alt="">' +
+      (side.hoverLabel ? '<span class="side-photo-icon-hint">' + esc(side.hoverLabel) + "</span>" : "") +
+      "</a>"
+    );
+  };
 
   document.getElementById("page").innerHTML =
     planetNavHTML() +
@@ -572,6 +590,7 @@ function renderPage() {
         (pg.blurbBold ? "font-weight:700;" : "") +
         (pg.blurbSmall ? "font-size:14px;" : "") +
         (pg.blurbMarginTop ? "margin-top:" + pg.blurbMarginTop + "px;" : "") +
+        (pg.blurbMaxWidth ? "max-width:" + pg.blurbMaxWidth + "px;margin-left:auto;margin-right:auto;" : "") +
         // blurbGlow: true reuses blurbColor for the glow (the original
         // behavior); a color string glows a different color than the fill
         (pg.blurbGlow && (typeof pg.blurbGlow === "string" || pg.blurbColor)

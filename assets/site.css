@@ -657,6 +657,48 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
    them here so the row's justify-content:center can do the job instead */
 .side-photos-row .billboard { margin-left: 0; margin-right: 0; }
 
+/* a side-photo that's also a clickable icon: golden hover glow plus a
+   "hint" label that appears above it, only on hover (e.g. the "Click Me"
+   email icons flanking the Public Dome-ain oval) */
+.side-photo-icon {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.side-photo-icon .side-photo {
+  max-width: 80px;
+  max-height: 80px;
+  filter: drop-shadow(0 0 10px rgba(0, 194, 255, 0.45));
+  transition: filter 120ms linear, transform 120ms linear;
+}
+.side-photo-icon:hover .side-photo,
+.side-photo-icon:focus-visible .side-photo {
+  filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.95));
+  transform: scale(1.06);
+}
+.side-photo-icon-hint {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 120ms linear;
+  pointer-events: none;
+}
+.side-photo-icon:hover .side-photo-icon-hint,
+.side-photo-icon:focus-visible .side-photo-icon-hint {
+  opacity: 1;
+}
+
 /* a big call-to-action below the blurb: a label plus a photo, both part of
    one click target (e.g. "read this story") */
 .story-link {

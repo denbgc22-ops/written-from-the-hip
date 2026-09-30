@@ -2371,7 +2371,12 @@ FIN`,
         blurbCenter: true,
         blurbFont: "sans",
         blurbBold: true,
-        blurbMarginTop: 70,
+        blurbMarginTop: 20,
+        blurbMaxWidth: 700,
+        sidePhotos: {
+          left: { photo: "assets/images/email-button.png", href: "mailto:publicdomeain@writtenfromthehip.com", hoverLabel: "Click Me" },
+          right: { photo: "assets/images/email-button.png", href: "mailto:publicdomeain@writtenfromthehip.com", hoverLabel: "Click Me" },
+        },
         streamPost: {
           name: "Matt From Dallas",
           time: "Sep 30, 10:05 AM",
