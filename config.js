@@ -2442,7 +2442,7 @@ FIN`,
         panel: { from: "#2f8f4e", to: "#0a2a16", link: "#ffe14d", layout: "right" },
         familyBox: {
           heading: "Join The WFTH Family!",
-          photo: "assets/images/new-fam.png",
+          photo: "assets/images/new-family.png",
         },
         blurb:
           "Enter your email address to get the WFTH Newsletter!\nCheck your spam **Every Wednesday at 10 am EST.**\n\n**Make sure to check spam!**\nStupid email softwares think we are scamming you.\nThis is totally not the case.",
