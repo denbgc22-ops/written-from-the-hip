@@ -398,19 +398,22 @@ function renderPage() {
   // out this week's specific Fark by name in its own glow color, or a
   // second issue link stacked under the Latest Issue blurb). Optional href
   // makes it clickable, underlining only on hover like the main blurb link.
-  const subBlurbHTML = pg.subBlurb
-    ? '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;color:' +
-      (pg.subBlurb.color || "#ff3b3b") +
-      ";text-shadow:0 0 10px " +
-      (pg.subBlurb.color || "#ff3b3b") +
-      "cc,0 0 22px " +
-      (pg.subBlurb.color || "#ff3b3b") +
-      '99;">' +
-      (pg.subBlurb.href
-        ? '<a class="blurb-link" href="' + esc(pg.subBlurb.href) + '" style="color:inherit;">' + escBold(pg.subBlurb.text) + "</a>"
-        : escBold(pg.subBlurb.text)) +
-      "</p>"
-    : "";
+  const subBlurbHTML = (Array.isArray(pg.subBlurb) ? pg.subBlurb : pg.subBlurb ? [pg.subBlurb] : [])
+    .map(
+      (sb) =>
+        '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;color:' +
+        (sb.color || "#ff3b3b") +
+        ";text-shadow:0 0 10px " +
+        (sb.color || "#ff3b3b") +
+        "cc,0 0 22px " +
+        (sb.color || "#ff3b3b") +
+        '99;">' +
+        (sb.href
+          ? '<a class="blurb-link" href="' + esc(sb.href) + '" style="color:inherit;">' + escBold(sb.text) + "</a>"
+          : escBold(sb.text)) +
+        "</p>"
+    )
+    .join("");
 
   // a standalone centered photo below the blurb(s), with its own glow color
   const centerPhotoHTML = pg.centerPhoto
