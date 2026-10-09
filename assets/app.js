@@ -441,7 +441,9 @@ function renderPage() {
             esc(post.time) +
             "</time><p>" +
             esc(post.text) +
-            "</p></div>"
+            "</p>" +
+            (post.note ? '<p class="stream-note">' + esc(post.note) + "</p>" : "") +
+            "</div>"
         )
         .join("") +
       "</div>"

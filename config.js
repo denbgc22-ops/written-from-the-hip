@@ -2401,6 +2401,12 @@ FIN`,
             time: "Oct 7, 1:29 PM",
             text: "“This is off the dome but saying ‘Rome wasn’t built in one day’ after your mom bitches at you for not doing anything with your life is a cheat code.”",
           },
+          {
+            name: "John From Sheboygan",
+            time: "Oct 7, 4:55 PM",
+            text: "“This is off the dome but whenever I get a rental car I treat it like shit because it’s not like I own the damn thing.”",
+            note: "WFTH Editors note: We do not condone this behavior but we thought it was funny",
+          },
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
