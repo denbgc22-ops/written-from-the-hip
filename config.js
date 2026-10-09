@@ -32,7 +32,7 @@ const SITE = {
   ],
 
   /* ---- shown between the star field and the Instagram/X icons ----------- */
-  homeSubscribeLine: "Subscribe to join our growing family of 0,000,000,387",
+  homeSubscribeLine: "Subscribe to join our growing family of 0,000,000,402",
 
   /* ---- the Instagram/X icons above the footer links on the home page ---- */
   socialLinks: [
