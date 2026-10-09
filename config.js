@@ -2396,6 +2396,11 @@ FIN`,
             time: "Sep 30, 12:11 PM",
             text: "“This is off the dome but you can do ANYTHING and brush it off by saying ‘it’s not like i’m gonna run for president’”",
           },
+          {
+            name: "Jack From Winston-Salem",
+            time: "Oct 7, 1:29 PM",
+            text: "“This is off the dome but saying ‘Rome wasn’t built in one day’ after your mom bitches at you for not doing anything with your life is a cheat code.”",
+          },
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
