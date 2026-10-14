@@ -502,6 +502,23 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   border-radius: 8px;
 }
 
+/* several centerPhoto photos side by side (e.g. a two-photo Fark) */
+.center-photos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+}
+.center-photos img {
+  display: block;
+  width: 46%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* an empty bookshelf case, standing in for book covers to be added later */
 .bookshelf {
   position: relative;

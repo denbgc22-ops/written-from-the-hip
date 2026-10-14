@@ -416,12 +416,20 @@ function renderPage() {
     .join("");
 
   // a standalone centered photo below the blurb(s), with its own glow color
+  // centerPhoto.photos (an array) shows several photos side by side instead
+  const centerGlow = (pg.centerPhoto && pg.centerPhoto.glow) || "#ff3b3b";
   const centerPhotoHTML = pg.centerPhoto
-    ? '<img class="center-photo" src="' +
-      esc(pg.centerPhoto.photo) +
-      '" alt="" style="filter:drop-shadow(0 0 18px ' +
-      (pg.centerPhoto.glow || "#ff3b3b") +
-      ');">'
+    ? pg.centerPhoto.photos
+      ? '<div class="center-photos">' +
+        pg.centerPhoto.photos
+          .map((src) => '<img src="' + esc(src) + '" alt="" style="filter:drop-shadow(0 0 18px ' + centerGlow + ');">')
+          .join("") +
+        "</div>"
+      : '<img class="center-photo" src="' +
+        esc(pg.centerPhoto.photo) +
+        '" alt="" style="filter:drop-shadow(0 0 18px ' +
+        centerGlow +
+        ');">'
     : "";
 
   // one or more static "stream entry"-styled posts embedded on a page (e.g.
