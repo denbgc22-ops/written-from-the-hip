@@ -2436,11 +2436,13 @@ FIN`,
         subBlurb: [
           { text: "Mosquitoes Are Vampires - Issue #2", color: "#6ec6ff", href: "newsletter-2.html" },
           { text: "Childhood Sleepovers - Issue #3", color: "#6ec6ff", href: "newsletter-3.html" },
+          { text: "Liberty Biberty - Issue #4", color: "#6ec6ff", href: "newsletter-4.html" },
         ],
         mapLinks: [
           { label: "$1 Street Head Massage - Issue #1", href: "newsletter.html" },
           { label: "Mosquitoes Are Vampires - Issue #2", href: "newsletter-2.html" },
           { label: "Childhood Sleepovers - Issue #3", href: "newsletter-3.html" },
+          { label: "Liberty Biberty - Issue #4", href: "newsletter-4.html" },
         ],
       },
     },
