@@ -427,7 +427,9 @@ function renderPage() {
         "</div>"
       : '<img class="center-photo" src="' +
         esc(pg.centerPhoto.photo) +
-        '" alt="" style="filter:drop-shadow(0 0 18px ' +
+        '" alt="" style="' +
+        (pg.centerPhoto.maxWidth ? "max-width:" + pg.centerPhoto.maxWidth + "px;width:90%;" : "") +
+        "filter:drop-shadow(0 0 18px " +
         centerGlow +
         ');">'
     : "";
@@ -474,10 +476,15 @@ function renderPage() {
     // hint shows the caption above the book, only on hover, right at the
     // top of its golden glow
     const hint = b.caption ? '<span class="bookshelf-book-hint">' + esc(b.caption) + "</span>" : "";
+    // a book with no href (e.g. a magazine with nothing to buy) is shown
+    // but isn't a link
+    const tag = b.href ? "a" : "span";
     return (
-      '<a class="bookshelf-book" href="' +
-      esc(b.href) +
-      '" style="top:' +
+      "<" +
+      tag +
+      ' class="bookshelf-book"' +
+      (b.href ? ' href="' + esc(b.href) + '" target="_blank"' : "") +
+      ' style="top:' +
       top +
       "px;left:" +
       left +
@@ -485,11 +492,13 @@ function renderPage() {
       BOOK_W +
       "px;height:" +
       BOOK_H +
-      'px;" target="_blank"><img src="' +
+      'px;"><img src="' +
       esc(b.photo) +
       '" alt="">' +
       hint +
-      "</a>"
+      "</" +
+      tag +
+      ">"
     );
   };
   const bookshelfHTML = pg.bookshelf
