@@ -2422,6 +2422,26 @@ FIN`,
             time: "Oct 18, 8:55 AM",
             text: "“This is off the dome but, Galaxy Gas should make Galaxy Sas, so every time you hit the nitrous you get a boost of sassiness.”",
           },
+          {
+            name: "Will From Sydney, Australia",
+            time: "Oct 20, 12:36 AM",
+            text: "“This is off the dome but jumping in a body of water and petty theft from a struggling bodega are 1 and 2 when it comes to beating a hangover.”",
+          },
+          {
+            name: "Sam From Florence",
+            time: "Oct 20, 4:41 PM",
+            text: "“This is off the dome but, what was the housewife equivalent to burning the tuna casserole 2000 years ago? Imagine being a Roman soldier and coming home to fucking bread and olives again.”",
+          },
+          {
+            name: "William From Guangzhou, China",
+            time: "Oct 21, 3:17 AM",
+            text: "“This is off the dome but I’m currently sitting in the Guangzhou airport with no sign of Venus Williams yet. However, I think that Chinese futuristic toilets may be a bigger threat to humanity than the rapid growth of AI and data centers.”",
+          },
+          {
+            name: "Dan From Neptune",
+            time: "Oct 21, 9:13 AM",
+            text: "“This is off the dome, but graduate school is just daycare for unemployed people.”",
+          },
         ],
         mapBlurb: "Everything we have written from the hip.",
         mapLinks: [
