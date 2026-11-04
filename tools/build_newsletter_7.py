@@ -53,6 +53,7 @@ open_paras = [
     ("margin:0 0 16px;", "**Yo,**"),
     ("margin:0 0 16px;", "I tried out a **super niche** costume over the weekend, and it did not land. Turns out no one knows who the **Purple Hosier is in Dude Perfect’s Ping Pong Trick Shots 3**. We were once a great country."),
     ("margin:0 0 16px;", "It’s 10 am Eastern Standard Time on a Wednesday. Welcome Home."),
+    ("margin:0 0 16px;", "**Domo Arigato,**"),
     ("margin:0 0 16px;", "**P.S.** If you forward this email to **three people** and those **three people** forward it to **three more people**, and so on/so forth. We could create our own **pyramid scheme**. You make **money**, we make **money**, we all make **money**. We would like for that to happen."),
     ("margin:0 0 10px;", "**Domo Arigato,**"),
 ]
@@ -100,8 +101,9 @@ waiver = f'''        <!-- ================= SECTION: FANTASY FOOTBALL WAIVER WIR
               <tr>
                 <td style="padding:24px 26px;">
                   <div class="glow-red" style="color:#ff3b3b; font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:0.03em; text-align:center; margin-bottom:12px;">
-                    Waiver Wire Week Seven: An Extra Hour Of Sleep For Daylight Savings
+                    Waiver Wire Week Seven: Daylight Savings
                   </div>
+                  <img src="https://writtenfromthehip.com/assets/images/waiver-wire-daylight-savings.png" width="360" alt="Clocks falling back from 2:00 AM to 1:00 AM" style="display:block; width:360px; max-width:100%; height:auto; margin:0 auto 18px; border-radius:8px;">
                   <div style="font-family:Verdana, Geneva, sans-serif; font-size:15px; line-height:1.6; color:#b8e2ff;">
 {waiver_body}
                   </div>
