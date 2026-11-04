@@ -2728,7 +2728,7 @@ FIN`,
           },
           {
             photo: "assets/images/book-rainbow-fish.jpg",
-            href: "https://www.amazon.com/dp/1558580093",
+            href: "https://www.amazon.com/dp/1558585362",
             shelf: 0,
             caption: "Rainbow Fish 8/10",
           },
