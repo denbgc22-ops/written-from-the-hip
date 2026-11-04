@@ -273,6 +273,7 @@ venus_rows = [
     "She is pretty much a reverse Robin Hood in the tennis world. **Which is fucking sick**. She needs to buy in on this **villain arc** she’s created for herself. According to her WTA bio she has **$43,357,200** in winnings. I need that **doubled** solely from wildcard tournament appearances.",
 ]
 venus = venus_top
+venus += '                  <img src="https://writtenfromthehip.com/assets/images/venus-week-seven.png" width="100%" alt="Venus Williams at the Hong Kong Open" style="display:block; max-width:500px; border-radius:8px; margin:22px auto 0;">\n'
 venus += '                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">\n'
 for i, txt in enumerate(venus_rows):
     venus += venus_row("", txt, last=i == len(venus_rows) - 1)
