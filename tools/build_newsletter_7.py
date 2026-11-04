@@ -229,7 +229,7 @@ fark_inner = ps([
     "I can see the vision here.",
     "But also if you take a step back you then realize that for Halloween you can literally be whatever you want, and Martha decided to be homeless. It’s a bold strategy, Cotton. Let’s see if it pays off for ‘em.",
     "It indeed did not.",
-    "I’m excited for what she’s gonna be for Halloween next year. My money is on Snoop Dog.",
+    "I’m excited for what she’s gonna be for Halloween next year. My money is on Snoop Dogg.",
 ])
 fark = f'''        <!-- ================= SECTION: FARK OF THE WEEK ================= -->
         <tr>
