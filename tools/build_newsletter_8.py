@@ -66,6 +66,9 @@ open_paras = [
     ("margin:0 0 10px;", "**Domo Arigato,**"),
 ]
 new_paras = "\n".join(f'                    <p style="{st}">{fmt(t)}</p>\n' for st, t in open_paras)
+# the TouchTunes/GoFundMe link is blue instead of the surrounding yellow
+new_paras = new_paras.replace('style="color:inherit; text-decoration:underline;">Teorge GoFundMe',
+                              'style="color:#00c6ff; -webkit-text-fill-color:#00c6ff; text-decoration:underline;">Teorge GoFundMe')
 welcome = welcome[:a] + new_paras + welcome[b:]
 
 
