@@ -272,17 +272,7 @@ venus_rows = [
     "Being a pro at **14** is crazy. **Kudos** to my girl **Venus**. This is why Venus is my **goat**. She also went pro before her sister Serena which means that she is better than her in every way.",
 ]
 venus = venus_top
-venus += f'''                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">
-                    <tr>
-                      <td width="50%" valign="middle" style="padding-right:6px;">
-                        <img src="{IMG}venus-week-eight.jpg" width="100%" alt="A young Venus Williams hitting a backhand" style="display:block; width:100%; height:auto; border-radius:8px;">
-                      </td>
-                      <td width="50%" valign="middle" style="padding-left:6px;">
-                        <img src="{IMG}venus-week-eight-me.jpg" width="100%" alt="Me at 14 holding a lacrosse trophy" style="display:block; width:100%; height:auto; border-radius:8px;">
-                      </td>
-                    </tr>
-                  </table>
-'''
+venus += f'                  <img src="{IMG}venus-week-eight.jpg" width="396" alt="A young Venus Williams hitting a backhand" style="display:block; width:396px; max-width:100%; height:auto; border-radius:8px; margin:22px auto 0;">\n'
 venus += '                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">\n'
 for i, txt in enumerate(venus_rows):
     venus += venus_row("", txt, last=i == len(venus_rows) - 1)
