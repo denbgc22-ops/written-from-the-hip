@@ -483,7 +483,9 @@ function renderPage() {
       "<" +
       tag +
       ' class="bookshelf-book"' +
-      (b.href ? ' href="' + esc(b.href) + '" target="_blank"' : "") +
+      // our own pages (like a book's review) open in the same tab; outside
+      // links open a new one
+      (b.href ? ' href="' + esc(b.href) + '"' + (/^https?:/.test(b.href) ? ' target="_blank"' : "") : "") +
       ' style="top:' +
       top +
       "px;left:" +
