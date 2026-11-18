@@ -2588,6 +2588,25 @@ FIN`,
             href: "bio.html?b=gomas",
           },
         ],
+        // a second box under the lineup: every week's waiver wire pickup,
+        // newest first; each photo opens that week's write-up
+        extraBoxes: [
+          {
+            oval: { fill: "#d81b2a", text: "#ffe14d", label: "Waiver Wire Pickups" },
+            panel: { from: "#1565c0", to: "#0a1f38" },
+            items: [
+            { name: "Week 9: Reality Television", photo: "assets/images/waiver-wire-bachelor.jpg", position: "center 25%", href: "section.html?s=waiver&issue=newsletter-9.html" },
+            { name: "Week 8: Podcasts", photo: "assets/images/waiver-wire-podcasts.jpg", href: "section.html?s=waiver&issue=newsletter-8.html" },
+            { name: "Week 7: Daylight Savings", photo: "assets/images/waiver-wire-daylight-savings.png", href: "section.html?s=waiver&issue=newsletter-7.html" },
+            { name: "Week 6: Barbour Jacket", photo: "assets/images/waiver-wire-barbour-jacket.png", href: "section.html?s=waiver&issue=newsletter-6.html" },
+            { name: "Week 5: Tesla Roadster", photo: "assets/images/waiver-wire-tesla-roadster.png", href: "section.html?s=waiver&issue=newsletter-5.html" },
+            { name: "Week 4: Mark Zuckerberg", photo: "assets/images/waiver-wire-zuckerberg.jpeg", href: "section.html?s=waiver&issue=newsletter-4.html" },
+            { name: "Week 3: Chet Holmgren", photo: "assets/images/waiver-wire-chet-holmgren.jpg", href: "section.html?s=waiver&issue=newsletter-3.html" },
+            { name: "Week 2: Brian Dawkins", photo: "assets/images/brian-dawkins.png", href: "section.html?s=waiver&issue=newsletter-2.html" },
+            { name: "Week 1: Dri Archer", photo: "assets/images/dri-archer.png", href: "section.html?s=waiver&issue=newsletter.html" },
+            ],
+          },
+        ],
         mapBlurb: "This answers any questions you may have about Teorge and Gomas.",
         mapLinks: [
           { label: "Teorge", href: "bio.html?b=teorge" },

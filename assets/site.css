@@ -605,7 +605,9 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   object-fit: contain;
 }
 .roster-half:hover .roster-photo,
-.roster-half:focus-visible .roster-photo {
+.roster-half:focus-visible .roster-photo,
+.roster-cell:hover .roster-photo,
+.roster-cell:focus-visible .roster-photo {
   transform: scale(1.06);
   box-shadow: 0 0 24px rgba(57, 255, 20, 0.9);
 }
@@ -618,7 +620,32 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   color: #ffe14d;
 }
 .roster-half:hover .roster-name,
-.roster-half:focus-visible .roster-name { color: #ffffff; }
+.roster-half:focus-visible .roster-name,
+.roster-cell:hover .roster-name,
+.roster-cell:focus-visible .roster-name { color: #ffffff; }
+
+/* pg.extraBoxes: a box like the Starting Lineup one, but a grid of many
+   green-circle photos (three to a row) that grows to fit them */
+.billboard + .billboard { margin-top: 56px; }
+.panel.panel-grid { height: auto; padding: 44px 10px 22px; }
+.roster-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 8px;
+}
+.panel .roster-cell {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  white-space: normal;
+  text-decoration: none;
+}
+.roster-cell .roster-photo { width: 84px; height: 84px; border-width: 4px; }
+.roster-cell .roster-name { font-size: 11px; line-height: 1.35; }
 
 .roster-meta {
   margin-top: -8px;

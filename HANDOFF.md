@@ -62,6 +62,9 @@ No build step. Edit files, commit, push, Netlify publishes.
    On **Fark**, give the new week's `subBlurb` an
    `href: "section.html?s=fark&issue=newsletter-N.html"`, and move last
    week's line to the top of `photoLinks`.
+   On **Starting Lineup**, add the new week's waiver wire pickup to the top
+   of the Waiver Wire Pickups box (`extraBoxes[0].items`) with
+   `href: "section.html?s=waiver&issue=newsletter-N.html"`.
 6. Commit and push; confirm the Netlify deploy; then send the issue.
 
 ## Sending a newsletter (Resend)

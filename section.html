@@ -8,9 +8,10 @@
 <!--
   Shows one section of one week's newsletter on its own page.
   Link to it as section.html?s=book&issue=newsletter-9.html (s = book or
-  fark). The page loads that newsletter and copies just that section (plus
+  fark or waiver). The page loads that newsletter and copies just that section (plus
   its planet divider above it), so nothing has to be written twice. Book
-  Coverz books and the Fark week list in config.js link here.
+  Coverz books, the Fark week list and the Waiver Wire Pickups box in
+  config.js link here.
 -->
 <style>
   body { margin:0; padding:0; background-color:#000000; background-image:url('assets/images/stars-denser.png'); background-repeat:repeat; font-family: Verdana, Geneva, Arial, sans-serif; }
@@ -37,6 +38,7 @@
   const SECTIONS = {
     book: { section: /BOOK COVER\b/, divider: /DIVIDER: BOOK COVERZ/, page: "book-coverz", back: "Book Coverz", title: "Book Review" },
     fark: { section: /FARK OF THE WEEK/, divider: /DIVIDER: FARK/, page: "fark", back: "Fark", title: "Fark" },
+    waiver: { section: /WAIVER/, divider: /DIVIDER: NFL/, page: "lineup", back: "Starting Lineup", title: "Waiver Wire" },
   };
   const S = SECTIONS[params.get("s")] || SECTIONS.book;
   const back = document.getElementById("back");

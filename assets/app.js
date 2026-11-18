@@ -382,6 +382,54 @@ function renderPage() {
   // unused gradient block
   const panelIsEmpty = !roster.length && !links.length && !pg.pointer && !columns.length && !familyBox;
 
+  // pg.extraBoxes: more boxes styled just like the main one (an oval over
+  // a gradient panel), each holding a grid of clickable green-circle photos
+  // with a name under each -- e.g. "Waiver Wire Pickups" on Starting Lineup
+  const extraBoxesHTML = (pg.extraBoxes || [])
+    .map((box) => {
+      const bo = box.oval || {};
+      const bp = box.panel || {};
+      const label = bo.label || "";
+      const size = label.length <= 16 ? 21 : Math.max(11, 21 * (16 / label.length));
+      return (
+        '<div class="billboard">' +
+        '<div class="oval" style="background:radial-gradient(circle at 34% 26%, ' +
+        tint(bo.fill) +
+        ", " +
+        (bo.fill || "#1f74c4") +
+        ')"><span style="color:' +
+        (bo.text || "#ffe14d") +
+        ";font-size:" +
+        size.toFixed(1) +
+        'px">' +
+        esc(label) +
+        "</span></div>" +
+        '<div class="panel panel-grid" style="background:linear-gradient(160deg, ' +
+        (bp.from || "#2a6ea8") +
+        ", " +
+        (bp.to || "#0c2438") +
+        ')"><div class="roster-grid">' +
+        (box.items || [])
+          .map(
+            (r) =>
+              '<a class="roster-cell" href="' +
+              esc(r.href) +
+              '"><img class="roster-photo" src="' +
+              esc(r.photo) +
+              '" alt="' +
+              esc(r.name) +
+              '"' +
+              (r.position ? ' style="object-position:' + esc(r.position) + '"' : "") +
+              '><span class="roster-name">' +
+              esc(r.name) +
+              "</span></a>"
+          )
+          .join("") +
+        "</div></div></div>"
+      );
+    })
+    .join("");
+
   // an optional big call-to-action below the blurb: a label plus a photo,
   // the whole thing one click target (e.g. "read this story")
   const storyLinkHTML = pg.storyLink
@@ -627,6 +675,7 @@ function renderPage() {
         "</div>") +
     "</div>" +
     (sidePhotos ? sidePhotoHTML(sidePhotos.right, "left") + "</div>" : "") +
+    extraBoxesHTML +
     (pg.blurb
       ? (pg.blurbBox
           ? '<div class="blurb-box" style="' +
