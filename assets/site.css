@@ -644,7 +644,15 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   white-space: normal;
   text-decoration: none;
 }
-.roster-cell .roster-photo { width: 84px; height: 84px; border-width: 4px; }
+.roster-cell .roster-photo {
+  width: 84px;
+  height: 84px;
+  border-width: 4px;
+  border-color: var(--ring, #39ff14);
+  box-shadow: 0 0 16px var(--ring-glow, rgba(57, 255, 20, 0.6));
+}
+.roster-cell:hover .roster-photo,
+.roster-cell:focus-visible .roster-photo { box-shadow: 0 0 24px var(--ring-hover, rgba(57, 255, 20, 0.9)); }
 .roster-cell .roster-name { font-size: 11px; line-height: 1.35; }
 
 .roster-meta {

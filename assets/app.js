@@ -384,7 +384,9 @@ function renderPage() {
 
   // pg.extraBoxes: more boxes styled just like the main one (an oval over
   // a gradient panel), each holding a grid of clickable green-circle photos
-  // with a name under each -- e.g. "Waiver Wire Pickups" on Starting Lineup
+  // with a name under each -- e.g. "Waiver Wire Pickups" on Waiver Wire.
+  // box.ring recolors the circles (e.g. red on Fark); box.oval.glow makes
+  // the oval text glow like the page's own oval
   const extraBoxesHTML = (pg.extraBoxes || [])
     .map((box) => {
       const bo = box.oval || {};
@@ -401,10 +403,14 @@ function renderPage() {
         (bo.text || "#ffe14d") +
         ";font-size:" +
         size.toFixed(1) +
-        'px">' +
+        "px" +
+        (bo.glow ? ";text-shadow:0 0 10px " + (bo.text || "#ffe14d") + "cc,0 0 24px " + (bo.text || "#ffe14d") + "99" : "") +
+        '">' +
         esc(label) +
         "</span></div>" +
-        '<div class="panel panel-grid" style="background:linear-gradient(160deg, ' +
+        '<div class="panel panel-grid" style="' +
+        (box.ring ? "--ring:" + box.ring + ";--ring-glow:" + box.ring + "99;--ring-hover:" + box.ring + "e6;" : "") +
+        "background:linear-gradient(160deg, " +
         (bp.from || "#2a6ea8") +
         ", " +
         (bp.to || "#0c2438") +
@@ -675,7 +681,9 @@ function renderPage() {
         "</div>") +
     "</div>" +
     (sidePhotos ? sidePhotoHTML(sidePhotos.right, "left") + "</div>" : "") +
-    extraBoxesHTML +
+    // extraBoxes sit right under the main box, or with extraBoxesBelow
+    // under the center photo instead (e.g. Past Farks on Fark)
+    (pg.extraBoxesBelow ? "" : extraBoxesHTML) +
     (pg.blurb
       ? (pg.blurbBox
           ? '<div class="blurb-box" style="' +
@@ -724,6 +732,7 @@ function renderPage() {
     streamPostHTML +
     centerPhotoHTML +
     photoLinksHTML +
+    (pg.extraBoxesBelow ? extraBoxesHTML : "") +
     bookshelfHTML +
     storyLinkHTML +
     (pg.subscribeForm

@@ -2726,17 +2726,25 @@ FIN`,
         blurbBold: true,
         subBlurb: { text: "WEEK NINE FARK: EVERYONE WHO ISN'T ROBERT PATTINSON", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-9.html" },
         centerPhoto: { photo: "assets/images/fark-week-nine-pattinson.jpg", glow: "#ff3b3b", maxWidth: 420 },
-        // every past week's Fark under the photo, newest first; each opens
-        // that week's Fark from its newsletter
-        photoLinks: [
-          { text: "WEEK EIGHT FARK: JENSEN HUANG", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-8.html" },
-          { text: "WEEK SEVEN FARK: MARTHA STEWART", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-7.html" },
-          { text: "WEEK SIX FARK: KYLIAN MBAPPE THOUGHT MAO ZEDONG WAS A DICTATOR", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-6.html" },
-          { text: "WEEK FIVE FARK: ELIZABETH HOLMES", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-5.html" },
-          { text: "WEEK FOUR FARK: THE COLORADO FOOTBALL COACH THAT LEFT THE OFFENSIVE PLAYBOOK AT THE HOTEL BAR", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-4.html" },
-          { text: "WEEK THREE FARK: THE RUSSIAN LAB WORKER WHO DROPPED A TUBE CONTAINING THE 200 YEAR OLD PNEUMONIC PLAGUE", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-3.html" },
-          { text: "WEEK TWO FARK: WISN REPORTER GETS RELAX PAL'D", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter-2.html" },
-          { text: "WEEK ONE FARK: CJ BAILEY", color: "#ff3b3b", href: "section.html?s=fark&issue=newsletter.html" },
+        // every past week's Fark in a box under the photo, newest first;
+        // each photo opens that week's Fark from its newsletter
+        extraBoxesBelow: true,
+        extraBoxes: [
+          {
+            oval: { fill: "#3a3a3a", text: "#ff3b3b", label: "Past Farks", glow: true },
+            panel: { from: "#1c1c1c", to: "#000000" },
+            ring: "#ff3b3b",
+            items: [
+              { name: "Jensen Huang", photo: "assets/images/fark-week-eight-jensen.jpg", href: "section.html?s=fark&issue=newsletter-8.html" },
+              { name: "Martha Stewart", photo: "assets/images/fark-week-seven-martha.jpg", href: "section.html?s=fark&issue=newsletter-7.html" },
+              { name: "Kylian Mbappe", photo: "assets/images/fark-week-six-mbappe.png", href: "section.html?s=fark&issue=newsletter-6.html" },
+              { name: "Elizabeth Holmes", photo: "assets/images/fark-week-five-holmes.png", position: "90% center", href: "section.html?s=fark&issue=newsletter-5.html" },
+              { name: "Colorado Football Coach", photo: "assets/images/fark-week-four-left.jpg", href: "section.html?s=fark&issue=newsletter-4.html" },
+              { name: "Russian Lab Worker", photo: "assets/images/fark-week-three.png", href: "section.html?s=fark&issue=newsletter-3.html" },
+              { name: "Relax Pal Guy", photo: "assets/images/fark-week-two.png", href: "section.html?s=fark&issue=newsletter-2.html" },
+              { name: "CJ Bailey", photo: "assets/images/fark-week-one.png", href: "section.html?s=fark&issue=newsletter.html" },
+            ],
+          },
         ],
       },
     },
