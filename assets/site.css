@@ -655,6 +655,14 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .roster-cell:focus-visible .roster-photo { box-shadow: 0 0 24px var(--ring-hover, rgba(57, 255, 20, 0.9)); }
 .roster-cell .roster-name { font-size: 11px; line-height: 1.35; }
 
+/* box.lines: a text list inside an extra box (e.g. Venus Fun Facts) */
+.box-lines { position: relative; z-index: 3; padding: 0 22px; text-align: left; }
+.box-line { margin: 0 0 16px; font-family: Verdana, Geneva, sans-serif; font-size: 14px; line-height: 1.5; color: #ffffff; white-space: pre-line; }
+.box-line:last-child { margin-bottom: 0; }
+.box-line-lead { color: #ffe14d; font-weight: 700; }
+.panel .box-line-link, .panel .box-line-url { position: static; white-space: normal; color: #39ff14; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+.box-line-link:hover, .box-line-url:hover { text-decoration: underline; }
+
 .roster-meta {
   margin-top: -8px;
   font-size: 13px;

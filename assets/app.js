@@ -414,7 +414,36 @@ function renderPage() {
         (bp.from || "#2a6ea8") +
         ", " +
         (bp.to || "#0c2438") +
-        ')"><div class="roster-grid">' +
+        ')">' +
+        (box.lines
+          ? // box.lines: a list of text entries instead of photos (e.g. the
+            // Venus Fun Facts). Each is {lead, text, href, url}: lead is the
+            // bold start ("Week 1:"), href links the "(Click ...)" bit at the
+            // end (or the whole entry if it has none), url shows a clickable
+            // web address under the text
+            '<div class="box-lines">' +
+            box.lines
+              .map((l) => {
+                let body = escBold(l.text || "");
+                if (l.href) {
+                  const a = '<a class="box-line-link" href="' + esc(l.href) + '">';
+                  body = /\([^()]*\)\s*$/.test(body)
+                    ? body.replace(/\(([^()]*)\)\s*$/, a + "($1)</a>")
+                    : a + body + "</a>";
+                }
+                return (
+                  '<p class="box-line">' +
+                  (l.lead ? '<span class="box-line-lead">' + esc(l.lead) + "</span> " : "") +
+                  body +
+                  (l.url
+                    ? '<br><a class="box-line-url" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.url) + "</a>"
+                    : "") +
+                  "</p>"
+                );
+              })
+              .join("") +
+            "</div>"
+          : '<div class="roster-grid">' +
         (box.items || [])
           .map(
             (r) =>
@@ -431,7 +460,8 @@ function renderPage() {
               "</span></a>"
           )
           .join("") +
-        "</div></div></div>"
+        "</div>") +
+        "</div></div>"
       );
     })
     .join("");
@@ -732,9 +762,12 @@ function renderPage() {
     streamPostHTML +
     centerPhotoHTML +
     photoLinksHTML +
-    (pg.extraBoxesBelow ? extraBoxesHTML : "") +
+    (pg.extraBoxesBelow === true ? extraBoxesHTML : "") +
     bookshelfHTML +
     storyLinkHTML +
+    // extraBoxesBelow: "story" puts them under the story link instead
+    // (e.g. the Venus boxes under Click to play game)
+    (pg.extraBoxesBelow === "story" ? extraBoxesHTML : "") +
     (pg.subscribeForm
       ? '<form class="subscribe-form" id="subscribeForm">' +
         '<input type="email" id="subscribeEmail" placeholder="you@email.com" required>' +
