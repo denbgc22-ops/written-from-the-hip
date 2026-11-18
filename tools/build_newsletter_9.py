@@ -205,11 +205,11 @@ otd_paras = [
     "But no.",
     "I have tried other strategies, such as listening to intense Carl Jung philosophy and doing military breathing techniques. To no avail. Carl Jung told me to confront my shadow self. My shadow self was also awake. We made eye contact and neither of us blinked, it was really freaky and I am thoroughly unsettled.",
     "This led me to fall back to the original method of getting some good solid shut eye.",
-    "I have started to count sheep, and now I don’t think I can get them out of my head. I constantly see their faces. Sheep upon sheep upon sheep. Stacking on top of each other, watching me, staring at me, everytime I close my eyes.",
+    "I have started to count sheep, and now I don’t think I can get them out of my head. I constantly see their faces. Sheep upon sheep upon sheep. Stacking on top of each other, watching me, staring at me, every time I close my eyes.",
     "Typing this now I am getting the shivers. I can’t seem to escape them, but it isn’t only the sheep that is driving me insane.",
     "Have you ever tried to see how high you could count up to?",
-    "Like sure everyone knows what the really big numbers are, but have you ever actually counted them, and not only have you counted, but have you counted them as if they were sheep. Have you ever counted so many sheep that you couldn’t count anymore so you go back to the beginning and you count them with a name. Sheep 4,000 I have named Brenda, Sheep 4,001 one is also named Brenda.",
-    "That was an honest mistake but I couldn’t take it back because both Brenda’s really seemed to like their names. Once I got up to the 10,000s I started to give them job titles. Mike from HR is confused why he isn’t the top sales associate and Jim is just glad that he has a job, he’s the janitor. But he’s the janitor everyone likes and says what's up to. Not the one who gives you mean glances and makes you feel horrible, that would be Trisha. Stay away from Trisha.",
+    "Like sure everyone knows what the really big numbers are, but have you ever actually counted them, and not only have you counted, but have you counted them as if they were sheep. Have you ever counted so many sheep that you couldn’t count anymore so you go back to the beginning and you count them with a name. Sheep 4,000 I have named Brenda, Sheep 4,001 is also named Brenda.",
+    "That was an honest mistake but I couldn’t take it back because both Brendas really seemed to like their names. Once I got up to the 10,000s I started to give them job titles. Mike from HR is confused why he isn’t the top sales associate and Jim is just glad that he has a job, he’s the janitor. But he’s the janitor everyone likes and says what's up to. Not the one who gives you mean glances and makes you feel horrible, that would be Trisha. Stay away from Trisha.",
     "I can’t even tell you what number I got to because I was actually able to fall asleep, all I know is that I can see the sheep still, and they are haunting me. Not in a scary way. But more in a passive aggressive sneak diss type of way. I close my eyes and one of them says “per my last baaa.” Since when have the sheep gone corporate?",
     "But they shouldn’t be able to haunt me because I am the wolf among them. It’s on my lock screen. I didn’t even choose my lock screen. It chose me.",
     "Anyway, I slept four hours, took my Adderall, and answered all of my emails and completed my tasks for the day. It is 10am. And that is why I am writing this now.",
@@ -247,7 +247,7 @@ fark_inner = ps([
     "“THEY HAD A $3 DRAFT DEAL. LET IT BE! LET IT BE!”.",
     "Nonetheless, the Beatles? Still in motion.",
     "A year later. 1965, the godfather of all investing, the man who created the pipeline, the lax bro before lax bro’s and the pump and dumper who didn’t have to pump and dump: Warren Buffett gained control of Berkshire Hathaway and pivoted away from textiles into a massive multinational holding and investment conglomerate.",
-    "He stayed in motion, and now has since retired, leaving space for one man to fill his void. One white boy whose motion must break the bounds of science, song, and compounding interest. Someone who can be a vampire, batman, wizard, backwards agent in an indescribable mind-fuck of a movie, bank robber, lighthouse keeper, space clone, preacher, hearthrob, and an evil sci-fi villain all in one. I don't even think he is doing this for work, it seems more like he’s just making sure that he has enough costumes for Halloween.",
+    "He stayed in motion, and now has since retired, leaving space for one man to fill his void. One white boy whose motion must break the bounds of science, song, and compounding interest. Someone who can be a vampire, batman, wizard, backwards agent in an indescribable mind-fuck of a movie, bank robber, lighthouse keeper, space clone, preacher, heart throb, and an evil sci-fi villain all in one. I don't even think he is doing this for work, it seems more like he’s just making sure that he has enough costumes for Halloween.",
     "Pretty soon they’re gonna ask him to do the Denzel Washington biopic, and he’ll probably win an Oscar for it.",
     "And he does all of this whilst looking malnourished and like he hasn’t slept since 2008. He’s literally method acting by being alive.",
     "Newton had gravity. The Beatles had the charts. Buffett had compound interest. Robert Pattinson has all three, plus a jawline that could cut glass, and he still talks like he has no idea what he is doing anymore. It is so ridiculously cool.",
@@ -336,6 +336,8 @@ i0 = pub_section.index(open_tag) + len(open_tag)
 j0 = pub_section.index("                      </table>\n                    </td></tr>")
 pubdome = pub_section[:i0] + sub_rows + pub_section[j0:]
 
+# sign-off fix for this issue (the shared template says "Thx 4 for")
+footer = footer.replace("Thx 4 for taking the time", "Thx 4 taking the time")
 out = header + welcome + nfl_divider + waiver + d_book + book + d_otd + otd + d_fark + fark + d_venus + venus + d_pub + pubdome + footer
 open(ROOT + "newsletter-9.html", "w", encoding="utf-8").write(out)
 print("written", len(out))
