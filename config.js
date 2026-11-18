@@ -2718,7 +2718,7 @@ FIN`,
         ribbon: "we judge a book only by how cool the cover is",
         oval: { fill: "#1f5c3a", text: "#ffd700", label: "Weekly Book Cover Recommendations" },
         blurb:
-          "Click on a book to read our synopsis",
+          "Click on a book to read our book cover synopsis",
         blurbBox: { from: "#f08a1e", to: "#8a3a00", width: 600 },
         blurbColor: "#6ec6ff",
         blurbFont: "oval",
