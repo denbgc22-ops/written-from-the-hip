@@ -2692,8 +2692,8 @@ FIN`,
         },
         blurb:
           "You have entered all things Venus Williams. Here at WFTH we believe that Venus does not get the full credit/support that she deserves.",
-        blurbBox: { from: "#1565c0", to: "#0a1f38", width: 762 },
-        blurbColor: "#ffe14d",
+        blurbBox: { from: "#7a2bd0", to: "#22083f", width: 762 },
+        blurbColor: "#39ff14",
         blurbGlow: true,
         blurbFont: "oval",
         storyLink: {
