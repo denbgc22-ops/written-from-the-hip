@@ -2711,7 +2711,7 @@ FIN`,
               { lead: "Venus Fun Fact 1:", text: "She is a Jehovah Witness. I swear to god I am not lying you can search this up." },
               { lead: "Venus Fun Fact 2:", text: "Her glam routine starts with a detoxifying tea tree cream cleanser, hyaluronic acid, vitamin C, and retinol. And finishes with a drop of rose oil, with a squirt of sunscreen." },
               { lead: "Venus Fun Fact 3:", text: "Venus is a movie star. Saniyya Sidney played Venus Williams in the 2021 biographical drama King Richard. Will Smith won best actor for this movie in the 94th Oscars right after he slapped Chris Rock because he said Jada Pinkett Smith looked like G.I. Jane." },
-              { lead: "Venus Fun Fact 4:", text: "Venus Williams’ karaoke song of choice is Gold Dust Woman by Fleetwood Mac. (Click fun fact for full story)", href: "section.html?s=venus&issue=newsletter-4.html" },
+              { lead: "Venus Fun Fact 4:", text: "Venus Williams’ karaoke song of choice is Gold Dust Woman by Fleetwood Mac. (Click for full story)", href: "section.html?s=venus&issue=newsletter-4.html" },
             ],
           },
           {
