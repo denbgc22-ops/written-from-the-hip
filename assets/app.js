@@ -128,7 +128,10 @@ function renderHome() {
 
   const stage = document.getElementById("stage");
   let html = moonHTML(300);
-  SITE.planets.forEach(function (p) {
+  // hideOnHome: true leaves a planet off the home page (it still shows in
+  // the planet list on the other pages), e.g. Site Map
+  const homePlanets = SITE.planets.filter((p) => !p.hideOnHome);
+  homePlanets.forEach(function (p) {
     html +=
       '<a class="node" href="' +
       esc(planetHref(p)) +
@@ -147,7 +150,7 @@ function renderHome() {
 
   const list = document.getElementById("node-list");
   if (list) {
-    list.innerHTML = SITE.planets
+    list.innerHTML = homePlanets
       .map(
         (p) =>
           '<a href="' +
