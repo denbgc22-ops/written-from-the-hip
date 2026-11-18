@@ -2707,6 +2707,7 @@ FIN`,
           {
             oval: { fill: "#7a2bd0", text: "#39ff14", label: "Venus Fun Facts", glow: true },
             panel: { from: "#3a1470", to: "#12052a" },
+            sidePhotos: true,
             lines: [
               { lead: "Venus Fun Fact 1:", text: "She is a Jehovah Witness. I swear to god I am not lying you can search this up." },
               { lead: "Venus Fun Fact 2:", text: "Her glam routine starts with a detoxifying tea tree cream cleanser, hyaluronic acid, vitamin C, and retinol. And finishes with a drop of rose oil, with a squirt of sunscreen." },
@@ -2717,6 +2718,7 @@ FIN`,
           {
             oval: { fill: "#7a2bd0", text: "#39ff14", label: "What's Venus up 2?", glow: true },
             panel: { from: "#3a1470", to: "#12052a" },
+            sidePhotos: true,
             lines: [
               { lead: "Week 1:", text: "Venus designed The Melbourne 54\" Round Wood Pedestal Dining Table for Crate & Barrel. It cost only $3,299.00. The price is a steal, and it adds a certain Feng Shui that other round wood pedestal dining tables can’t replicate." },
               { lead: "Week 2:", text: "Venus dropped a Crate & Barrel collection that was inspired by tennis and Milanese design. (Click for full story)", href: "section.html?s=venus&issue=newsletter-2.html" },
@@ -2729,6 +2731,7 @@ FIN`,
           {
             oval: { fill: "#7a2bd0", text: "#39ff14", label: "This day in Venus History", glow: true },
             panel: { from: "#3a1470", to: "#12052a" },
+            sidePhotos: true,
             lines: [
               { lead: "September 19th 2025:", text: "Venus got married to actor/producer Andrea Preti." },
               { lead: "October 31, 1994:", text: "Venus made her WTA pro debut in the Bank of the West Classic. (Click for full story)", href: "section.html?s=venus&issue=newsletter-8.html" },
@@ -2737,6 +2740,7 @@ FIN`,
           {
             oval: { fill: "#7a2bd0", text: "#39ff14", label: "How 2 Support Venus", glow: true },
             panel: { from: "#3a1470", to: "#12052a" },
+            sidePhotos: true,
             lines: [
               { lead: "1.", text: "Click the link below to buy the three thousand dollar round dining table she designed.", url: "https://www.crateandbarrel.com/melbourne-54-round-wood-pedestal-dining-table-by-venus-williams/s316895" },
               { lead: "2.", text: "Eat a Vegan diet and get your protein only from Venus’ Happy Viking vegan protein powder company. Each scoop has 30 grams of protein, 10 grams of fiber and +100 superfoods. Click the link below to purchase the protein powder.", url: "https://www.amazon.com/Happy-Viking-Replacement-Probiotics-Plant-Based/dp/B094DX54WJ?th=1" },

@@ -393,7 +393,12 @@ function renderPage() {
       const bp = box.panel || {};
       const label = bo.label || "";
       const size = label.length <= 16 ? 21 : Math.max(11, 21 * (16 / label.length));
+      // box.sidePhotos: true flanks this box with the page's own two side
+      // photos (e.g. the glowing Venus cutouts), or pass {left, right}
+      const sp = box.sidePhotos === true ? pg.sidePhotos : box.sidePhotos;
+      const sideImg = (src) => (src ? '<img class="side-photo" src="' + esc(typeof src === "string" ? src : src.photo) + '" alt="">' : "");
       return (
+        (sp ? '<div class="side-photos-row extra-side-row">' + sideImg(sp.left) : "") +
         '<div class="billboard">' +
         '<div class="oval" style="background:radial-gradient(circle at 34% 26%, ' +
         tint(bo.fill) +
@@ -461,7 +466,8 @@ function renderPage() {
           )
           .join("") +
         "</div>") +
-        "</div></div>"
+        "</div></div>" +
+        (sp ? sideImg(sp.right) + "</div>" : "")
       );
     })
     .join("");

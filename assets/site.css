@@ -730,6 +730,9 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
    this row's flex centering when it's placed as a flex item -- neutralize
    them here so the row's justify-content:center can do the job instead */
 .side-photos-row .billboard { margin-left: 0; margin-right: 0; }
+/* an extra box with side photos sits in its own row; space it like
+   stacked boxes */
+.extra-side-row { margin-top: 56px; }
 
 /* a side-photo that's also a clickable icon: golden hover glow plus a
    "hint" label that appears above it, only on hover (e.g. the "Click Me"
