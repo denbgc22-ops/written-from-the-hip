@@ -908,7 +908,7 @@ function renderBio() {
     "</div>" +
     statLineHTML +
     "</div>" +
-    '<a class="backlink" href="page.html?p=lineup">Back to Starting Lineup</a>' +
+    '<a class="backlink" href="page.html?p=lineup">Back to Waiver Wire</a>' +
     legalHTML("page-legal");
 }
 

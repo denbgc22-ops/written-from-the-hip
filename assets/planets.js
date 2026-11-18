@@ -48,7 +48,7 @@ function planetSVG(art, size) {
     size +
     '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
     defs(id, c, s, l) +
-    (type === "photo" && a.cutout && a.photo ? cutout(a.photo) : body(id, c, s, l, ring, a.photo, a.ring, a.vignette, a.border)) +
+    (type === "photo" && a.cutout && a.photo ? cutout(id, a.photo, a.ring) : body(id, c, s, l, ring, a.photo, a.ring, a.vignette, a.border)) +
     curvedLabelSVG +
     "</svg>"
   );
@@ -144,9 +144,22 @@ function swirl(id, c, s, l) {
 
 // a see-through PNG drawn whole, with no circle crop or shading, so things
 // drawn around the planet (like the figures on Public Dome-ain) stay visible —
-// opt in per-planet with art.cutout: true
-function cutout(photoUrl) {
-  return '<image href="' + photoUrl + '" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>';
+// opt in per-planet with art.cutout: true. Adding art.ring draws a Saturn
+// ring around it (behind the top, in front of the bottom), with the PNG
+// shrunk a little so the ring has room -- e.g. the Waiver Wire logo
+function cutout(id, photoUrl, rawRing) {
+  if (!rawRing) return '<image href="' + photoUrl + '" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>';
+  const ellipse = (op) =>
+    '<g transform="rotate(-18 60 60)"><ellipse cx="60" cy="62" rx="58" ry="15" fill="none" stroke="' +
+    rawRing +
+    '" stroke-width="6"' +
+    (op ? ' opacity="' + op + '"' : "") +
+    "/></g>";
+  return (
+    ellipse("0.95") +
+    '<image href="' + photoUrl + '" x="20" y="16" width="80" height="88" preserveAspectRatio="xMidYMid meet"/>' +
+    '<g clip-path="url(#' + id + 'f)">' + ellipse() + "</g>"
+  );
 }
 
 function photo(id, c, s, l, ring, photoUrl, rawRing, showVignette, border) {

@@ -2563,13 +2563,15 @@ FIN`,
     },
     {
       id: "lineup",
-      name: "Starting Lineup",
+      name: "Waiver Wire",
       x: 84.2,
       y: 37.3,
       size: 92,
-      art: { type: "ringed", color: "#e8365d", shade: "#5c0c22", light: "#ffb3c4", ring: "#3fe0d0" },
+      // the NFL shield the newsletter uses for its waiver wire section
+      art: { type: "photo", photo: "assets/images/email-planet-nfl.png", cutout: true, ring: "#3fe0d0" },
       page: {
-        oval: { fill: "#d81b2a", text: "#ffe14d" },
+        // the Teorge / Gomas box keeps its Starting Lineup oval
+        oval: { fill: "#d81b2a", text: "#ffe14d", label: "Starting Lineup" },
         panel: { from: "#1565c0", to: "#0a1f38" },
         ribbon: "Welcome To The Writer's Room",
         roster: [
