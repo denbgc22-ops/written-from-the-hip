@@ -61,7 +61,7 @@ No build step. Edit files, commit, push, Netlify publishes.
    not shown).
    On **Fark**, give the new week's `subBlurb` an
    `href: "section.html?s=fark&issue=newsletter-N.html"`, and add last
-   week's Fark (name, photo, href) to the top of the Past Farks box
+   week's Fark (name, photo, href) to the top of the Hall of Fark box
    (`extraBoxes[0].items`).
    On **Waiver Wire** (the old Starting Lineup planet), add the new week's waiver wire pickup to the top
    of the Waiver Wire Pickups box (`extraBoxes[0].items`) with

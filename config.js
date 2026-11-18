@@ -2731,7 +2731,7 @@ FIN`,
         extraBoxesBelow: true,
         extraBoxes: [
           {
-            oval: { fill: "#3a3a3a", text: "#ff3b3b", label: "Past Farks", glow: true },
+            oval: { fill: "#3a3a3a", text: "#ff3b3b", label: "Hall of Fark", glow: true },
             panel: { from: "#1c1c1c", to: "#000000" },
             ring: "#ff3b3b",
             items: [
