@@ -398,10 +398,13 @@ function renderPage() {
   // out this week's specific Fark by name in its own glow color, or a
   // second issue link stacked under the Latest Issue blurb). Optional href
   // makes it clickable, underlining only on hover like the main blurb link.
-  const subBlurbHTML = (Array.isArray(pg.subBlurb) ? pg.subBlurb : pg.subBlurb ? [pg.subBlurb] : [])
+  const blurbLines = (list, extraStyle) =>
+    (Array.isArray(list) ? list : list ? [list] : [])
     .map(
       (sb) =>
-        '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;color:' +
+        '<p class="blurb" style="white-space:pre-line;text-align:center;font-weight:700;' +
+        (extraStyle || "") +
+        "color:" +
         (sb.color || "#ff3b3b") +
         ";text-shadow:0 0 10px " +
         (sb.color || "#ff3b3b") +
@@ -414,6 +417,12 @@ function renderPage() {
         "</p>"
     )
     .join("");
+  const subBlurbHTML = blurbLines(pg.subBlurb);
+  // pg.photoLinks: more lines just like subBlurb, shown under the center
+  // photo (e.g. every past week's Fark, each linking to its write-up)
+  const photoLinksHTML = pg.photoLinks
+    ? '<div class="photo-links">' + blurbLines(pg.photoLinks, "font-size:15px;margin:10px auto;") + "</div>"
+    : "";
 
   // a standalone centered photo below the blurb(s), with its own glow color
   // centerPhoto.photos (an array) shows several photos side by side instead
@@ -665,6 +674,7 @@ function renderPage() {
     subBlurbHTML +
     streamPostHTML +
     centerPhotoHTML +
+    photoLinksHTML +
     bookshelfHTML +
     storyLinkHTML +
     (pg.subscribeForm

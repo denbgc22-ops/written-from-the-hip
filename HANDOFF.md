@@ -55,10 +55,13 @@ No build step. Edit files, commit, push, Netlify publishes.
    top of `mapLinks` (newest first).
 5. Update the **Fark** planet (`subBlurb`, `centerPhoto`), **Book Coverz**
    (`books`), and **Public Dome-ain** (`streamPost` entries) when asked.
-   Each new book's `href` is `book-review.html?issue=newsletter-N.html`:
+   Each new book's `href` is `section.html?s=book&issue=newsletter-N.html`:
    that page copies the Book Cover section out of issue N, so the review
    shows on the site with no extra work. Put any buy link in `buy` (kept,
    not shown).
+   On **Fark**, give the new week's `subBlurb` an
+   `href: "section.html?s=fark&issue=newsletter-N.html"`, and move last
+   week's line to the top of `photoLinks`.
 6. Commit and push; confirm the Netlify deploy; then send the issue.
 
 ## Sending a newsletter (Resend)

@@ -2,93 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book Review — Written From The Hip</title>
-<link rel="icon" href="assets/images/moon.png">
-<!--
-  Shows one week's "Judge A Book By Its Cover" review on its own page.
-  Link to it as book-review.html?issue=newsletter-9.html -- the page loads
-  that newsletter and copies just its Book Cover section (plus the Book
-  Coverz planet above it), so nothing has to be written twice. Book Coverz
-  books in config.js link here.
--->
-<style>
-  body { margin:0; padding:0; background-color:#000000; background-image:url('assets/images/stars-denser.png'); background-repeat:repeat; font-family: Verdana, Geneva, Arial, sans-serif; }
-  .review-nav { width:600px; max-width:100%; margin:0 auto; box-sizing:border-box; padding:22px 20px 0; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-  .review-nav a { color:#ffe81f; font-weight:700; font-size:14px; text-decoration:none; text-shadow:0 0 6px rgba(255,232,31,0.85), 0 0 14px rgba(255,232,31,0.55); }
-  .review-nav a:hover { text-decoration:underline; }
-  #review { padding-bottom:40px; }
-  .review-missing { color:#ffe81f; text-align:center; padding:60px 20px; font-weight:700; }
-</style>
+<!-- old address for a book review; it now lives at section.html?s=book -->
+<script>location.replace("section.html?s=book&" + location.search.replace(/^\?/, ""));</script>
 </head>
-<body>
-  <div class="review-nav">
-    <a href="page.html?p=book-coverz">&larr; Back to Book Coverz</a>
-    <a id="full-issue" href="page.html?p=latest-issue">Read the full issue &rarr;</a>
-  </div>
-  <div id="review"></div>
-<script>
-(async function () {
-  const box = document.getElementById("review");
-  const issue = new URLSearchParams(location.search).get("issue") || "";
-  // only ever load one of our own newsletter files
-  if (!/^newsletter(-\d+)?\.html$/.test(issue)) {
-    box.innerHTML = '<p class="review-missing">That review couldn’t be found.</p>';
-    return;
-  }
-  document.getElementById("full-issue").href = issue;
-  try {
-    const res = await fetch(issue);
-    if (!res.ok) throw new Error(res.status);
-    const doc = new DOMParser().parseFromString(await res.text(), "text/html");
-
-    // reuse the newsletter's own styles (glows, borders)
-    doc.querySelectorAll("head style").forEach((s) => document.head.appendChild(s.cloneNode(true)));
-    document.body.style.backgroundColor = "#000000";
-
-    // find the "BOOK COVER" section comment and take the rows up to the
-    // next section comment; also keep the Book Coverz planet divider
-    const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_COMMENT);
-    let start = null;
-    while (walker.nextNode()) {
-      const t = walker.currentNode.nodeValue;
-      if (/=====/.test(t) && /BOOK COVER\b/.test(t) && /SECTION/.test(t)) { start = walker.currentNode; break; }
-    }
-    if (!start) throw new Error("no book section");
-    const rows = [];
-    let prev = start.previousSibling;
-    while (prev && !(prev.nodeType === 8 && /=====/.test(prev.nodeValue))) prev = prev.previousSibling;
-    if (prev && /DIVIDER: BOOK COVERZ/.test(prev.nodeValue)) {
-      for (let n = prev.nextSibling; n && n !== start; n = n.nextSibling) if (n.nodeType === 1) rows.push(n);
-    }
-    for (let n = start.nextSibling; n && !(n.nodeType === 8 && /=====/.test(n.nodeValue)); n = n.nextSibling) {
-      if (n.nodeType === 1) rows.push(n);
-    }
-
-    // the planet links back to Book Coverz in this same tab
-    rows.forEach((r) => r.querySelectorAll('a[href*="p=book-coverz"]').forEach((a) => {
-      a.setAttribute("href", "page.html?p=book-coverz");
-      a.removeAttribute("target");
-    }));
-
-    const title = doc.querySelector("title");
-    if (title) document.title = "Book Review: " + title.textContent.replace(/^Written From The Hip\s*[—-]\s*/, "") + " — Written From The Hip";
-
-    const wrap = document.createElement("table");
-    wrap.setAttribute("role", "presentation");
-    wrap.setAttribute("cellpadding", "0");
-    wrap.setAttribute("cellspacing", "0");
-    wrap.setAttribute("border", "0");
-    wrap.className = "wfth-wrap";
-    wrap.style.cssText = "width:600px; max-width:100%; margin:0 auto;";
-    const tbody = document.createElement("tbody");
-    rows.forEach((r) => tbody.appendChild(document.importNode(r, true)));
-    wrap.appendChild(tbody);
-    box.appendChild(wrap);
-  } catch (err) {
-    box.innerHTML = '<p class="review-missing">That review couldn’t be loaded. <a href="' + issue + '" style="color:#6ec6ff;">Open the full issue</a>.</p>';
-  }
-})();
-</script>
-</body>
+<body></body>
 </html>
