@@ -62,6 +62,7 @@ function planetNavHTML() {
   return (
     '<nav class="planet-nav" aria-label="Planets">' +
     SITE.planets
+      .filter((p) => !p.hideInNav) // hideInNav: true leaves it off this list
       .map(
         (p) =>
           '<a href="' +

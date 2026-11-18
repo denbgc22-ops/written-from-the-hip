@@ -2676,6 +2676,7 @@ FIN`,
       art: { type: "photo", photo: "assets/images/eyeball-photo.png", color: "#f5871f", shade: "#4a1500", light: "#ffe14d", vignette: false },
       href: "sitemap.html", // goes to its own page instead of the standard one
       hideOnHome: true, // not shown on the home page
+      hideInNav: true, // not in the planet list on the side of other pages
     },
     {
       id: "venus",
