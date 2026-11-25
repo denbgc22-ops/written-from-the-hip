@@ -265,7 +265,7 @@ fark_inner = ps([
     "He told me he knew exactly how I felt. A woman said hi to him and things got romantic, and allegedly she was a Chinese spy (he allegedly had four other affairs, but who’s counting? Not us! Allegedly). I have to say allegedly because Nvidia has more lawyers than we have subscribers.",
     "Well the roleplay backfired because like me having my computer compromised, his job was compromised. Apparently sexy spy vs tech mogul with cool leather jacket was a little too intense and it ended up getting out in the news.",
     "Fucking so sick, but what could his wife possibly be thinking — I just looked it up and she wants to save their marriage.",
-    "I mean what a fuckin keeper. Forty years of marriage (four alleged affairs) and she’s still in. I had a girl leave me because I ate too much yogurt and rotisserie chicken.",
+    "I mean what a fuckin keeper. Forty years of marriage (four alleged affairs) and she’s still in. I had a girl leave me because I ate too much yogurt and rotisserie chicken. He also got reinstated as CEO at Nvidia. I mean just a helluva week from our boy.",
     "Jensen, we at Written From The Hip would like to formally apologize for calling you a Fark. People fail, Chinese spy agencies will soon fail, computers do not and Jensen Huang is my hero.",
     "This leaves one Fark this week. Me. A man on Facebook Marketplace with a frozen computer and thoughts of Bella Thorne.",
 ])
