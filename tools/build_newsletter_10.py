@@ -126,7 +126,7 @@ waiver_after = [
 waiver_body = (
     "\n                    <br><br>\n".join("                    " + fmt(t) for t in waiver_paras)
     + "\n                    <br><br>\n"
-    + "\n                    <br>\n".join("                    " + fmt(t) for t in routine)
+    + "\n                    <br><br>\n".join("                    " + fmt(t) for t in routine)
     + "\n                    <br><br>\n"
     + "\n                    <br><br>\n".join("                    " + fmt(t) for t in waiver_after)
 )
